@@ -1,0 +1,13 @@
+---
+import BaseSEO from '@/components/seo/BaseSEO.astro'
+
+const {
+	currentPage,
+	lang = 'en',
+	jsonType = 'LocalBusiness',
+	extraJson = {},
+	ogImage,
+} = Astro.props
+---
+
+<BaseSEO currentPage={currentPage} lang={lang} jsonType={jsonType} extraJson={extraJson} ogImage={ogImage} />

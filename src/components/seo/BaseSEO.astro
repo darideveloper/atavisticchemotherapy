@@ -1,0 +1,105 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION, LOCALE_MAP } from '@/consts'
+import { BUSINESS_DATA } from '@/data/site-config'
+import { getTranslations, getLocalizedPath } from '@/lib/i18n/utils'
+import { stripMarkdown } from '@/lib/markdown'
+
+const {
+	currentPage,
+	lang = 'en',
+	title,
+	description,
+	baseDescription,
+	keywords,
+	baseKeywords,
+	jsonType = 'LocalBusiness',
+	extraJson = {},
+	ogImage,
+	useTagLine = true,
+	noIndex = false,
+} = Astro.props
+
+const t = getTranslations(lang)
+
+// Title resolution chain: prop → i18n → SITE_TITLE → default.
+const i18nTitle = currentPage ? t(`pages.${currentPage}.title`) : undefined
+const resolvedTitle =
+	title ?? i18nTitle ?? SITE_TITLE
+
+// Description resolution chain: prop → baseDescription → i18n → SITE_DESCRIPTION.
+const i18nDesc = currentPage ? t(`pages.${currentPage}.description`) : undefined
+const resolvedDescription = stripMarkdown(
+	description ?? baseDescription ?? i18nDesc ?? SITE_DESCRIPTION,
+)
+
+const resolvedKeywords =
+	keywords ?? baseKeywords ?? (currentPage ? t(`pages.${currentPage}.keywords`) : undefined)
+
+// Tagline: " | Business Name" for non-home pages.
+const finalTitle =
+	useTagLine && resolvedTitle !== BUSINESS_DATA.name && currentPage !== 'home'
+		? `${resolvedTitle} | ${BUSINESS_DATA.name}`
+		: resolvedTitle
+
+// Canonical + hreflang.
+const canonicalPath = currentPage
+	? getLocalizedPath(currentPage, lang)
+	: Astro.url.pathname
+const canonicalUrl = `${BUSINESS_DATA.url}${canonicalPath}`
+const alternateUrls = {
+	en: `${BUSINESS_DATA.url}${currentPage ? getLocalizedPath(currentPage, 'en') : '/'}`,
+	es: `${BUSINESS_DATA.url}${currentPage ? getLocalizedPath(currentPage, 'es') : '/es'}`,
+}
+
+// JSON-LD (polymorphic).
+const isProd = import.meta.env.PROD
+const ogUrl = ogImage?.startsWith('http') ? ogImage : `${BUSINESS_DATA.url}${ogImage ?? '/og-image.jpg'}`
+
+const baseSchema = {
+	'@context': 'https://schema.org',
+	'@type': jsonType,
+	'@id': `${BUSINESS_DATA.url}#${jsonType.toLowerCase()}`,
+	name: finalTitle,
+	description: resolvedDescription,
+	url: canonicalUrl,
+	image: ogUrl,
+	inLanguage: lang,
+}
+
+const isLocalBusiness = jsonType === 'LocalBusiness' || jsonType === 'TravelAgency'
+if (isLocalBusiness) {
+	baseSchema.logo = `${BUSINESS_DATA.url}${BUSINESS_DATA.logo}`
+	baseSchema.telephone = BUSINESS_DATA.contact.phone
+	baseSchema.address = BUSINESS_DATA.contact.address
+	baseSchema.geo = BUSINESS_DATA.contact.geo
+	baseSchema.openingHoursSpecification = BUSINESS_DATA.hours
+	baseSchema.sameAs = Object.values(BUSINESS_DATA.socialLinks).filter(Boolean)
+}
+
+const jsonLd = { ...baseSchema, ...extraJson }
+
+const ogTypeMap = {
+	LocalBusiness: 'website',
+	TravelAgency: 'website',
+	Blog: 'website',
+	BlogPosting: 'article',
+	Service: 'website',
+}
+const ogType = ogTypeMap[jsonType] || 'website'
+---
+
+<title>{finalTitle}</title>
+<meta name="description" content={resolvedDescription} />
+{resolvedKeywords && <meta name="keywords" content={resolvedKeywords} />}
+<meta property="og:type" content={ogType} />
+<meta property="og:locale" content={LOCALE_MAP[lang]} />
+<meta property="og:title" content={finalTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:image" content={ogUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" hreflang="en" href={alternateUrls.en} />
+<link rel="alternate" hreflang="es" href={alternateUrls.es} />
+{!isProd && <meta name="robots" content="noindex, nofollow" />}
+{noIndex && <meta name="robots" content="noindex" />}
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

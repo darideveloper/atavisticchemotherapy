@@ -7,3 +7,10 @@ version: 2026-09-27+local
 
 > Project-specific additions for `astro-react-islands.md`. This file is never overwritten by `pull.sh`.
 
+## This project
+
+- Tailwind v4 + `@astrojs/react` wired via `astro.config.mjs` (`tailwindcss()` Vite plugin + `react()`).
+- Global CSS: `src/styles/global.css` (`@import "tailwindcss"` + `tw-animate-css` + `@theme` tokens), imported once from `src/layouts/Layout.astro`.
+- Demo island: `src/components/atoms/DemoIsland.tsx` (`client:load`, children via Astro slot renders server-side).
+- React components never import the i18n system — translations arrive as props.
+

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* tw-animate-css provides CSS-only animation utilities */
+@import "tw-animate-css";
+
+/* Tailwind Typography plugin — enables prose-* classes used by the Markdown atom */
+@plugin "@tailwindcss/typography";
+
+/* Tailwind v4 @theme block — design tokens */
+@theme {
+	--color-app-primary: #0b2a4a;
+	--color-app-accent: #0e9b8e;
+	--color-app-bg: #f7f8fa;
+}
+
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* No-JS fallback: if JS never runs, `no-js` stays on <html> and reveal
+   elements remain visible. Once JS runs it swaps to `js` and GSAP owns the
+   hidden state. See gsap-scrolltrigger/05 §2. */
+.no-js .js-reveal {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+/* Shared prose (markdown). `.markdown-prose` is the current class. */
+.markdown-prose h2::before {
+	content: "";
+	display: block;
+	width: 28px;
+	height: 2px;
+	background: #0e9b8e;
+}
+.markdown-prose figure,
+.markdown-prose figcaption {
+	margin: 2.5rem auto;
+}
+.markdown-prose figcaption {
+	text-align: center;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	padding: 0.75rem 1rem;
+}
+.markdown-prose ul ul,
+.markdown-prose ol ol {
+	margin: 0.5rem 0;
+}
+.markdown-prose hr {
+	border: 0;
+	border-top: 1px solid;
+	margin: 2.5rem 0;
+}
+.markdown-prose table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.markdown-prose .code-block {
+	position: relative;
+}
+.markdown-prose .code-lang {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 11px;
+	padding: 0.25rem 0.5rem;
+}
+.markdown-prose .code-copy {
+	position: absolute;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	font-size: 11px;
+}
+.markdown-prose iframe,
+.markdown-prose video {
+	width: 100%;
+	aspect-ratio: 16/9;
+}
+.markdown-prose--compact p,
+.markdown-prose--compact ul,
+.markdown-prose--compact ol {
+	margin-top: 0.75rem;
+	margin-bottom: 0.75rem;
+}
+.markdown-prose--compact figure,
+.markdown-prose--compact .code-block {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.markdown-prose--on-dark h1,
+.markdown-prose--on-dark h2,
+.markdown-prose--on-dark h3,
+.markdown-prose--on-dark h4,
+.markdown-prose--on-dark p,
+.markdown-prose--on-dark li,
+.markdown-prose--on-dark strong,
+.markdown-prose--on-dark em {
+	color: white;
+}
+.markdown-prose--on-dark blockquote {
+	opacity: 0.85;
+}
+.markdown-prose--dropcap > p:first-of-type::first-letter {
+	font-size: 3.2em;
+	float: left;
+	line-height: 1;
+	padding-right: 0.1em;
+}

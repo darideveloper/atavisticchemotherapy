@@ -1,0 +1,88 @@
+---
+import { SITE_TITLE } from '@/consts'
+---
+
+<section class="js-reveal-section relative" transition:animate="none">
+	<div class="js-reveal-header js-reveal-card js-reveal">
+		<h2>About {SITE_TITLE}</h2>
+	</div>
+	<div class="grid">
+		<div class="js-reveal-card js-reveal">Scroll-triggered reveal card 1</div>
+		<div class="js-reveal-card js-reveal">Scroll-triggered reveal card 2</div>
+		<div class="js-reveal-card js-reveal">Scroll-triggered reveal card 3</div>
+	</div>
+</section>
+
+<script>
+	import { gsap, ScrollTrigger } from '@/lib/gsap'
+
+	function initRevealAnimations() {
+		const section = document.querySelector('.js-reveal-section')
+		if (!section) return
+
+		const mm = gsap.matchMedia()
+
+		mm.add('(prefers-reduced-motion: no-preference)', () => {
+			gsap.set(section.querySelectorAll('.js-reveal'), {
+				autoAlpha: 1,
+				force3D: true,
+			})
+
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: section,
+					start: 'top 80%',
+					toggleActions: 'play none none none',
+				},
+			})
+
+			tl.from('.js-reveal-header', {
+				autoAlpha: 0,
+				y: 40,
+				duration: 1.2,
+				ease: 'power4.out',
+			}).from(
+				'.js-reveal-card',
+				{
+					autoAlpha: 0,
+					y: 30,
+					duration: 1.0,
+					stagger: 0.15,
+					ease: 'power3.out',
+				},
+				'-=0.8',
+			)
+		})
+
+		mm.add('(prefers-reduced-motion: reduce)', () => {
+			gsap.set(section.querySelectorAll('.js-reveal'), { autoAlpha: 0 })
+			ScrollTrigger.create({
+				trigger: section,
+				start: 'top 80%',
+				onEnter: () => {
+					gsap.to(section.querySelectorAll('.js-reveal'), {
+						autoAlpha: 1,
+						duration: 0.8,
+						stagger: 0.1,
+					})
+				},
+			})
+		})
+	}
+
+	initRevealAnimations()
+	document.addEventListener('astro:page-load', initRevealAnimations)
+	document.addEventListener('astro:page-load', () => ScrollTrigger.refresh())
+</script>
+
+<style>
+	.js-reveal {
+		opacity: 0;
+		visibility: hidden;
+	}
+	.grid {
+		display: grid;
+		gap: 1rem;
+		grid-template-columns: repeat(3, 1fr);
+	}
+</style>

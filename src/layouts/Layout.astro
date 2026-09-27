@@ -1,23 +1,65 @@
+---
+import '@/styles/global.css'
+import { ClientRouter } from 'astro:transitions'
+import { SITE_TITLE } from '@/consts'
+import { BUSINESS_DATA } from '@/data/site-config'
+import LangBtns from '@/components/molecules/LangBtns.astro'
+import { getTranslations, getLocalizedPath } from '@/lib/i18n/utils'
+
+const {
+	lang = 'en',
+	preloadImage,
+	preloadSrcSet,
+	preloadSizes,
+} = Astro.props
+const t = getTranslations(lang)
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang} class="no-js">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<script is:inline>
+			document.documentElement.classList.remove('no-js');
+			document.documentElement.classList.add('js');
+		</script>
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<slot name="seo" />
+		{preloadSrcSet
+			? <link rel="preload" as="image" imagesrcset={preloadSrcSet} imagesizes={preloadSizes ?? '100vw'} fetchpriority="high" />
+			: preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+		<ClientRouter />
 	</head>
 	<body>
-		<slot />
+		<header>
+			<a href="/" class="brand">{BUSINESS_DATA.name}</a>
+			<nav>
+				<a href="/">Home</a>
+				<LangBtns lang={lang} />
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<small>© {SITE_TITLE}</small> · <small>{t('global.footer.disclaimer')}</small>
+			<nav>
+				<a href={getLocalizedPath('privacy', lang)}>{t('global.footer.privacy')}</a>
+				<a href={getLocalizedPath('terms', lang)}>{t('global.footer.terms')}</a>
+			</nav>
+		</footer>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	header nav a {
+		margin-right: 0.75rem;
+	}
+	.brand {
+		font-weight: 700;
 	}
 </style>

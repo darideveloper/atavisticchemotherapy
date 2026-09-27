@@ -1,0 +1,64 @@
+---
+import { routes, type PageKey } from '@/lib/i18n/routes'
+import Home from '@/components/pages/Home.astro'
+import LegalPage from '@/components/pages/legal/LegalPage.astro'
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths() {
+	// Load legal entries once; each legal pageKey has a <slug>.<lang> file.
+	const legalEntries = await getCollection('legal')
+	const legalByKey: Record<string, Record<string, any>> = {}
+	for (const entry of legalEntries) {
+		const [slug, lang] = entry.id.split('.')
+		;(legalByKey[slug] ??= {})[lang] = entry
+	}
+
+	const paths = []
+	for (const [key, langPaths] of Object.entries(routes)) {
+		const toParam = (slug: string | undefined) =>
+			slug === '' || slug === undefined ? undefined : slug
+		paths.push({
+			params: { path: toParam(langPaths.en) },
+			props: { pageKey: key as PageKey, lang: 'en', legalByKey },
+		})
+		paths.push({
+			params: { path: toParam(langPaths.es) },
+			props: { pageKey: key as PageKey, lang: 'es', legalByKey },
+		})
+	}
+	return paths
+}
+
+// COMPONENT_MAP — maps page keys to page components.
+const COMPONENT_MAP = {
+	home: Home,
+	privacy: LegalPage,
+	terms: LegalPage,
+}
+
+const { pageKey, lang, legalByKey } = Astro.props
+const PageComponent = COMPONENT_MAP[pageKey as keyof typeof COMPONENT_MAP]
+---
+
+{
+	PageComponent && pageKey === 'home' && <PageComponent lang={lang} pageKey={pageKey} />
+}
+{
+	PageComponent && pageKey !== 'home' && (() => {
+		const entry = legalByKey?.[pageKey]?.[lang]
+		if (!entry) {
+			throw new Error(`Missing legal markdown file for ${pageKey}.${lang}`)
+		}
+		const { title, description, updated } = entry.data
+		return (
+			<LegalPage
+				lang={lang}
+				pageKey={pageKey}
+				title={title}
+				description={description}
+				updated={updated}
+				body={entry.body}
+			/>
+		)
+	})()
+}

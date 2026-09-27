@@ -1,0 +1,25 @@
+---
+import { getLangFromUrl, getLocalizedPath, getPageKeyFromUrl } from '@/lib/i18n/utils'
+
+const lang = Astro.props.lang ?? getLangFromUrl(Astro.url)
+const pageKey = Astro.props.pageKey ?? getPageKeyFromUrl(Astro.url)
+const genUrl = (target: 'en' | 'es') =>
+	pageKey
+		? getLocalizedPath(pageKey, target)
+		: target === 'es'
+			? `/es${Astro.url.pathname}`
+			: Astro.url.pathname.replace(/^\/es(?=\/|$)/, '') || '/'
+const esUrl = genUrl('es')
+const enUrl = genUrl('en')
+---
+
+{
+	lang !== 'es' && (
+		<a href={esUrl} hreflang="es" aria-label="Español">ES</a>
+	)
+}
+{
+	lang !== 'en' && (
+		<a href={enUrl} hreflang="en" aria-label="English">EN</a>
+	)
+}

@@ -1,0 +1,37 @@
+{
+  "global": {
+    "nav": {
+      "home": "Inicio",
+      "reality": "Realidad",
+      "treatment": "Tratamiento",
+      "cases": "Casos",
+      "evaluate": "Evaluar mi caso gratis"
+    },
+    "footer": {
+      "disclaimer": "Este sitio web no sustituye el consejo médico.",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Uso"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Quimioterapia Atávica",
+      "description": "Evaluación de segunda opinión para el ensayo de Quimioterapia Atávica (NCT02366884).",
+      "keywords": "quimioterapia, atávica, ensayo, evaluación",
+      "hero": {
+        "headline": "Cuando la cirugía no bastó, aún hay una evaluación posible",
+        "subtitle": "Ensayo de Quimioterapia Atávica desde 2011 · Oral en casa · Segunda opinión gratuita"
+      }
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Cómo recopilamos, usamos y protegemos tus datos.",
+      "keywords": "privacidad, política, datos"
+    },
+    "terms": {
+      "title": "Términos de Uso",
+      "description": "Los términos que rigen el uso de este sitio web.",
+      "keywords": "términos, uso, legal"
+    }
+  }
+}

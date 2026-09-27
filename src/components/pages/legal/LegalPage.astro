@@ -1,0 +1,26 @@
+---
+import Markdown from '@/components/atoms/Markdown.astro'
+import Layout from '@/layouts/Layout.astro'
+import PageSEO from '@/components/seo/PageSEO.astro'
+
+export interface Props {
+	title: string
+	description: string
+	updated: string
+	body?: string
+	lang?: string
+	pageKey?: string
+}
+
+const { title, description, updated, body, lang = 'en', pageKey } = Astro.props
+---
+
+<Layout lang={lang}>
+	<PageSEO slot="seo" currentPage={pageKey} lang={lang} />
+	<article>
+		<h1>{title}</h1>
+		<p>{description}</p>
+		<p class="text-sm">{updated}</p>
+		<Markdown content={body} />
+	</article>
+</Layout>

@@ -1,0 +1,54 @@
+---
+import Markdown from '@/components/atoms/Markdown.astro'
+import DemoIsland from '@/components/atoms/DemoIsland.tsx'
+import FormDemo from '@/components/organisms/FormDemo.tsx'
+import Image from '@/components/atoms/Image.astro'
+import Layout from '@/layouts/Layout.astro'
+import PageSEO from '@/components/seo/PageSEO.astro'
+import RevealSection from '@/components/organisms/RevealSection.astro'
+import { getTranslations } from '@/lib/i18n/utils'
+import heroImg from '@/assets/hero-demo.png'
+
+export interface Props {
+	lang?: 'en' | 'es'
+	pageKey?: string
+}
+
+const { lang = 'en', pageKey = 'home' } = Astro.props
+const t = getTranslations(lang)
+---
+
+<Layout lang={lang} preloadImage={heroImg.src} preloadSizes="100vw">
+	<PageSEO slot="seo" currentPage={pageKey} lang={lang} />
+	<section>
+		<h1>{t('pages.home.hero.headline')}</h1>
+		<p>{t('pages.home.hero.subtitle')}</p>
+	</section>
+
+	<!-- Local image through the shared Image atom (AVIF/WebP + fallback) -->
+	<Image
+		src={heroImg}
+		alt="Atavistic Chemotherapy"
+		widths={[400, 800, 1200]}
+		sizes="(max-width: 768px) 400px, 800px"
+		loading="eager"
+		fetchpriority="high"
+	/>
+
+	<!-- React island with client:load hydration + Astro slot (static content) -->
+	<DemoIsland client:load>
+		This static content renders server-side; the button hydrates on load.
+	</DemoIsland>
+
+	<!-- Markdown demo: long prose renders via the Markdown atom -->
+	<Markdown
+		content={t('pages.home.hero.subtitle')}
+		class="max-w-[560px]"
+	/>
+
+	<!-- Zustand + Zod demo: validated, persisted form store -->
+	<FormDemo client:load />
+
+	<!-- GSAP scroll-triggered section reveal -->
+	<RevealSection />
+</Layout>
