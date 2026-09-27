@@ -217,7 +217,7 @@ Each checkout stops independently with Ctrl+C in its own terminal — the route 
 - Review before deleting. Never delete a worktree with unmerged/unreviewed work.
 - Squash on merge, so small work-in-progress commits (e.g. agent session snapshots — see appendix) don't pollute history.
 - Branch names with `/` get sanitized in the subdomain — check `portless list` for the exact URL after first run.
-- Enforceable contract: copy the SHALL requirements into `openspec/specs/agent-worktrees/spec.md` from the [spec template](./agent-worktrees-spec-template.md).
+- Enforceable contract: copy the SHALL requirements into `openspec/specs/worktree-dev-workflow/spec.md` from the [spec template](./agent-worktrees-spec-template.md).
 
 ## Troubleshooting
 

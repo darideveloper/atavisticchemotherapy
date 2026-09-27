@@ -16,10 +16,17 @@ version: 2026-09-27+61ecb02
 
 # `agent-worktrees` Spec Template (copy-paste)
 
-Copy this file to `openspec/specs/agent-worktrees/spec.md` in each new
+Copy this file to **`openspec/specs/worktree-dev-workflow/spec.md`** in each new
 project, substituting `<project>` for the repo name. The headings and
 `SHALL` keywords are load-bearing — keep them verbatim so the spec stays
 enforceable.
+
+> **Instantiation.** The target directory is the conventional name
+> `worktree-dev-workflow` (matching the feature it enforces). Create the dir
+> and file, substitute every `<project>`/`<branch>` occurrence, and commit it
+> alongside the `AGENTS.md` snippet so new worktrees inherit the enforced
+> contract from committed `HEAD`. `<branch>` in scenarios is illustrative —
+> keep it as a branch-name placeholder.
 
 ```markdown
 ## ADDED Requirements

@@ -3,12 +3,12 @@
 > This project uses vendored docs from `agent-docs`.
 
 ## Precedence
-1. Read `X.md` first (generic, vendored — READ-ONLY).
+1. Read `X.md` first (generic, vendored — agents: never auto-edit; edit only on the user's explicit request for a generic fix or reusable feature).
 2. Then read `X.local.md` if it exists (project-specific override — **wins on conflict**).
 3. Never edit `X.md` to add project-specific content — use `X.local.md`.
 
 ## Rules for Agents & Humans
-- **Generic fixes go in `X.md`:** fix typos/better patterns directly in the vendored file (no marker needed); `promote.sh` diffs it, blocks secrets, and emits the PR artifact.
+- **Generic fixes go in `X.md` ONLY on explicit user request:** typos, better patterns, reusable features — and only when the user asked for it. Agents never auto-edit `X.md` unasked. `promote.sh` diffs it, blocks secrets, and emits the PR artifact.
 - **Project content goes to `*.local.md`:** project-specific slugs, business keys, language lists, client conventions, etc. Never promoted.
 - **Never commit secrets:** no API keys, tokens, passwords, or private URLs in `docs/` (vendor or local). Secrets belong in `.env*` (gitignored). If a doc needs an example key, use a placeholder (`sk_test_placeholder`, `SECRET_KEY=change-me`).
 - **Re-pull safety:** `pull.sh --update` overwrites `*.md` but never touches `*.local.md`.
