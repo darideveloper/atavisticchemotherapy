@@ -17,6 +17,10 @@ openspec/changes/*
 # Do not ignore archived proposals
 !openspec/changes/archive/
 
+# ignore by default all hidden folders (like agents folders)
+.*/
+
+# generic-local conveniences (tool/OS noise, not project-specific)
 # logs
 npm-debug.log*
 yarn-debug.log*
@@ -28,9 +32,6 @@ pnm-debug.log*
 
 # jetbrains setting folder
 .idea/
-
-# ignore by default all hidden folders (like agents folders)
-.*/
 
 # project-specific scratch (out-of-scope site blueprint)
 content.md
