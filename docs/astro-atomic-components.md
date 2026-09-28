@@ -11,7 +11,7 @@ tags:
 type: resource
 status: active
 source: templates://astro/astro-atomic-components.md
-version: 2026-09-27+61ecb02
+version: 2026-09-27+unreleased
 
 ---
 

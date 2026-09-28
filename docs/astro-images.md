@@ -10,6 +10,7 @@ tags:
 type: resource
 status: active
 source: templates://astro/astro-images.md
+version: 2026-09-27+unreleased
 
 ---
 

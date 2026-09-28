@@ -9,7 +9,7 @@ tags:
 type: resource
 status: active
 source: templates://astro/astro-portless.md
-version: 2026-09-27+61ecb02
+version: 2026-09-27+unreleased
 
 ---
 
