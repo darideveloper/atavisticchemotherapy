@@ -1,23 +1,12 @@
+---
+import '@/styles/global.css';
+---
 <!DOCTYPE html>
 
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>The Atavistic Chemotherapy Clinical Trial™ | Quimioterapia Atávica · NCT02366884</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { plum: '#641b4e', plumDeep: '#4c1139', plumLight: '#8a2b6e',
-                     orchid: '#9a3676', accent: '#bd4b93', dark: '#1e293b', subtle: '#64748b' }
-          },
-          fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'] }
-        }
-      }
-    }
-  </script>
 <style data-purpose="base-styling">
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
     html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
@@ -79,7 +68,7 @@
 </div>
 </div>
 <div class="w-full lg:w-1/4 flex justify-center lg:justify-end">
-<img alt="Atavistic Chemotherapy logo" class="w-full max-w-[200px] lg:max-w-[240px] h-auto" src="assets/logo-white.png"/>
+<img alt="Atavistic Chemotherapy logo" class="w-full max-w-[200px] lg:max-w-[240px] h-auto" src="/assets/logo-white.png"/>
 </div>
 </div>
 </div>
@@ -92,7 +81,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
 <div class="lg:col-span-6 flex justify-center">
 <div class="relative w-full max-w-lg overflow-hidden rounded-2xl shadow-xl border border-slate-100 group">
-<img alt="Dr. Frank Arguello" class="w-full h-[440px] sm:h-[480px] object-cover object-top transition duration-500 group-hover:scale-102" src="assets/headshot.png"/>
+<img alt="Dr. Frank Arguello" class="w-full h-[440px] sm:h-[480px] object-cover object-top transition duration-500 group-hover:scale-102" src="/assets/headshot.png"/>
 <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent p-6 text-white lg:hidden">
 <h3 class="font-bold text-lg">Dr. Frank Arguello</h3>
 <p class="text-xs text-rose-200">Director, Atavistic Chemotherapy Clinical Trial</p>
@@ -136,7 +125,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
 <div class="bg-rose-50 p-3 border-b border-rose-100/60">
-<img alt="Las quimioterapias o Inmunoterapias actuales no pueden curar un cáncer tan diminuto como un grano de sal" class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="assets/Eye-Enucleation.jpg"/>
+<img alt="Las quimioterapias o Inmunoterapias actuales no pueden curar un cáncer tan diminuto como un grano de sal" class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="/assets/Eye-Enucleation.jpg"/>
 </div>
 <div class="p-5 flex-1 flex flex-col text-center">
 <h3 class="font-bold text-base text-[#5c1642] mb-3 min-h-[44px] flex items-center justify-center">
@@ -149,7 +138,7 @@
 </article>
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
 <div class="bg-rose-50 p-3 border-b border-rose-100/60">
-<img alt="Tampoco pueden curar un cancer de mama así sea de unos pocos milímetros." class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="assets/Mastectomy.jpg"/>
+<img alt="Tampoco pueden curar un cancer de mama así sea de unos pocos milímetros." class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="/assets/Mastectomy.jpg"/>
 </div>
 <div class="p-5 flex-1 flex flex-col text-center">
 <h3 class="font-bold text-base text-[#5c1642] mb-3 min-h-[44px] flex items-center justify-center">
@@ -162,7 +151,7 @@
 </article>
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
 <div class="bg-rose-50 p-3 border-b border-rose-100/60">
-<img alt="¿Qué puede esperar un paciente con múltiples metástasis en pulmones, hígado, cerebro o huesos?" class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="assets/samuel-th.jpg"/>
+<img alt="¿Qué puede esperar un paciente con múltiples metástasis en pulmones, hígado, cerebro o huesos?" class="w-full h-auto rounded-lg cursor-zoom-in" data-lightbox src="/assets/samuel-th.jpg"/>
 </div>
 <div class="p-5 flex-1 flex flex-col text-center">
 <h3 class="font-bold text-base text-[#5c1642] mb-3 min-h-[44px] flex items-center justify-center">
@@ -191,10 +180,10 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 <div class="lg:col-span-5 flex justify-center gap-4">
 <div class="w-40 sm:w-48 h-80 sm:h-96 overflow-hidden rounded-t-full rounded-b-2xl shadow-lg border border-pink-100">
-<img alt="Célula normal y teoría atávica" class="w-full h-full object-cover" src="assets/Mother.png"/>
+<img alt="Célula normal y teoría atávica" class="w-full h-full object-cover" src="/assets/Mother.png"/>
 </div>
 <div class="w-40 sm:w-48 h-80 sm:h-96 overflow-hidden rounded-b-full rounded-t-2xl shadow-lg border border-pink-100 mt-6">
-<img alt="Pacientes tratados" class="w-full h-full object-cover" src="assets/alice-th.jpg"/>
+<img alt="Pacientes tratados" class="w-full h-full object-cover" src="/assets/alice-th.jpg"/>
 </div>
 </div>
 <div class="lg:col-span-7 space-y-7 lg:pl-6">
@@ -220,10 +209,10 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 <div class="lg:col-span-5 flex justify-center gap-4 lg:order-2">
 <div class="w-40 sm:w-48 h-80 sm:h-96 overflow-hidden rounded-t-full rounded-b-2xl shadow-lg border border-pink-100">
-<img alt="Célula normal y teoría atávica" class="w-full h-full object-cover" src="assets/Mother.png"/>
+<img alt="Célula normal y teoría atávica" class="w-full h-full object-cover" src="/assets/Mother.png"/>
 </div>
 <div class="w-40 sm:w-48 h-80 sm:h-96 overflow-hidden rounded-b-full rounded-t-2xl shadow-lg border border-pink-100 mt-6">
-<img alt="Pacientes tratados" class="w-full h-full object-cover" src="assets/alice-th.jpg"/>
+<img alt="Pacientes tratados" class="w-full h-full object-cover" src="/assets/alice-th.jpg"/>
 </div>
 </div>
 <div class="lg:col-span-7 space-y-7 lg:pr-6 lg:order-1">
@@ -272,7 +261,7 @@
 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mt-5">Para consultas urgentes, por favor <a class="underline font-semibold text-[#9a3676]" href="tel:+13013059591">llámenos al +1 (301) 305-9591</a> o escríbanos por <a class="underline font-semibold text-[#9a3676]" href="https://wa.me/13013059591" target="_blank" rel="noopener">WhatsApp (EE. UU.)</a> o <a class="underline font-semibold text-[#9a3676]" href="https://wa.me/526563382516" target="_blank" rel="noopener">WhatsApp (MX 656 338 2516)</a>.</p>
 </div>
 </div>
-<script>
+<script is:inline>
 (function(){var m=document.getElementById('contact-modal'),f=document.getElementById('contact-form'),ok=document.getElementById('contact-success');function open(e){if(e)e.preventDefault();f.classList.remove('hidden');ok.classList.add('hidden');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';}function close(){m.classList.add('hidden');m.classList.remove('flex');document.body.style.overflow='';}document.addEventListener('click',function(e){if(e.target.closest('[data-contact-open]'))open(e);else if(e.target===m||e.target.closest('[data-contact-close]'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.classList.contains('hidden'))close();});f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('hidden');ok.classList.remove('hidden');});})();
 </script>
 <!-- END: ContactModal -->
@@ -284,7 +273,7 @@
 <figcaption id="lightbox-cap" class="text-white/80 text-xs sm:text-sm text-center max-w-[92vw]"></figcaption>
 </figure>
 </div>
-<script>
+<script is:inline>
 (function(){var lb=document.getElementById('lightbox'),img=document.getElementById('lightbox-img'),cap=document.getElementById('lightbox-cap');function open(src,alt){img.src=src;img.alt=alt||'';cap.textContent=alt||'';lb.classList.remove('hidden');lb.classList.add('flex');document.body.style.overflow='hidden';}function close(){lb.classList.add('hidden');lb.classList.remove('flex');img.src='';document.body.style.overflow='';}document.addEventListener('click',function(e){var t=e.target.closest('[data-lightbox]');if(t){open(t.src,t.alt);}});lb.addEventListener('click',function(e){if(e.target===lb||e.target.closest('#lightbox-close'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.classList.contains('hidden'))close();});})();
 </script>
 <!-- END: LightboxModal -->
