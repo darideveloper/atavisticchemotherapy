@@ -12,8 +12,19 @@ export const BUSINESS_DATA = {
   legalName: 'Atavistic Chemotherapy Trial',
   logo: '/favicon.svg',
   contact: {
-    phone: '',
+    phone: '+13013059591',
+    phoneDisplay: '+1 (301) 305-9591',
     email: '',
+    whatsapp: {
+      username: {
+        label: '@FrankArguello777',
+        url: 'https://wa.me/FrankArguello777',
+      },
+      mexico: {
+        label: 'WhatsApp (656 338 2516)',
+        url: 'https://wa.me/526563382516',
+      },
+    },
     address: {
       street: '',
       city: '',
