@@ -269,25 +269,113 @@ import TestimonialSlider from '@/components/organisms/TestimonialSlider';
 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-3">Solicite hoy su segunda opinión gratuita</h2>
 <p class="text-sm text-slate-600 leading-relaxed mb-6">Si desea una segunda opinión sobre su caso o el de un familiar, sin costo alguno y sin compromiso, complete el formulario y nos pondremos en contacto por correo electrónico, WhatsApp o teléfono, según su preferencia.</p>
 <form id="contact-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<input required placeholder="Nombre*" aria-label="Nombre" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Apellido*" aria-label="Apellido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required type="email" placeholder="Correo electrónico*" aria-label="Correo electrónico" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required type="tel" placeholder="Número de contacto*" aria-label="Número de contacto" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<textarea placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
+<input required name="name" placeholder="Nombre*" aria-label="Nombre" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="surname" placeholder="Apellido*" aria-label="Apellido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="email" type="email" placeholder="Correo electrónico*" aria-label="Correo electrónico" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="phone" type="tel" placeholder="Número de contacto*" aria-label="Número de contacto" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="preferredDay" placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="preferredTime" placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<textarea name="message" placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
 <details class="acc sm:col-span-2">
 <summary>IMPORTANTE</summary>
 <div class="acc-body text-xs sm:text-sm leading-relaxed text-slate-600"><p>La efectividad de esta nueva forma de quimioterapia disminuye significativamente si el cáncer en el paciente ha sido expuesto previamente por más de tres meses a los esquemas de quimioterapia o radiación usados tradicionalmente en oncología. Ya que la radiación y los fármacos usados actualmente, aunque sí tienen efecto en muchas de las células cancerosas, no son capaces de eliminarlas o erradicarlas completamente. Por lo tanto, causan que las células cancerosas sobrevivientes se vuelvan más agresivas con el tiempo, se diseminen más rápidamente en el cuerpo y se hagan resistentes a todo tipo de tratamientos en su lucha por sobrevivir (5, 6, 7, 8). En estos casos, no podemos ofrecer el primer mes de prueba, por lo que su pago es necesario si el Dr. Arguello cree que vale la pena tratar y ver si el cáncer es aún sensible al tratamiento. Si más tratamiento es necesario más allá del tercer mes, en personas previamente tratadas convencionalmente, los meses adicionales tendrán que pagarse también (estos costos pueden eliminarse según el caso).</p></div>
 </details>
 <button type="submit" class="sm:col-span-2 justify-self-start rounded-full bg-gradient-to-r from-[#9b3174] to-[#c24694] hover:from-[#892764] hover:to-[#ad3c82] px-8 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-lg transition">Solicitar mi segunda opinión ahora</button>
 </form>
-<p id="contact-success" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3">¡Gracias! Hemos recibido su solicitud y nos pondremos en contacto con usted muy pronto.</p>
+<p id="contact-error" role="alert" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3 mt-4"></p>
+<div id="contact-success" role="status" tabindex="-1" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3">
+  <p>¡Gracias! Hemos recibido su solicitud y nos pondremos en contacto con usted muy pronto.</p>
+  <button data-contact-reset type="button" class="mt-3 underline underline-offset-2">Enviar otra solicitud</button>
+</div>
 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mt-5">Para consultas urgentes, por favor <a class="underline font-semibold text-[#9a3676]" href={`tel:${BUSINESS_DATA.contact.phone}`}>llámenos al {BUSINESS_DATA.contact.phoneDisplay}</a> o escríbanos por <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.username.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir WhatsApp con ${BUSINESS_DATA.contact.whatsapp.username.label}`}>WhatsApp ({BUSINESS_DATA.contact.whatsapp.username.label})</a> o <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.mexico.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${BUSINESS_DATA.contact.whatsapp.mexico.label}`}>{BUSINESS_DATA.contact.whatsapp.mexico.label}</a>.</p>
 </div>
 </div>
-<script is:inline>
-(function(){var m=document.getElementById('contact-modal'),f=document.getElementById('contact-form'),ok=document.getElementById('contact-success');function open(e){if(e)e.preventDefault();f.classList.remove('hidden');ok.classList.add('hidden');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';}function close(){m.classList.add('hidden');m.classList.remove('flex');document.body.style.overflow='';}document.addEventListener('click',function(e){if(e.target.closest('[data-contact-open]'))open(e);else if(e.target===m||e.target.closest('[data-contact-close]'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.classList.contains('hidden'))close();});f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('hidden');ok.classList.remove('hidden');});})();
+<script>
+import { ContactFormError, submitContactForm } from '@/lib/api/contact'
+
+const modal = document.getElementById('contact-modal')
+const form = document.getElementById('contact-form') as HTMLFormElement | null
+const success = document.getElementById('contact-success')
+const errorMessage = document.getElementById('contact-error')
+const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]')
+const initialButtonText = submitButton?.textContent ?? ''
+let pending = false
+let returnFocus: HTMLElement | null = null
+
+if (modal && form && success && errorMessage && submitButton) {
+  const open = (event: Event) => {
+    event.preventDefault()
+    returnFocus = event.target instanceof HTMLElement ? event.target : null
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+    if (success.classList.contains('hidden')) form.querySelector<HTMLElement>('input')?.focus()
+    else success.focus()
+  }
+
+  const close = () => {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+    document.body.style.overflow = ''
+    returnFocus?.focus()
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return
+    if (event.target.closest('[data-contact-open]')) open(event)
+    else if (event.target === modal || event.target.closest('[data-contact-close]')) close()
+    else if (event.target.closest('[data-contact-reset]')) {
+      form.reset()
+      success.classList.add('hidden')
+      errorMessage.classList.add('hidden')
+      form.classList.remove('hidden')
+      form.querySelector<HTMLElement>('input')?.focus()
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.classList.contains('hidden')) close()
+  })
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    if (pending) return
+    pending = true
+    submitButton.disabled = true
+    submitButton.textContent = 'Enviando...'
+    form.setAttribute('aria-busy', 'true')
+    errorMessage.classList.add('hidden')
+
+    const fields = new FormData(form)
+    const value = (name: string) => String(fields.get(name) ?? '').trim()
+    try {
+      await submitContactForm({
+        name: value('name'),
+        surname: value('surname'),
+        email: value('email'),
+        phone: value('phone'),
+        preferredDay: value('preferredDay'),
+        preferredTime: value('preferredTime'),
+        message: value('message'),
+      }, window.location.hostname)
+      form.classList.add('hidden')
+      success.classList.remove('hidden')
+      success.focus()
+    } catch (error) {
+      errorMessage.textContent = error instanceof ContactFormError && error.kind === 'timeout'
+        ? 'El servidor tardó demasiado en responder. Inténtelo nuevamente.'
+        : error instanceof ContactFormError && error.kind === 'http' && (error.status ?? 500) < 500
+          ? 'No pudimos procesar su solicitud. Revise los datos e inténtelo nuevamente.'
+          : 'No pudimos enviar su solicitud. Inténtelo nuevamente.'
+      errorMessage.classList.remove('hidden')
+    } finally {
+      pending = false
+      submitButton.disabled = false
+      submitButton.textContent = initialButtonText
+      form.removeAttribute('aria-busy')
+    }
+  })
+}
 </script>
 <!-- END: ContactModal -->
 <!-- BEGIN: LightboxModal -->

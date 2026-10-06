@@ -1,9 +1,12 @@
 /// <reference types="astro/client" />
 
-// Client-exposed env must use the PUBLIC_ prefix. This is a no-backend
-// project, so there are no PUBLIC_* readers yet — keep this interface empty.
+// PUBLIC_ values are included in the browser bundle. Use only credentials
+// intended for a public client; private secrets need a server-side relay.
 // (SITE_URL is server-only and read via process.env, never import.meta.env.)
 interface ImportMetaEnv {
+  readonly PUBLIC_CONTACT_FORM_ENDPOINT?: string
+  readonly PUBLIC_CONTACT_FORM_USER?: string
+  readonly PUBLIC_CONTACT_FORM_API_KEY?: string
 }
 
 interface ImportMeta {
