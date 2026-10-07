@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import { BUSINESS_DATA } from '@/data/site-config';
 import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
+import TestimonialSlider from '@/components/organisms/TestimonialSlider';
 ---
 <!DOCTYPE html>
 
@@ -123,7 +124,7 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center max-w-3xl mx-auto mb-16">
 <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 uppercase">La Realidad de la Oncología Actual</h2>
-<p class="text-rose-100/90 text-sm sm:text-base leading-relaxed">Excluyendo algunas formas de leucemias, linfomas y tumores de células germinales que son curables con una combinación de quimioterapia tradicional y radiaciones, hoy en día, la única manera de curar un cáncer es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, con la excepción de una cirugía temprana para remover el órgano afectado por un cáncer, cuando todas las células cancerosas aún se encuentran localizadas en él, las quimioterapias, inmunoterapias y radiaciones que se usan actualmente ofrecen beneficios marginales a pacientes con cáncer.</p>
+<p class="text-rose-100/90 text-sm sm:text-base leading-relaxed">Excluyendo algunas formas de leucemias, linfomas y tumores de células germinales que son curables con una combinación de quimioterapia tradicional y radiaciones, hoy en día, la única manera de curar un cáncer es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, con la excepción de una cirugía temprana para remover el órgano afectado por un cáncer, cuando todas las células cancerosas aún se encuentran localizadas en él, las quimioterapias, inmunoterapias y radiaciones que se usan actualmente no pueden curar un cáncer y ofrecen beneficios marginales a pacientes con cáncer.</p>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
@@ -155,8 +156,8 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
 <div class="bg-rose-50 p-3 border-b border-rose-100/60">
 <div class="grid h-64 grid-rows-2 gap-px overflow-hidden rounded-lg bg-slate-900">
-<img alt="Tumores metastásicos en el cerebro" class="h-full w-full cursor-zoom-in object-contain bg-black" data-lightbox src="/assets/tumores-metastasicos-cerebro.png"/>
-<img alt="Tumores metastásicos en los pulmones" class="h-full w-full cursor-zoom-in object-contain bg-black" data-lightbox src="/assets/tumores-metastasicos-pulmones.png"/>
+<img alt="Tumores metastásicos en el cerebro" class="h-full w-full cursor-zoom-in object-fill bg-black" data-lightbox src="/assets/tumores-metastasicos-cerebro.png"/>
+<img alt="Tumores metastásicos en los pulmones" class="h-full w-full cursor-zoom-in object-fill bg-black" data-lightbox src="/assets/tumores-metastasicos-pulmones.png"/>
 </div>
 </div>
 <div class="p-5 flex-1 flex flex-col text-center">
@@ -183,22 +184,22 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 <!-- BEGIN: WhyActingNowSection (¿Qué es la Quimioterapia Atávica?) -->
 <section class="py-20 lg:py-24 bg-white" data-purpose="what-is-atavistic" id="atavica">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-5 grid w-full max-w-lg grid-cols-2 gap-4">
+<div class="grid grid-cols-1 min-[900px]:grid-cols-12 gap-12 items-center min-[900px]:items-start lg:items-center">
+<div class="mx-auto min-[900px]:mx-0 min-[900px]:col-span-5 grid w-full max-w-lg grid-cols-2 gap-4">
 <div class="aspect-square overflow-hidden rounded-2xl border border-pink-100 bg-white shadow-lg">
-<img alt="LUCA, ancestro común universal" class="h-full w-full cursor-zoom-in object-contain" data-lightbox src="/assets/luca-ancestro-comun.png"/>
+<img alt="LUCA, ancestro común universal" class="h-full w-full cursor-zoom-in object-fill" data-lightbox src="/assets/luca-ancestro-comun.png"/>
 </div>
 <div class="aspect-square overflow-hidden rounded-2xl border border-pink-100 bg-black shadow-lg">
 <img alt="Metamorfosis atávica" class="h-full w-full cursor-zoom-in object-contain" data-lightbox src="/assets/metamorfosis-atavica.png"/>
 </div>
 <div class="aspect-square overflow-hidden rounded-2xl border border-pink-100 bg-[#fff4c9] shadow-lg">
-<img alt="Atavismo en biología" class="h-full w-full cursor-zoom-in object-contain" data-lightbox src="/assets/atavismo-biologia.webp"/>
+<img alt="Atavismo en biología" class="h-full w-full cursor-zoom-in object-contain" data-lightbox src="/assets/3era.webp"/>
 </div>
 <div class="aspect-square overflow-hidden rounded-2xl border border-pink-100 bg-white shadow-lg">
-<img alt="LUCA, ancestro común universal (imagen temporal)" class="h-full w-full cursor-zoom-in object-contain" data-lightbox src="/assets/luca-ancestro-comun.png"/>
+<img alt="Los organismos conservan en su memoria genética los genes de sus antepasados primitivos" class="h-full w-full cursor-zoom-in object-fill" data-lightbox src="/assets/4ta.webp"/>
 </div>
 </div>
-<div class="lg:col-span-7 space-y-7 lg:pl-6">
+<div class="min-[900px]:col-span-7 space-y-7 min-[900px]:pl-6">
 <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">¿Cuál es la Lógica Detrás de la Quimioterapia Atávica?</h2>
 <p>Como se mencionó anteriormente, el Dr. Arguello publicó un libro con una explicación más racional y congruente sobre el origen y la conducta maligna de las células cancerosas. En este libro, el Dr. Arguello sostiene y documenta científicamente que el cáncer, o la transformación maligna, ocurre cuando hay una regresión evolutiva (atavismo) de una célula normal hacia su estado celular primitivo o ancestral. Es decir, una célula normal revierte de nuevo a su estado unicelular independiente, de donde se originaron nuestras células. Todos los organismos vivos que habitan este planeta están formados por células, y se ha demostrado con estudios genéticos que las células de todos los organismos, incluyendo los seres humanos, tienen un mismo origen celular. Todos descendemos de una colonia de células primitivas u organismos unicelulares, similares a las células bacterianas actuales, que existieron en este planeta hace billones de años. De esas células primitivas descienden todas las formas de vida actual (Referencias 1, 2). Esa conducta celular primitiva, invasiva e independiente de nuestros antepasados celulares quedó codificada en la memoria genética de todas las células que existen en la actualidad, aunque esta ha sido suprimida o inactivada a través de la evolución. Agentes que causan cáncer, muy seguramente lo hacen activando de nuevo estos genes primitivos de la vida celular independiente.</p>
@@ -253,37 +254,11 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-6 max-w-lg text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900" id="testimonios-heading">Pacientes tratados en México</h2>
-<p class="mt-2 text-xs leading-relaxed text-slate-600">Conozca los perfiles de pacientes que aceptaron responder preguntas sobre su experiencia.</p>
+<p class="mt-2 text-sm leading-relaxed text-slate-600">Conozca los perfiles de pacientes que aceptaron responder preguntas sobre su experiencia.</p>
 </div>
-<div class="relative" data-testimonial-carousel aria-roledescription="carrusel" aria-label="Testimonios de pacientes">
-<div class="overflow-hidden rounded-2xl">
-<div class="flex transition-transform duration-500 ease-out" data-testimonial-track>
-{PATIENT_TESTIMONIALS.map((testimonial, index) => (
-<article class="w-full shrink-0 px-1.5 sm:w-1/2 lg:w-1/3" data-testimonial-slide aria-hidden={index === 0 ? 'false' : 'true'}>
-<div class="flex h-[50rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
-<img alt={testimonial.imageAlt} class="h-44 w-full object-cover" src={testimonial.image}/>
-<div class="flex-1 p-3.5">
-<h3 class="text-base font-extrabold tracking-tight text-[#5c1642]">{testimonial.name}</h3>
-<div class="mt-2.5 border-y border-rose-100 py-2 text-[10px] leading-relaxed text-slate-700">
-<p class="font-bold text-[#5c1642]">Información de contacto</p>
-<p class="mt-1">Correo: <a class="font-semibold text-[#9a3676] underline underline-offset-2" href={`mailto:${testimonial.email}`}>{testimonial.email}</a></p>
-<p>WhatsApp: {testimonial.whatsappUrl ? <a class="font-semibold text-[#9a3676] underline underline-offset-2" href={testimonial.whatsappUrl} target="_blank" rel="noopener noreferrer">{testimonial.whatsappLabel}</a> : <span class="font-semibold">{testimonial.whatsappLabel}</span>}</p>
-</div>
-<p class="mt-3 text-[11px] font-bold leading-snug text-[#78235a]">{testimonial.diagnosis}</p>
-<p class="mt-2.5 text-[10px] leading-relaxed text-slate-600">{testimonial.history}</p>
-<p class="mt-3 text-[10px] font-bold leading-relaxed text-[#4658aa]">{testimonial.treatment}</p>
-</div>
-</div>
-</article>
-))}
-</div>
-</div>
-</div>
+<TestimonialSlider testimonials={PATIENT_TESTIMONIALS} client:load />
 </div>
 </section>
-<script is:inline>
-(function(){var carousel=document.querySelector('[data-testimonial-carousel]');if(!carousel)return;var track=carousel.querySelector('[data-testimonial-track]'),slideCount=track.children.length,timer,transitioning=false;function visibleCount(){if(window.matchMedia('(min-width: 1024px)').matches)return 3;if(window.matchMedia('(min-width: 640px)').matches)return 2;return 1;}function render(){var visible=visibleCount(),ordered=Array.prototype.slice.call(track.children);ordered.forEach(function(slide,slideIndex){var active=slideIndex<visible;slide.setAttribute('aria-hidden',String(!active));slide.inert=!active;});}function advance(){var visible=visibleCount();if(transitioning||visible>=slideCount)return;transitioning=true;track.style.transform='translateX(-'+(100/visible)+'%)';window.setTimeout(function(){track.style.transition='none';track.appendChild(track.firstElementChild);track.style.transform='translateX(0)';render();window.requestAnimationFrame(function(){track.style.transition='';transitioning=false;});},500);}function start(){window.clearInterval(timer);track.style.transition='none';track.style.transform='translateX(0)';render();window.requestAnimationFrame(function(){track.style.transition='';});if(visibleCount()<slideCount&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){timer=window.setInterval(advance,6000);}}window.addEventListener('resize',start);document.addEventListener('visibilitychange',function(){if(document.hidden)window.clearInterval(timer);else start();});start();})();
-</script>
 <!-- END: PatientTestimonialsSection -->
 
 <!-- BEGIN: ContactModal -->
@@ -294,25 +269,113 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-3">Solicite hoy su segunda opinión gratuita</h2>
 <p class="text-sm text-slate-600 leading-relaxed mb-6">Si desea una segunda opinión sobre su caso o el de un familiar, sin costo alguno y sin compromiso, complete el formulario y nos pondremos en contacto por correo electrónico, WhatsApp o teléfono, según su preferencia.</p>
 <form id="contact-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-<input required placeholder="Nombre*" aria-label="Nombre" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Apellido*" aria-label="Apellido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required type="email" placeholder="Correo electrónico*" aria-label="Correo electrónico" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required type="tel" placeholder="Número de contacto*" aria-label="Número de contacto" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<input required placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
-<textarea placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
+<input required name="name" placeholder="Nombre*" aria-label="Nombre" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="surname" placeholder="Apellido*" aria-label="Apellido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="email" type="email" placeholder="Correo electrónico*" aria-label="Correo electrónico" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="phone" type="tel" placeholder="Número de contacto*" aria-label="Número de contacto" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="preferredDay" placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<input required name="preferredTime" placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
+<textarea name="message" placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
 <details class="acc sm:col-span-2">
 <summary>IMPORTANTE</summary>
-<div class="acc-body text-xs sm:text-sm leading-relaxed text-slate-600"><p>La efectividad de esta nueva forma de quimioterapia disminuye significativamente si el cáncer en el paciente ha sido expuesto previamente por más de tres meses a los esquemas de quimioterapia o radiación usados tradicionalmente en oncología. Ya que la radiación y los fármacos usados actualmente, aunque sí tienen efecto en muchas de las células cancerosas, no son capaces de eliminarlas o erradicarlas completamente. Por lo tanto, causan que las células cancerosas sobrevivientes se vuelvan más agresivas con el tiempo, se <strong>diseminen</strong> más rápidamente en el cuerpo y se hagan resistentes a todo tipo de tratamientos en su lucha por sobrevivir (5, 6, 7, 8). En estos casos, no podemos ofrecer el primer mes de prueba, por lo que su pago es necesario si el Dr. Arguello cree que vale la pena tratar y ver si el cáncer es aún sensible al tratamiento. Si más tratamiento es necesario más allá del tercer mes, en personas previamente tratadas convencionalmente, los meses adicionales tendrán que pagarse también (esto costos puede eliminarse según el caso).</p></div>
+<div class="acc-body text-xs sm:text-sm leading-relaxed text-slate-600"><p>La efectividad de esta nueva forma de quimioterapia disminuye significativamente si el cáncer en el paciente ha sido expuesto previamente por más de tres meses a los esquemas de quimioterapia o radiación usados tradicionalmente en oncología. Ya que la radiación y los fármacos usados actualmente, aunque sí tienen efecto en muchas de las células cancerosas, no son capaces de eliminarlas o erradicarlas completamente. Por lo tanto, causan que las células cancerosas sobrevivientes se vuelvan más agresivas con el tiempo, se diseminen más rápidamente en el cuerpo y se hagan resistentes a todo tipo de tratamientos en su lucha por sobrevivir (5, 6, 7, 8). En estos casos, no podemos ofrecer el primer mes de prueba, por lo que su pago es necesario si el Dr. Arguello cree que vale la pena tratar y ver si el cáncer es aún sensible al tratamiento. Si más tratamiento es necesario más allá del tercer mes, en personas previamente tratadas convencionalmente, los meses adicionales tendrán que pagarse también (estos costos pueden eliminarse según el caso).</p></div>
 </details>
 <button type="submit" class="sm:col-span-2 justify-self-start rounded-full bg-gradient-to-r from-[#9b3174] to-[#c24694] hover:from-[#892764] hover:to-[#ad3c82] px-8 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-lg transition">Solicitar mi segunda opinión ahora</button>
 </form>
-<p id="contact-success" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3">¡Gracias! Hemos recibido su solicitud y nos pondremos en contacto con usted muy pronto.</p>
+<p id="contact-error" role="alert" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3 mt-4"></p>
+<div id="contact-success" role="status" tabindex="-1" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3">
+  <p>¡Gracias! Hemos recibido su solicitud y nos pondremos en contacto con usted muy pronto.</p>
+  <button data-contact-reset type="button" class="mt-3 underline underline-offset-2">Enviar otra solicitud</button>
+</div>
 <p class="text-xs sm:text-sm text-slate-500 leading-relaxed mt-5">Para consultas urgentes, por favor <a class="underline font-semibold text-[#9a3676]" href={`tel:${BUSINESS_DATA.contact.phone}`}>llámenos al {BUSINESS_DATA.contact.phoneDisplay}</a> o escríbanos por <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.username.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir WhatsApp con ${BUSINESS_DATA.contact.whatsapp.username.label}`}>WhatsApp ({BUSINESS_DATA.contact.whatsapp.username.label})</a> o <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.mexico.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${BUSINESS_DATA.contact.whatsapp.mexico.label}`}>{BUSINESS_DATA.contact.whatsapp.mexico.label}</a>.</p>
 </div>
 </div>
-<script is:inline>
-(function(){var m=document.getElementById('contact-modal'),f=document.getElementById('contact-form'),ok=document.getElementById('contact-success');function open(e){if(e)e.preventDefault();f.classList.remove('hidden');ok.classList.add('hidden');m.classList.remove('hidden');m.classList.add('flex');document.body.style.overflow='hidden';}function close(){m.classList.add('hidden');m.classList.remove('flex');document.body.style.overflow='';}document.addEventListener('click',function(e){if(e.target.closest('[data-contact-open]'))open(e);else if(e.target===m||e.target.closest('[data-contact-close]'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.classList.contains('hidden'))close();});f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('hidden');ok.classList.remove('hidden');});})();
+<script>
+import { ContactFormError, submitContactForm } from '@/lib/api/contact'
+
+const modal = document.getElementById('contact-modal')
+const form = document.getElementById('contact-form') as HTMLFormElement | null
+const success = document.getElementById('contact-success')
+const errorMessage = document.getElementById('contact-error')
+const submitButton = form?.querySelector<HTMLButtonElement>('button[type="submit"]')
+const initialButtonText = submitButton?.textContent ?? ''
+let pending = false
+let returnFocus: HTMLElement | null = null
+
+if (modal && form && success && errorMessage && submitButton) {
+  const open = (event: Event) => {
+    event.preventDefault()
+    returnFocus = event.target instanceof HTMLElement ? event.target : null
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+    document.body.style.overflow = 'hidden'
+    if (success.classList.contains('hidden')) form.querySelector<HTMLElement>('input')?.focus()
+    else success.focus()
+  }
+
+  const close = () => {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+    document.body.style.overflow = ''
+    returnFocus?.focus()
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return
+    if (event.target.closest('[data-contact-open]')) open(event)
+    else if (event.target === modal || event.target.closest('[data-contact-close]')) close()
+    else if (event.target.closest('[data-contact-reset]')) {
+      form.reset()
+      success.classList.add('hidden')
+      errorMessage.classList.add('hidden')
+      form.classList.remove('hidden')
+      form.querySelector<HTMLElement>('input')?.focus()
+    }
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.classList.contains('hidden')) close()
+  })
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    if (pending) return
+    pending = true
+    submitButton.disabled = true
+    submitButton.textContent = 'Enviando...'
+    form.setAttribute('aria-busy', 'true')
+    errorMessage.classList.add('hidden')
+
+    const fields = new FormData(form)
+    const value = (name: string) => String(fields.get(name) ?? '').trim()
+    try {
+      await submitContactForm({
+        name: value('name'),
+        surname: value('surname'),
+        email: value('email'),
+        phone: value('phone'),
+        preferredDay: value('preferredDay'),
+        preferredTime: value('preferredTime'),
+        message: value('message'),
+      }, window.location.hostname)
+      form.classList.add('hidden')
+      success.classList.remove('hidden')
+      success.focus()
+    } catch (error) {
+      errorMessage.textContent = error instanceof ContactFormError && error.kind === 'timeout'
+        ? 'El servidor tardó demasiado en responder. Inténtelo nuevamente.'
+        : error instanceof ContactFormError && error.kind === 'http' && (error.status ?? 500) < 500
+          ? 'No pudimos procesar su solicitud. Revise los datos e inténtelo nuevamente.'
+          : 'No pudimos enviar su solicitud. Inténtelo nuevamente.'
+      errorMessage.classList.remove('hidden')
+    } finally {
+      pending = false
+      submitButton.disabled = false
+      submitButton.textContent = initialButtonText
+      form.removeAttribute('aria-busy')
+    }
+  })
+}
 </script>
 <!-- END: ContactModal -->
 <!-- BEGIN: LightboxModal -->
