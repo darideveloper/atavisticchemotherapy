@@ -52,13 +52,92 @@ const REFERENCES = [
 ];
 
 const referenceText = (...indices: number[]) => indices.map((index) => `${index + 1}. ${REFERENCES[index]}`).join(' ');
+
+const siteUrl = BUSINESS_DATA.url.replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}/`;
+const socialImageUrl = `${siteUrl}/og-atavistic-chemotherapy-formal.png`;
+const pageTitle = 'Atavistic Chemotherapy | Quimioterapia Atávica';
+const pageDescription = 'Información sobre la Quimioterapia Atávica y evaluación de segunda opinión para el ensayo clínico NCT02366884.';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Atavistic Chemotherapy',
+      alternateName: 'Quimioterapia Atávica',
+      url: canonicalUrl,
+      logo: `${siteUrl}/favicon.svg`,
+      description: pageDescription,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: BUSINESS_DATA.contact.phone,
+        contactType: 'patient support',
+        availableLanguage: ['Spanish', 'English'],
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      name: 'Atavistic Chemotherapy',
+      url: canonicalUrl,
+      inLanguage: 'es-MX',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: pageTitle,
+      description: pageDescription,
+      inLanguage: 'es-MX',
+      isPartOf: { '@id': `${siteUrl}/#website` },
+      about: {
+        '@type': 'MedicalStudy',
+        identifier: 'NCT02366884',
+        name: 'Atavistic Chemotherapy Clinical Trial',
+        url: 'https://clinicaltrials.gov/study/NCT02366884',
+      },
+      primaryImageOfPage: socialImageUrl,
+    },
+  ],
+};
 ---
 <!DOCTYPE html>
 
 <html lang="es"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>The Atavistic Chemotherapy Clinical Trial™ | Quimioterapia Atavistica · NCT02366884</title>
+<meta name="theme-color" content="#0f315d" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow, max-image-preview:large" />
+<meta name="author" content="Dr. Frank Arguello" />
+<title>{pageTitle}</title>
+<meta name="description" content={pageDescription} />
+<meta name="keywords" content="quimioterapia atávica, atavistic chemotherapy, NCT02366884, segunda opinión oncológica, ensayo clínico de cáncer" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+<link rel="manifest" href="/site.webmanifest?v=2" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_MX" />
+<meta property="og:site_name" content="Atavistic Chemotherapy" />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={pageDescription} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={socialImageUrl} />
+<meta property="og:image:secure_url" content={socialImageUrl} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atávica" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={pageDescription} />
+<meta name="twitter:image" content={socialImageUrl} />
+<meta name="twitter:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atávica" />
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 <style data-purpose="base-styling">
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
     html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
