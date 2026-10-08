@@ -11,6 +11,7 @@ export interface Props {
 	widths?: number[]
 	sizes?: string
 	class?: string
+	lightbox?: boolean
 }
 
 const {
@@ -22,6 +23,7 @@ const {
 	widths = [640, 1080, 1600],
 	sizes = '100vw',
 	class: imgClass,
+	lightbox = false,
 } = Astro.props
 
 const isRemote = typeof src === 'string' && /^https?:\/\//.test(src)
@@ -54,7 +56,7 @@ if (isRemote || typeof src !== 'string') {
 
 {
 	optimized ? (
-		<picture>
+		<picture class="contents">
 			<source type="image/avif" srcset={optimized.avifSrcSet} sizes={sizes} />
 			<source type="image/webp" srcset={optimized.webpSrcSet} sizes={sizes} />
 			<img
@@ -67,6 +69,7 @@ if (isRemote || typeof src !== 'string') {
 				fetchpriority={fetchpriority}
 				sizes={sizes}
 				class={imgClass}
+				data-lightbox={lightbox ? '' : undefined}
 			/>
 		</picture>
 	) : (
@@ -77,6 +80,7 @@ if (isRemote || typeof src !== 'string') {
 			decoding={decoding}
 			fetchpriority={fetchpriority}
 			class={imgClass}
+				data-lightbox={lightbox ? '' : undefined}
 		/>
 	)
 }

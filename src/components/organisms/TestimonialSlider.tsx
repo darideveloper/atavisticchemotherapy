@@ -2,11 +2,13 @@ import { useEffect, useRef } from 'react';
 import { A11y, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperInstance } from 'swiper';
+import type { SlideSet } from '@/lib/images';
 import 'swiper/css';
 
 type TestimonialImage = Readonly<{
   src: string;
   alt: string;
+  set: SlideSet | null;
 }>;
 
 type Testimonial = Readonly<{
@@ -81,15 +83,38 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.name} className="!h-auto">
             <article className="flex h-full min-h-[56rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
-              <div className={`grid h-56 shrink-0 gap-1 bg-rose-50 p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
-                {testimonial.images.map((image) => (
-                  <img
-                    key={image.src}
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-full w-full object-fill"
-                  />
-                ))}
+              <div className={`grid h-56 shrink-0 grid-rows-[minmax(0,1fr)] gap-1 bg-rose-50 p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                {testimonial.images.map((image, index) => {
+                  const imageClass = testimonial.images.length > 1
+                    ? `min-h-0 min-w-0 h-full w-full object-contain ${index === 1 ? 'bg-black' : 'bg-rose-50'}`
+                    : 'h-full w-full object-fill';
+
+                  return image.set ? (
+                    <picture key={image.src} className="block h-full min-h-0 min-w-0 w-full">
+                      <source type="image/avif" srcSet={image.set.avifSrcSet} sizes={image.set.sizes} />
+                      <source type="image/webp" srcSet={image.set.webpSrcSet} sizes={image.set.sizes} />
+                      <img
+                        src={image.set.fallbackSrc}
+                        alt={image.alt}
+                        width={image.set.width}
+                        height={image.set.height}
+                        sizes={image.set.sizes}
+                        loading="lazy"
+                        decoding="async"
+                        className={imageClass}
+                      />
+                    </picture>
+                  ) : (
+                    <img
+                      key={image.src}
+                      src={image.src}
+                      alt={image.alt}
+                      loading="lazy"
+                      decoding="async"
+                      className={imageClass}
+                    />
+                  );
+                })}
               </div>
               <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <h3 className="text-lg font-extrabold tracking-tight text-[#5c1642]">{testimonial.name}</h3>
