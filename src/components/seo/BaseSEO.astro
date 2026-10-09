@@ -53,7 +53,10 @@ const alternateUrls = {
 
 // JSON-LD (polymorphic).
 const isProd = import.meta.env.PROD
-const ogUrl = ogImage?.startsWith('http') ? ogImage : `${BUSINESS_DATA.url}${ogImage ?? '/og-image.jpg'}`
+const resolvedOgImage = ogImage ?? BUSINESS_DATA.ogImage
+const ogUrl = resolvedOgImage.startsWith('http')
+	? resolvedOgImage
+	: `${BUSINESS_DATA.url}${resolvedOgImage}`
 
 const baseSchema = {
 	'@context': 'https://schema.org',
@@ -79,6 +82,7 @@ if (isLocalBusiness) {
 const jsonLd = { ...baseSchema, ...extraJson }
 
 const ogTypeMap = {
+	Organization: 'website',
 	LocalBusiness: 'website',
 	TravelAgency: 'website',
 	Blog: 'website',
