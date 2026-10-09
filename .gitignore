@@ -36,3 +36,5 @@ pnm-debug.log*
 # project-specific scratch (out-of-scope site blueprint)
 content.md
 design/
+
+*.zip
