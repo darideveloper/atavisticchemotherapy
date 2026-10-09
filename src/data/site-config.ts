@@ -9,16 +9,17 @@ const origin =
 export const BUSINESS_DATA = {
   url: origin,
   name: 'Atavistic Chemotherapy',
-  legalName: 'Atavistic Chemotherapy Trial',
+  legalName: 'The Atavistic Chemotherapy Clinical Trial',
   logo: '/favicon.svg',
+  ogImage: '/og-atavistic-chemotherapy-formal.png',
   contact: {
     phone: '+13013059591',
     phoneDisplay: '+1 (301) 305-9591',
     email: '',
     whatsapp: {
       username: {
-        label: '@FrankArguello777',
-        url: 'https://wa.me/FrankArguello777',
+        label: '@FrankArguello7777',
+        url: 'https://wa.me/FrankArguello7777',
       },
       mexico: {
         label: 'WhatsApp (656 338 2516)',

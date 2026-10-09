@@ -1,6 +1,6 @@
 // SSG image transforms for astro:assets. This module owns the transform
 // constants and slot map — the only place that reasons about widths/qualities.
-import { getImage } from 'astro:assets'
+import { getImage, type ImageMetadata } from 'astro:assets'
 
 // Quality floor (max compression with QA on detail).
 export const AVIF_QUALITY = 55
@@ -19,6 +19,7 @@ export const IMAGE_SLOTS = {
 	heroFull: { widths: [960, 1600, 2400], sizes: '100vw' },
 	portrait: { widths: [360, 720, 1080], sizes: '(max-width: 1024px) 100vw, 360px' },
 	logo: { widths: [180, 360, 540], sizes: '180px' },
+	testimonial: { widths: [320, 640, 960], sizes: '(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 1.5rem), 384px' },
 } satisfies Record<string, ImageSlot>
 
 export type ImageSlotName = keyof typeof IMAGE_SLOTS
@@ -54,12 +55,13 @@ export async function lcpPreload(src: string, slot: ImageSlot): Promise<LcpPrelo
 }
 
 /** Build an AVIF+WebP set for a React island (which can't render .astro atoms). */
-export async function slideSet(src: string, slot: ImageSlot): Promise<SlideSet | null> {
+export async function slideSet(src: string | ImageMetadata, slot: ImageSlot): Promise<SlideSet | null> {
 	for (let attempt = 0; attempt < 4; attempt++) {
 		try {
+			const base = typeof src === 'string' ? { src, inferSize: true } : { src }
 			const [avif, webp] = await Promise.all([
-				getImage({ src, inferSize: true, widths: slot.widths, format: 'avif', quality: AVIF_QUALITY }),
-				getImage({ src, inferSize: true, widths: slot.widths, format: 'webp', quality: WEBP_QUALITY }),
+				getImage({ ...base, widths: slot.widths, format: 'avif', quality: AVIF_QUALITY }),
+				getImage({ ...base, widths: slot.widths, format: 'webp', quality: WEBP_QUALITY }),
 			])
 			if (avif.srcSet.attribute && webp.srcSet.attribute) {
 				return {
