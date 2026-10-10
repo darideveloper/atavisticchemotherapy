@@ -1,8 +1,9 @@
-import annaVictoriaPhotos from '@/assets/content/testimonio-anna-victoria-fotos.png'
-import antonioRadiology from '@/assets/content/testimonio-antonio-radiologia.png'
-import antonioPortrait from '@/assets/content/testimonio-antonio-retrato.png'
+import annaVictoriaPhotos from '@/assets/content/testimonio-anna-victoria-fotos.webp'
+import antonioRadiology from '@/assets/content/testimonio-antonio-radiologia.webp'
+import antonioPortrait from '@/assets/content/testimonio-antonio-retrato.webp'
 import isauraPhotos from '@/assets/content/testimonio-isaura-fotos.png'
-import lourdesPhotos from '@/assets/content/testimonio-lourdes-fotos.png'
+import lourdes2017 from '@/assets/content/testimonio-lourdes-2017.webp'
+import lourdes2026 from '@/assets/content/testimonio-lourdes-2026.webp'
 import marisolPhotos from '@/assets/content/testimonio-marisol-fotos.png'
 
 export const PATIENT_TESTIMONIALS = [
@@ -18,7 +19,10 @@ export const PATIENT_TESTIMONIALS = [
   },
   {
     name: 'Lourdes',
-    images: [{ src: lourdesPhotos, alt: 'Fotografías clínicas de Lourdes de 2017 y 2026' }],
+    images: [
+      { src: lourdes2017, alt: 'Fotografía de Lourdes de 2017' },
+      { src: lourdes2026, alt: 'Fotografía de Lourdes de 2026' },
+    ],
     diagnosis: 'Carcinoma de estadio IV de las glándulas suprarrenales (múltiples metástasis en la cavidad peritoneal)',
     history: 'En 2017, Lourdes se sometió a una nefrectomía total izquierda y a la extirpación de la glándula suprarrenal izquierda debido a la presencia de una masa tumoral de 11 cm. El informe de patología, obtenido del Departamento de Patología de la Universidad de Michigan en Ann Arbor, Michigan, describió la lesión como un carcinoma corticosuprarrenal de tipo oncocítico. Una tomografía por emisión de positrones (PET-CT), realizada en el Instituto Nacional del Cáncer de Bethesda, Maryland, reveló múltiples lesiones metastásicas en la cavidad peritoneal. Hasta donde sabemos, este es el único caso de carcinoma corticosuprarrenal en la historia clínica que ha sobrevivido.',
     treatment: 'Lourdes fue tratada con quimioterapia atavistica en 2018. Información de contacto disponible a solicitud. El historial clínico completo y las imágenes radiológicas están disponibles a solicitud de un oncólogo.',
@@ -38,7 +42,7 @@ export const PATIENT_TESTIMONIALS = [
   },
   {
     name: 'Anna Victoria',
-    images: [{ src: annaVictoriaPhotos, alt: 'Fotografías clínicas de la afección y recuperación de Anna Victoria de 2023 y 2025' }],
+    images: [{ src: annaVictoriaPhotos, alt: 'Fotografías clínicas de la afección y recuperación de Anna Victoria de 2023 y 2026' }],
     diagnosis: 'Adenocarcinoma mucinoso de alto grado del ovario (G3)',
     history: 'Anna Victoria, de 21 años, se sometió a una cirugía en mayo de 2023 para extirparle una gran masa tumoral quística que posteriormente fue diagnosticada como adenocarcinoma mucinoso de alto grado (G3). Con tan solo 21 años y soltera, quería evitar una histerectomía abdominal total y una salpingooforectomía bilateral, un procedimiento habitual tras un diagnóstico de cáncer de ovario, pues deseaba tener hijos y evitar la menopausia a los 21 años. Por ello, se inscribió en el ensayo clínico de quimioterapia atavistica.',
     treatment: 'Anna Victoria se inscribió en el ensayo clínico de quimioterapia atavistica. Información de contacto disponible a solicitud.',
@@ -49,8 +53,8 @@ export const PATIENT_TESTIMONIALS = [
   {
     name: 'Antonio',
     images: [
+      { src: antonioRadiology, alt: 'Tomografía de Antonio con recurrencia tumoral y nódulos cancerosos', dark: true },
       { src: antonioPortrait, alt: 'Retrato de Antonio' },
-      { src: antonioRadiology, alt: 'Tomografía de Antonio con recurrencia tumoral y nódulos cancerosos' },
     ],
     diagnosis: 'Carcinoma de células claras, grado nuclear Fuhrman 1, riñón derecho',
     history: 'Antonio, paciente de 57 años, se sometió a una nefrectomía parcial laparoscópica asistida por robot (NPAR) con el propósito de extirpar un tumor de 7 cm de diámetro, localizado en el polo inferior del riñón derecho. Tres meses después de la cirugía, el 6 de junio de 2025, la tomografía de abdomen mostró una recurrencia tumoral en el área operada. Un PET-CT, realizado el 20 de junio de 2025, demostró tres áreas de actividad metabólica tumoral: el polo inferior del riñón derecho, el psoas derecho, el área subdiafragmática izquierda y la fosa pélvica izquierda. Al revisar las imágenes, concluí que el tumor había sido diseminado durante el procedimiento quirúrgico.',
