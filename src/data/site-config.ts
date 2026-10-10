@@ -3,8 +3,11 @@
 // Values are placeholders — replace without touching markup.
 // TODO(replace): real contact/socials when available.
 
-const origin =
-  process.env.PORTLESS_URL ?? process.env.SITE_URL ?? 'https://atavisticchemotherapy.com'
+const origin = (
+  process.env.PORTLESS_URL ??
+  process.env.SITE_URL ??
+  'https://atavisticchemotherapy.com'
+).replace(/\/+$/, '')
 
 export const BUSINESS_DATA = {
   url: origin,

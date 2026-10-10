@@ -48,7 +48,7 @@ The project SHALL provide `src/lib/code-copy.ts` with an idempotent `attachCodeC
 - **THEN** existing buttons are not re-bound and new buttons get the copy handler
 
 ### Requirement: Content Collections Variant F (legal pages)
-The project SHALL define a `legal` collection in `src/content.config.ts` using the `glob()` loader with `base: "./src/content/legal"` and `generateId = "<slug>.<lang>"`, with schema `{ title, description, updated }`. Files live at `src/content/legal/{slug}.{es,en}.md`.
+The project SHALL define a `legal` collection in `src/content.config.ts` using the `glob()` loader with `base: "./src/content/legal"` and `generateId = "<slug>.<lang>"`, with schema `{ title, description, updated }`. Files live at `src/content/legal/{slug}.{es,en}.md` where slug is one of `privacy`, `terms`, `cookies`, `medical-disclaimer`, `legal-notice` (five pages × two languages = ten files, both languages required per slug).
 
 #### Scenario: Collection loads legal entries
 - **WHEN** `getCollection("legal")` runs

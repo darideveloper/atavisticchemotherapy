@@ -6,6 +6,7 @@ import Image from '@/components/atoms/Image.astro';
 import ClinicalCaseExamples from '@/components/organisms/ClinicalCaseExamples.astro';
 import TestimonialSlider from '@/components/organisms/TestimonialSlider';
 import { IMAGE_SLOTS, slideSet } from '@/lib/images';
+import SiteFooter from '@/components/organisms/SiteFooter.astro';
 import eyeEnucleation from '@/assets/content/Eye-Enucleation.jpg';
 import mastectomy from '@/assets/content/Mastectomy.jpg';
 import brainMetastases from '@/assets/content/tumores-metastasicos-cerebro.png';
@@ -447,16 +448,7 @@ const structuredData = {
 <!-- END: ReferencesSection -->
 
 <!-- BEGIN: MainFooter -->
-<footer class="flow-footer border-t border-rose-100 bg-white py-8" aria-label="Pie de página" style="order:10">
-<div class="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center text-xs text-slate-500 sm:px-6 lg:px-8">
-<p>© {new Date().getFullYear()} Atavistic Chemotherapy Clinical Trial™. Todos los derechos reservados.</p>
-<nav class="flex flex-wrap justify-center gap-x-5 gap-y-2" aria-label="Enlaces legales">
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href="/en/privacy">Política de privacidad</a>
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href="/en/terms">Términos y condiciones</a>
-</nav>
-<p>Powered by <a class="font-semibold text-[#9a3676] underline underline-offset-2 transition hover:text-[#641b4e]" href="https://www.darideveloper.com/" target="_blank" rel="noopener noreferrer">Dari Developer</a></p>
-</div>
-</footer>
+<SiteFooter lang="es" />
 <!-- END: MainFooter -->
 
 <script is:inline>

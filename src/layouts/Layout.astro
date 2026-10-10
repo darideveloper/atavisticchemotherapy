@@ -1,10 +1,8 @@
 ---
 import '@/styles/global.css'
 import { ClientRouter } from 'astro:transitions'
-import { SITE_TITLE } from '@/consts'
-import { BUSINESS_DATA } from '@/data/site-config'
-import LangBtns from '@/components/molecules/LangBtns.astro'
-import { getTranslations, getLocalizedPath } from '@/lib/i18n/utils'
+import SiteHeader from '@/components/organisms/SiteHeader.astro'
+import SiteFooter from '@/components/organisms/SiteFooter.astro'
 
 const {
 	lang = 'en',
@@ -12,7 +10,6 @@ const {
 	preloadSrcSet,
 	preloadSizes,
 } = Astro.props
-const t = getTranslations(lang)
 ---
 
 <!doctype html>
@@ -35,31 +32,10 @@ const t = getTranslations(lang)
 		<ClientRouter />
 	</head>
 	<body>
-		<header>
-			<a href="/" class="brand">{BUSINESS_DATA.name}</a>
-			<nav>
-				<a href="/">Home</a>
-				<LangBtns lang={lang} />
-			</nav>
-		</header>
+		<SiteHeader lang={lang} />
 		<main>
 			<slot />
 		</main>
-		<footer>
-			<small>© {SITE_TITLE}</small> · <small>{t('global.footer.disclaimer')}</small>
-			<nav>
-				<a href={getLocalizedPath('privacy', lang)}>{t('global.footer.privacy')}</a>
-				<a href={getLocalizedPath('terms', lang)}>{t('global.footer.terms')}</a>
-			</nav>
-		</footer>
+		<SiteFooter lang={lang} />
 	</body>
 </html>
-
-<style>
-	header nav a {
-		margin-right: 0.75rem;
-	}
-	.brand {
-		font-weight: 700;
-	}
-</style>

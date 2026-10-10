@@ -13,6 +13,18 @@ export const routes = {
 		en: 'terms',
 		es: 'es/terminos',
 	},
+	cookies: {
+		en: 'cookies',
+		es: 'es/cookies',
+	},
+	'medical-disclaimer': {
+		en: 'medical-disclaimer',
+		es: 'es/aviso-medico',
+	},
+	'legal-notice': {
+		en: 'legal-notice',
+		es: 'es/aviso-legal',
+	},
 } as const
 
 export type PageKey = keyof typeof routes

@@ -17,10 +17,27 @@ const { title, description, updated, body, lang = 'en', pageKey } = Astro.props
 
 <Layout lang={lang}>
 	<PageSEO slot="seo" currentPage={pageKey} lang={lang} />
-	<article>
-		<h1>{title}</h1>
-		<p>{description}</p>
-		<p class="text-sm">{updated}</p>
+	<article class="legal-article mx-auto w-full max-w-3xl px-4 py-12 text-slate-800 sm:px-6 lg:px-8">
+		<header class="mb-8">
+			<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{title}</h1>
+			<p class="mt-3 text-base leading-relaxed text-slate-600">{description}</p>
+			<p class="mt-2 text-sm text-slate-500">{updated}</p>
+		</header>
 		<Markdown content={body} />
 	</article>
 </Layout>
+
+<style>
+	/* Scoped plum overrides. Inner selectors use :global() because the
+	Markdown atom injects body HTML via set:html (no cid attributes), so
+	scoped selectors would never match. Shared atom and global.css untouched. */
+	.legal-article :global(.markdown-prose :is(h1, h2, h3) > a) {
+		text-decoration-line: none;
+	}
+	.legal-article :global(.markdown-prose :is(h1, h2, h3) > a:hover) {
+		color: #9a3676;
+	}
+	.legal-article :global(.markdown-prose h2::before) {
+		background: #9a3676;
+	}
+</style>

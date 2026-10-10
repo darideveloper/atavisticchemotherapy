@@ -10,7 +10,10 @@
     "footer": {
       "disclaimer": "This website does not substitute medical advice.",
       "privacy": "Privacy Policy",
-      "terms": "Terms of Use"
+      "terms": "Terms of Use",
+      "cookies": "Cookie Policy",
+      "medicalDisclaimer": "Medical Disclaimer",
+      "legalNotice": "Legal Notice"
     }
   },
   "pages": {
@@ -32,6 +35,21 @@
       "title": "Terms of Use",
       "description": "The terms governing your use of this website.",
       "keywords": "terms, use, legal"
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "How this site uses cookies.",
+      "keywords": "cookies, policy, tracking"
+    },
+    "medical-disclaimer": {
+      "title": "Medical Disclaimer",
+      "description": "Important information about the medical content on this site.",
+      "keywords": "medical, disclaimer, health"
+    },
+    "legal-notice": {
+      "title": "Legal Notice",
+      "description": "Information about who is responsible for this website.",
+      "keywords": "legal, notice, responsible"
     }
   }
 }

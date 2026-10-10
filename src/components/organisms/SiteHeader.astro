@@ -1,0 +1,26 @@
+---
+import { SITE_TITLE } from '@/consts'
+import { getTranslations } from '@/lib/i18n/utils'
+
+export interface Props {
+	lang?: string
+}
+
+const { lang = 'en' } = Astro.props
+const t = getTranslations(lang)
+---
+
+<header class="sticky top-0 z-50 border-b border-rose-100 bg-white/90 backdrop-blur">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+		<a href="/" class="flex shrink-0 items-center gap-2" aria-label={SITE_TITLE}>
+			<img src="/favicon.svg?v=2" alt="" width="28" height="28" class="h-7 w-7" />
+			<span class="text-base font-bold text-[#4c1139]">{SITE_TITLE}</span>
+		</a>
+		<nav class="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-sm font-medium text-slate-600">
+			<a class="transition hover:text-[#9a3676]" href="/#top">{t('global.nav.home')}</a>
+			<a class="transition hover:text-[#9a3676]" href="/#realidad">{t('global.nav.reality')}</a>
+			<a class="transition hover:text-[#9a3676]" href="/#atavica">{t('global.nav.treatment')}</a>
+			<a class="transition hover:text-[#9a3676]" href="/#testimonios">{t('global.nav.cases')}</a>
+		</nav>
+	</div>
+</header>
