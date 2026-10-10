@@ -10,7 +10,7 @@ updated: "Última actualización: octubre 2026"
 
 ## Tratamiento en investigación
 
-- La Quimioterapia Atávica es un enfoque en investigación. Ningún resultado está prometido ni garantizado para ninguna persona, y ningún resultado descrito en este sitio predice lo que ocurrirá en tu caso.
+- La Quimioterapia Atavística es un enfoque en investigación. Ningún resultado está prometido ni garantizado para ninguna persona, y ningún resultado descrito en este sitio predice lo que ocurrirá en tu caso.
 
 ## Casos anteriores
 

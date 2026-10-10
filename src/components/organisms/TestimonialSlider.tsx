@@ -16,7 +16,6 @@ type Testimonial = Readonly<{
   images: ReadonlyArray<TestimonialImage>;
   diagnosis: string;
   history: string;
-  treatment: string;
   email: string;
   whatsappLabel: string;
   whatsappUrl: string | null;
@@ -86,8 +85,8 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
               <div className={`grid h-56 shrink-0 grid-rows-[minmax(0,1fr)] gap-1 bg-rose-50 p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
                 {testimonial.images.map((image, index) => {
                   const imageClass = testimonial.images.length > 1
-                    ? `min-h-0 min-w-0 h-full w-full object-contain ${index === 1 ? 'bg-black' : 'bg-rose-50'}`
-                    : 'h-full w-full object-fill';
+                    ? `min-h-0 min-w-0 h-full w-full object-contain cursor-zoom-in ${index === 1 ? 'bg-black' : 'bg-rose-50'}`
+                    : 'h-full w-full object-fill cursor-zoom-in';
 
                   return image.set ? (
                     <picture key={image.src} className="block h-full min-h-0 min-w-0 w-full">
@@ -102,6 +101,7 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                         loading="lazy"
                         decoding="async"
                         className={imageClass}
+                        data-lightbox=""
                       />
                     </picture>
                   ) : (
@@ -112,6 +112,7 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                       loading="lazy"
                       decoding="async"
                       className={imageClass}
+                      data-lightbox=""
                     />
                   );
                 })}
@@ -139,7 +140,6 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                 </div>
                 <p className="mt-4 text-base font-bold leading-snug text-[#78235a]">{testimonial.diagnosis}</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">{testimonial.history}</p>
-                <p className="mt-4 text-sm font-bold leading-relaxed text-[#4658aa]">{testimonial.treatment}</p>
               </div>
             </article>
           </SwiperSlide>

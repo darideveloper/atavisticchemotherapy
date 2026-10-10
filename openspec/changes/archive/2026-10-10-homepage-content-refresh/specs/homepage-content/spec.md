@@ -1,38 +1,4 @@
-## Purpose
-
-Homepage content and presentation rules for the universities list, statistics accordion heading placement, card heading punctuation, intro paragraph alignment, and WhatsApp contact link.
-## Requirements
-### Requirement: Universities list renders as inline text with bold location
-
-The universities list in "Formación y trayectoria" SHALL render each item as inline flow: diamond marker, university name, and bold location adjacent on the same line (wrapping naturally), with no grid or flex layout on the `<li>`.
-
-#### Scenario: Locations sit next to names
-
-- **WHEN** a visitor views the "Formación y trayectoria" list
-- **THEN** each item reads e.g. "◆ Universidad Autónoma de Nuevo León, **México**" with the location inline after the name, not stacked below or pushed to a right column
-
-#### Scenario: No grid classes remain
-
-- **WHEN** inspecting the four `<li>` elements
-- **THEN** none carries `grid`, `grid-cols-*`, or `flex` display classes
-
-### Requirement: Universities appear in the agreed order
-
-The list SHALL order items: Nuevo León (México), Connecticut (Connecticut, USA), Rochester (New York, USA), Instituto Nacional del Cáncer NIH (Maryland, USA).
-
-#### Scenario: Connecticut precedes Rochester
-
-- **WHEN** a visitor reads the list top to bottom
-- **THEN** "Universidad de Connecticut" appears before "Universidad de Rochester"
-
-### Requirement: Grano-de-sal heading ends with a period
-
-The card heading "Las quimioterapias o inmunoterapias actuales no pueden curar un cáncer tan diminuto como un grano de sal" SHALL end with `.`.
-
-#### Scenario: Punctuation present
-
-- **WHEN** a visitor views the eye-enucleation card `<h3>`
-- **THEN** the heading text ends with "sal."
+## MODIFIED Requirements
 
 ### Requirement: Statistics heading is visible when collapsed
 
@@ -48,37 +14,7 @@ The heading "Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir" SHAL
 - **WHEN** the visitor expands the `<details>`
 - **THEN** the body starts at paragraph "1)" with no repeated statistics heading
 
-### Requirement: Realidad intro paragraph is justified
-
-The paragraph beginning "Excluyendo algunas formas de leucemias…" SHALL use justified alignment (`text-justify`, not `text-left`).
-
-#### Scenario: Justified alignment
-
-- **WHEN** a visitor views the "La Realidad de la Oncología Actual" intro
-- **THEN** the paragraph text is justified
-
-### Requirement: Primary WhatsApp contact uses the direct US number link
-
-The primary WhatsApp contact (`contact.whatsapp.username` in `src/data/site-config.ts`) SHALL use url `https://wa.me/13013059591` and label `+1 (301) 305-9591`, rendering as `WhatsApp (+1 (301) 305-9591)` with no username handle.
-
-#### Scenario: Direct WhatsApp link
-
-- **WHEN** a visitor clicks the first WhatsApp link in the urgent-contact paragraph
-- **THEN** it opens `https://wa.me/13013059591` and its visible text is `WhatsApp (+1 (301) 305-9591)`
-
-### Requirement: Statistics and atavica citations render as split link-styled numbers without title
-
-In the statistics accordion body and the `#atavica` white sections, citation references SHALL render as individual `[N]` anchors (brackets separated by single spaces as plain text, no commas), styled as context-aware blue underlined links with no `title` attribute, each carrying its own `href="#reference-N"`, single-item `data-reference` preview truncated to ~160 chars, and `aria-label="Referencia N"`.
-
-#### Scenario: Statistics group is split
-
-- **WHEN** a visitor views point 6) of the statistics accordion
-- **THEN** the text reads `[5] [6] [7] [8]` as four separate blue underlined links, not `(5, 6, 7, 8)` as one
-
-#### Scenario: Atavica groups are split
-
-- **WHEN** a visitor views the `#atavica` paragraphs
-- **THEN** citations read `[1] [2]` and `[3] [4]` as separate links with no native `title` tooltip
+## ADDED Requirements
 
 ### Requirement: Hero strapline carries the trial identifier on one block
 
@@ -156,4 +92,3 @@ Testimonial cards SHALL NOT render the bold blue `#4658aa` treatment paragraph, 
 
 - **WHEN** `src/data/testimonials.ts` is inspected
 - **THEN** no entry defines a `treatment` property
-

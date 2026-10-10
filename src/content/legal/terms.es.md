@@ -10,7 +10,7 @@ Al utilizar este sitio web aceptas estos términos. Si no los aceptas, por favor
 
 ## Evaluación gratuita
 
-- El sitio ofrece información sobre la Quimioterapia Atávica y una evaluación gratuita y sin compromiso de tu caso como segunda opinión por parte del equipo del ensayo.
+- El sitio ofrece información sobre la Quimioterapia Atavística y una evaluación gratuita y sin compromiso de tu caso como segunda opinión por parte del equipo del ensayo.
 - Para solicitar una evaluación, completa el formulario de contacto. El equipo responde a través de tu canal preferido (correo electrónico, WhatsApp o teléfono).
 
 ## Costos del tratamiento

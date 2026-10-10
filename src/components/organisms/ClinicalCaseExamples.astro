@@ -5,13 +5,10 @@ import { CLINICAL_CASES } from '@/data/clinical-cases'
 
 <section class="flow-clinical bg-[#f8f5f8] py-20 lg:py-24" id="ejemplos" aria-labelledby="ejemplos-heading" style="order:4">
 	<div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-		<div class="mx-auto max-w-2xl text-center">
-			<h2 id="ejemplos-heading" class="text-3xl font-extrabold uppercase tracking-tight text-slate-900 sm:text-4xl">Ejemplos de casos clínicos tratados con quimioterapia atavistica</h2>
+		<div class="mx-auto max-w-2xl text-center sm:max-w-3xl lg:max-w-4xl">
+			<h2 id="ejemplos-heading" class="text-3xl font-extrabold uppercase tracking-tight text-slate-900 sm:text-4xl">Ejemplos de casos clínicos tratados con quimioterapia atavística</h2>
 			<p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-				Secuencias de imágenes y descripciones clínicas de pacientes con cánceres avanzados, antes, durante y después de la quimioterapia atavistica.
-			</p>
-			<p class="mt-3 text-xs leading-relaxed text-slate-500">
-				El contenido se presenta a partir del documento clínico proporcionado y conserva el contexto clínico suministrado.
+				Estos son ejemplos del notable efecto anticanceroso y selectivo de la quimioterapia atavística en pacientes con cáncer avanzado, quienes habían sido considerados terminales o desahuciados por hospitales en Canadá, Estados Unidos o México. Las representaciones visuales y las descripciones clínicas que se presentan a continuación ilustran la secuencia de eventos que ocurren antes, durante y después del tratamiento con quimioterapia atavística.
 			</p>
 		</div>
 
@@ -24,9 +21,10 @@ import { CLINICAL_CASES } from '@/data/clinical-cases'
 								<Image
 									src={image.src}
 									alt={image.alt}
-									class="block h-full w-full object-contain"
+									class="block h-full w-full object-contain cursor-zoom-in"
 									widths={[400, 800]}
 									sizes={clinicalCase.images.length > 1 ? '(max-width: 639px) calc(50vw - 2rem), (max-width: 1023px) calc(25vw - 2rem), 184px' : '(max-width: 639px) calc(100vw - 3.5rem), (max-width: 1023px) calc(50vw - 3rem), 384px'}
+									lightbox
 								/>
 							</figure>
 						))}
