@@ -8,6 +8,7 @@ import 'swiper/css';
 type TestimonialImage = Readonly<{
   src: string;
   alt: string;
+  dark: boolean;
   set: SlideSet | null;
 }>;
 
@@ -82,10 +83,10 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.name} className="!h-auto">
             <article className="flex h-full min-h-[56rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
-              <div className={`grid h-56 shrink-0 grid-rows-[minmax(0,1fr)] gap-1 bg-rose-50 p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
-                {testimonial.images.map((image, index) => {
+              <div className={`grid h-56 shrink-0 grid-rows-[minmax(0,1fr)] gap-1 bg-white p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                {testimonial.images.map((image) => {
                   const imageClass = testimonial.images.length > 1
-                    ? `min-h-0 min-w-0 h-full w-full object-contain cursor-zoom-in ${index === 1 ? 'bg-black' : 'bg-rose-50'}`
+                    ? `min-h-0 min-w-0 h-full w-full object-contain cursor-zoom-in ${image.dark ? 'bg-black' : 'bg-white'}`
                     : 'h-full w-full object-fill cursor-zoom-in';
 
                   return image.set ? (

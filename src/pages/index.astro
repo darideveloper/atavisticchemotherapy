@@ -18,7 +18,7 @@ import organisms from '@/assets/content/4ta.webp';
 import normalCell from '@/assets/content/Mother.png';
 import treatedPatients from '@/assets/content/alice-th.jpg';
 import frankArguelloPatient from '@/assets/content/frank-arguello-paciente-hospital.png';
-import headshot from '@/assets/content/headshot.png';
+import headshot from '@/assets/content/headshot.webp';
 import logoWhite from '@/assets/content/logo-white.png';
 
 const optimizedTestimonials = await Promise.all(
@@ -28,6 +28,7 @@ const optimizedTestimonials = await Promise.all(
       testimonial.images.map(async (image) => ({
         src: image.src.src,
         alt: image.alt,
+        dark: 'dark' in image ? image.dark : false,
         set: await slideSet(image.src, IMAGE_SLOTS.testimonial),
       })),
     ),
