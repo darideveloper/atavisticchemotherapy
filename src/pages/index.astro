@@ -19,6 +19,9 @@ import normalCell from '@/assets/content/Mother.png';
 import treatedPatients from '@/assets/content/alice-th.jpg';
 import frankArguelloPatient from '@/assets/content/frank-arguello-paciente-hospital.png';
 import headshot from '@/assets/content/headshot.webp';
+import dedicatoriaPadres from '@/assets/content/dedicatoria-padres.png';
+import prensa1984 from '@/assets/content/prensa-el-norte-1984.png';
+import libro2011 from '@/assets/content/libro-metamorfosis-atavica-2011.jpg';
 import logoWhite from '@/assets/content/logo-white.png';
 
 const optimizedTestimonials = await Promise.all(
@@ -239,11 +242,11 @@ const structuredData = {
 <!-- BEGIN: SpecialistProfileSection -->
 <section class="flow-doctor py-20 lg:py-24 bg-white" data-purpose="specialist-bio" id="doctor" style="order:2">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-<div class="lg:col-span-6 flex justify-center">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+<div class="lg:col-span-6 flex justify-center lg:sticky lg:top-24 self-start">
 <div class="relative w-full max-w-lg overflow-hidden rounded-2xl shadow-xl border border-slate-100 group">
-<Image src={headshot} alt="Dr. Frank Arguello" class="w-full h-[440px] sm:h-[480px] object-cover object-top transition duration-500 group-hover:scale-102 cursor-zoom-in" widths={[433]} sizes="(max-width: 1023px) 100vw, 512px" lightbox />
-<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent p-6 text-white lg:hidden">
+<Image src={headshot} alt="Dr. Frank Arguello" class="w-full h-auto transition duration-500 group-hover:scale-102 cursor-zoom-in" widths={[512, 960]} sizes="(max-width: 1023px) 100vw, 512px" lightbox />
+<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6 pt-16 text-white pointer-events-none">
 <h3 class="font-bold text-lg">Dr. Frank Arguello</h3>
 <p class="text-xs text-rose-200">Director, Atavistic Chemotherapy Clinical Trial</p>
 </div>
@@ -270,6 +273,29 @@ const structuredData = {
 <li><span class="text-rose-500" aria-hidden="true">◆</span> <span>Universidad de Rochester,</span> <strong>New York, USA</strong></li>
 <li><span class="text-rose-500" aria-hidden="true">◆</span> <span>Instituto Nacional del Cáncer, NIH,</span> <strong>Maryland, USA</strong></li>
 </ul>
+<div class="grid grid-cols-2 gap-3 sm:gap-4 pt-5">
+<figure class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg flex flex-col">
+<div class="relative overflow-hidden bg-slate-100 group">
+<Image src={prensa1984} alt="Recorte del periódico El Norte del 14 de noviembre de 1984: Esperan desarrollar en UANL un nuevo método anticanceroso" class="h-56 sm:h-72 w-full object-cover object-top cursor-zoom-in transition duration-500 group-hover:scale-105" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
+<span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
+</div>
+<figcaption class="bg-[#4c1139] px-2 py-2.5 text-center flex-1 flex flex-col justify-center">
+<span class="block text-base sm:text-lg font-extrabold tracking-[0.2em] text-white">1984</span>
+<span class="mt-0.5 block text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rose-200">El Norte · UANL</span>
+</figcaption>
+</figure>
+<figure class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg flex flex-col">
+<div class="relative overflow-hidden bg-slate-900 group">
+<Image src={libro2011} alt="Portada del libro Atavistic Metamorphosis de Frank Arguello, MD, publicado en 2011" class="h-56 sm:h-72 w-full object-cover object-top cursor-zoom-in transition duration-500 group-hover:scale-105" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
+<span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
+</div>
+<figcaption class="bg-[#4c1139] px-2 py-2.5 text-center flex-1 flex flex-col justify-center">
+<span class="block text-base sm:text-lg font-extrabold tracking-[0.2em] text-white">2011</span>
+<span class="mt-0.5 block text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rose-200">Libro · Atavistic Metamorphosis</span>
+</figcaption>
+</figure>
+</div>
+<p class="pt-2 text-center text-xs text-slate-400">Toca cualquier imagen para ampliar</p>
 </div>
 </div>
 </div>
@@ -439,7 +465,7 @@ const structuredData = {
 <!-- END: TraditionalVsAtavisticSection -->
 
 <!-- BEGIN: ReferencesSection -->
-<section class="flow-references bg-white py-12 lg:py-14" aria-labelledby="referencias-heading" id="referencias" style="order:9">
+<section class="flow-references bg-white py-12 lg:py-14" aria-labelledby="referencias-heading" id="referencias" style="order:10">
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-6 max-w-lg text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900" id="referencias-heading">Referencias</h2>
@@ -454,6 +480,26 @@ const structuredData = {
 </div>
 </section>
 <!-- END: ReferencesSection -->
+
+<!-- BEGIN: DedicationSection -->
+<section class="flow-dedication bg-white py-20 lg:py-24" aria-labelledby="dedicatoria-heading" id="dedicatoria" style="order:9">
+<div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="font-extrabold tracking-tight text-slate-900 text-3xl sm:text-4xl" id="dedicatoria-heading" style="font-family:'Playfair Display',serif">Dedicatoria a mi madre</h2>
+<p class="mt-4 text-[#4c1139]" aria-hidden="true">── ◆ ──</p>
+<figure class="mx-auto mt-8 w-full max-w-md">
+<div class="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-xl group">
+<Image src={dedicatoriaPadres} alt="Celia Astorga de Arguello (1932-1982) junto a su esposo" class="w-full h-auto cursor-zoom-in transition duration-500 group-hover:scale-102" widths={[400, 800]} sizes="(max-width: 639px) calc(100vw - 2rem), 448px" lightbox />
+<span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
+</div>
+</figure>
+<div class="mt-8 space-y-4 text-lg leading-relaxed text-slate-700" style="font-family:'Playfair Display',serif;font-style:italic">
+<p>Dedico este trabajo a la amorosa memoria de mi madre, quien falleció de cáncer de vesícula biliar a la prematura edad de 50 años, cuando yo tenía 21 años e iniciaba mi carrera de medicina.</p>
+<p>Si el amor de tus pequeños hijos hubiera sido suficiente para salvarte, sin duda no habrías muerto. Pero nuestro amor y nuestras lágrimas no fueron suficientes. Nunca entendí por qué Dios te tuvo que arrebatar de nuestras vidas tan pronto; hasta ahora, este descubrimiento jamás se habría hecho. Espero que este trabajo y los esfuerzos derivados de estos conceptos por otros médicos eviten que otras familias sufran el dolor y la tristeza que nosotros vivimos a causa de tu muerte prematura.</p>
+</div>
+<p class="mt-6 text-right text-lg font-semibold text-slate-800" style="font-family:'Playfair Display',serif;font-style:italic">— Frank Arguello Astorga</p>
+</div>
+</section>
+<!-- END: DedicationSection -->
 
 <!-- BEGIN: MainFooter -->
 <SiteFooter lang="es" />
