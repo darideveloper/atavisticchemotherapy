@@ -52,7 +52,13 @@ const REFERENCES = [
   'Lupo PJ, Spector LG. Cancer Progress and Priorities: Childhood Cancer. Cancer Epidemiol Biomarkers Prev. 2020 Jun;29(6):1081-1094. doi: 10.1158/1055-9965.EPI-19-0941. PMID: 32482635; PMCID: PMC9400945.',
 ];
 
-const referenceText = (...indices: number[]) => indices.map((index) => `${index + 1}. ${REFERENCES[index]}`).join(' ');
+const referencePreview = (index: number, max = 160) => {
+  const text = `${index + 1}. ${REFERENCES[index]}`;
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const boundary = cut.lastIndexOf(' ');
+  return `${cut.slice(0, boundary > 0 ? boundary : max)}…`;
+};
 
 const siteUrl = BUSINESS_DATA.url.replace(/\/$/, '');
 const canonicalUrl = `${siteUrl}/`;
@@ -163,11 +169,13 @@ const structuredData = {
     details.acc.on-dark .acc-body { color: #fce7f3; }
     .acc-body { padding: 0 1.25rem 1.25rem; }
     .acc-body p + p { margin-top: .75rem; }
-    .reference-note { position: relative; display: inline-block; color: inherit; cursor: pointer; transition: color .15s ease, background-color .15s ease; }
-    .reference-note::after { content: attr(data-reference); position: absolute; z-index: 20; left: 50%; bottom: calc(100% + .5rem); width: min(24rem, 72vw); padding: .65rem .75rem; border: 1px solid #f3d9ea; border-radius: .75rem; background: #fff; color: #475569; box-shadow: 0 10px 24px rgba(100, 27, 78, .18); font-size: .75rem; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; opacity: 0; pointer-events: none; transform: translate(-50%, .25rem); transition: opacity .15s ease, transform .15s ease; }
-    .reference-note:hover::after, .reference-note:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-    .reference-note:hover, .reference-note:focus-visible { color: inherit; text-decoration: none; }
+    .reference-note { color: #1d4ed8; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color .15s ease, background-color .15s ease; }
+    .acc.on-dark .reference-note { color: #93c5fd; }
+    .reference-note:hover { color: #1e40af; background-color: rgba(29, 78, 216, .08); }
+    .acc.on-dark .reference-note:hover { color: #bfdbfe; background-color: rgba(147, 197, 253, .15); }
     .reference-note:focus-visible { outline: 2px solid #c24694; outline-offset: 2px; }
+    #ref-tooltip { position: fixed; z-index: 60; left: 0; top: 0; width: min(24rem, 72vw); max-width: calc(100vw - 16px); padding: .65rem .75rem; border: 1px solid #f3d9ea; border-radius: .75rem; background: #fff; color: #475569; box-shadow: 0 10px 24px rgba(100, 27, 78, .18); font-size: .75rem; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; }
+    #ref-tooltip[hidden] { display: none; }
     main.page-flow { display: flex; flex-direction: column; }
     main.page-flow > .flow-hero { order: 1; }
     main.page-flow > .flow-doctor { order: 2; }
@@ -184,6 +192,7 @@ const structuredData = {
 </head>
 <body class="bg-[#fcfafc] text-slate-800 antialiased selection:bg-[#9a3676] selection:text-white">
 <main id="top" class="page-flow" style="display:flex;flex-direction:column">
+<div id="ref-tooltip" role="tooltip" hidden></div>
 <!-- BEGIN: HeroSection -->
 <section class="flow-hero relative min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden bg-gradient-plum-band" data-purpose="hero-banner" style="order:1">
 <div class="absolute inset-0 z-0">
@@ -324,7 +333,7 @@ const structuredData = {
 <details class="acc on-dark">
 <summary><span class="flex-1 space-y-2"><span class="block">Diariamente, más de 27,000 hombres, mujeres y niños mueren de cáncer, o por la quimioterapia y procedimientos empleados para tratarlos (<span class="text-blue-300 underline font-bold whitespace-nowrap">Leer Más</span>)</span><h2 class="text-2xl sm:text-3xl font-extrabold text-pink-100 tracking-tight">Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir</h2></span></summary>
 <div class="acc-body text-sm leading-relaxed space-y-4">
-<p>1) A pesar del aparente progreso en la investigación y el tratamiento del cáncer durante los últimos 60 años, el cáncer representa hoy en día una amenaza mucho mayor para el mundo que en cualquier otro momento de la historia de la medicina.</p><p>2) Diariamente, más de 27,000 hombres, mujeres y niños mueren de cáncer, o por la quimioterapia y procedimientos empleados para tratarlos <a class="reference-note" href="#reference-9" title={referenceText(8)} aria-label="Referencia 9" data-reference={referenceText(8)}>(9)</a>.</p><p>3) En los Estados Unidos, más de 1,670 hombres, mujeres y niños mueren de cáncer diariamente en los mejores hospitales del mundo <a class="reference-note" href="#reference-10" title={referenceText(9)} aria-label="Referencia 10" data-reference={referenceText(9)}>(10)</a>. El cáncer en ese país es la causa principal de muerte en todas las personas adultas antes de los 85 años <a class="reference-note" href="#reference-11" title={referenceText(10, 11)} aria-label="Referencias 11 y 12" data-reference={referenceText(10, 11)}>(11, 12)</a>, y también representa la causa principal de muerte por enfermedad en niños de 1 a 19 años. De hecho, el cáncer es responsable de más muertes en niños en ese país que todas las demás enfermedades infantiles combinadas <a class="reference-note" href="#reference-13" title={referenceText(12)} aria-label="Referencia 13" data-reference={referenceText(12)}>(13)</a>.</p><p>4) La mayoría de la gente desconoce que hoy en día un cáncer es incurable y casi siempre mortal, aun recibiendo los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radiación, cuando el tumor es técnicamente inoperable, si no pudo ser removido quirúrgicamente en su totalidad, o si células cancerosas han migrado de su sitio de origen a otros órganos (metastatizado). En un estudio del Danna-Farber Cancer Institute en los Estados Unidos, se encontró que hasta el 80% de 1,193 pacientes entrevistados, quienes estaban recibiendo quimioterapia tradicional por cánceres del colon o pulmón con metástasis a otros órganos, contestaron que creían que el tratamiento que estaban recibiendo de quimioterapia los podría curar. Cuando desde el punto de vista oncológico todos morirían de su enfermedad, y así fue <a class="reference-note" href="#reference-14" title={referenceText(13)} aria-label="Referencia 14" data-reference={referenceText(13)}>(14)</a>.</p><p>5) Se estima que 75,000 a 100,000 niños mueren de cáncer cada año en el mundo <a class="reference-note" href="#reference-15" title={referenceText(14)} aria-label="Referencia 15" data-reference={referenceText(14)}>(15)</a>.</p><p>6) A pesar de una respuesta inicial aparente a la quimioterapia, inmunoterapias y radiación convencionales, las células cancerosas sobrevivientes se vuelven más agresivas y metastatizan con mayor facilidad. Solo en los últimos años este problema de exacerbación iatrogénica del cáncer inducida por fármacos, inmunoterapia y radiación ha sido reconocido más abiertamente por la comunidad médica <a class="reference-note" href="#reference-5" title={referenceText(4, 5, 6, 7)} aria-label="Referencias 5, 6, 7 y 8" data-reference={referenceText(4, 5, 6, 7)}>(5, 6, 7, 8)</a>.</p>
+<p>1) A pesar del aparente progreso en la investigación y el tratamiento del cáncer durante los últimos 60 años, el cáncer representa hoy en día una amenaza mucho mayor para el mundo que en cualquier otro momento de la historia de la medicina.</p><p>2) Diariamente, más de 27,000 hombres, mujeres y niños mueren de cáncer, o por la quimioterapia y procedimientos empleados para tratarlos [<a class="reference-note" href="#reference-9" aria-label="Referencia 9" data-reference={referencePreview(8)}>9</a>].</p><p>3) En los Estados Unidos, más de 1,670 hombres, mujeres y niños mueren de cáncer diariamente en los mejores hospitales del mundo [<a class="reference-note" href="#reference-10" aria-label="Referencia 10" data-reference={referencePreview(9)}>10</a>]. El cáncer en ese país es la causa principal de muerte en todas las personas adultas antes de los 85 años [<a class="reference-note" href="#reference-11" aria-label="Referencia 11" data-reference={referencePreview(10)}>11</a>] [<a class="reference-note" href="#reference-12" aria-label="Referencia 12" data-reference={referencePreview(11)}>12</a>], y también representa la causa principal de muerte por enfermedad en niños de 1 a 19 años. De hecho, el cáncer es responsable de más muertes en niños en ese país que todas las demás enfermedades infantiles combinadas [<a class="reference-note" href="#reference-13" aria-label="Referencia 13" data-reference={referencePreview(12)}>13</a>].</p><p>4) La mayoría de la gente desconoce que hoy en día un cáncer es incurable y casi siempre mortal, aun recibiendo los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radiación, cuando el tumor es técnicamente inoperable, si no pudo ser removido quirúrgicamente en su totalidad, o si células cancerosas han migrado de su sitio de origen a otros órganos (metastatizado). En un estudio del Danna-Farber Cancer Institute en los Estados Unidos, se encontró que hasta el 80% de 1,193 pacientes entrevistados, quienes estaban recibiendo quimioterapia tradicional por cánceres del colon o pulmón con metástasis a otros órganos, contestaron que creían que el tratamiento que estaban recibiendo de quimioterapia los podría curar. Cuando desde el punto de vista oncológico todos morirían de su enfermedad, y así fue [<a class="reference-note" href="#reference-14" aria-label="Referencia 14" data-reference={referencePreview(13)}>14</a>].</p><p>5) Se estima que 75,000 a 100,000 niños mueren de cáncer cada año en el mundo [<a class="reference-note" href="#reference-15" aria-label="Referencia 15" data-reference={referencePreview(14)}>15</a>].</p><p>6) A pesar de una respuesta inicial aparente a la quimioterapia, inmunoterapias y radiación convencionales, las células cancerosas sobrevivientes se vuelven más agresivas y metastatizan con mayor facilidad. Solo en los últimos años este problema de exacerbación iatrogénica del cáncer inducida por fármacos, inmunoterapia y radiación ha sido reconocido más abiertamente por la comunidad médica [<a class="reference-note" href="#reference-5" aria-label="Referencia 5" data-reference={referencePreview(4)}>5</a>] [<a class="reference-note" href="#reference-6" aria-label="Referencia 6" data-reference={referencePreview(5)}>6</a>] [<a class="reference-note" href="#reference-7" aria-label="Referencia 7" data-reference={referencePreview(6)}>7</a>] [<a class="reference-note" href="#reference-8" aria-label="Referencia 8" data-reference={referencePreview(7)}>8</a>].</p>
 </div>
 </details>
 </div>
@@ -355,12 +364,12 @@ const structuredData = {
 <div class="min-[900px]:col-span-7 space-y-7 min-[900px]:pl-6">
 <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">¿Cuál es la Lógica Detrás de la Quimioterapia Atavistica?</h2>
-<p>Como se mencionó anteriormente, el Dr. Arguello publicó un libro con una explicación más racional y congruente sobre el origen y la conducta maligna de las células cancerosas. En este libro, el Dr. Arguello sostiene y documenta científicamente que el cáncer, o la transformación maligna, ocurre cuando hay una regresión evolutiva (atavismo) de una célula normal hacia su estado celular primitivo o ancestral. Es decir, una célula normal revierte de nuevo a su estado unicelular independiente, de donde se originaron nuestras células. Todos los organismos vivos que habitan este planeta están formados por células, y se ha demostrado con estudios genéticos que las células de todos los organismos, incluyendo los seres humanos, tienen un mismo origen celular. Todos descendemos de una colonia de células primitivas u organismos unicelulares, similares a las células bacterianas actuales, que existieron en este planeta hace billones de años. De esas células primitivas descienden todas las formas de vida actual <a class="reference-note" href="#reference-1" title={referenceText(0, 1)} aria-label="Referencias 1 y 2" data-reference={referenceText(0, 1)}>(Referencias 1, 2)</a>. Esa conducta celular primitiva, invasiva e independiente de nuestros antepasados celulares quedó codificada en la memoria genética de todas las células que existen en la actualidad, aunque esta ha sido suprimida o inactivada a través de la evolución. Agentes que causan cáncer, muy seguramente lo hacen activando de nuevo estos genes primitivos de la vida celular independiente.</p>
+<p>Como se mencionó anteriormente, el Dr. Arguello publicó un libro con una explicación más racional y congruente sobre el origen y la conducta maligna de las células cancerosas. En este libro, el Dr. Arguello sostiene y documenta científicamente que el cáncer, o la transformación maligna, ocurre cuando hay una regresión evolutiva (atavismo) de una célula normal hacia su estado celular primitivo o ancestral. Es decir, una célula normal revierte de nuevo a su estado unicelular independiente, de donde se originaron nuestras células. Todos los organismos vivos que habitan este planeta están formados por células, y se ha demostrado con estudios genéticos que las células de todos los organismos, incluyendo los seres humanos, tienen un mismo origen celular. Todos descendemos de una colonia de células primitivas u organismos unicelulares, similares a las células bacterianas actuales, que existieron en este planeta hace billones de años. De esas células primitivas descienden todas las formas de vida actual [<a class="reference-note" href="#reference-1" aria-label="Referencia 1" data-reference={referencePreview(0)}>1</a>] [<a class="reference-note" href="#reference-2" aria-label="Referencia 2" data-reference={referencePreview(1)}>2</a>]. Esa conducta celular primitiva, invasiva e independiente de nuestros antepasados celulares quedó codificada en la memoria genética de todas las células que existen en la actualidad, aunque esta ha sido suprimida o inactivada a través de la evolución. Agentes que causan cáncer, muy seguramente lo hacen activando de nuevo estos genes primitivos de la vida celular independiente.</p>
 <blockquote class="italic text-[#641b4e]">
 <p class="font-bold">“Cualquier célula viva en este planeta lleva consigo la experiencia de miles de millones de años de la vida de sus antepasados celulares.”</p>
 <footer class="not-italic text-sm font-semibold mt-2">Max Delbrück (1906-1981)<br/><span class="font-normal">Premio Nobel de Medicina (1969)</span></footer>
 </blockquote>
-<p>Todo lo anterior explica por qué el cáncer no solo afecta a los seres humanos, sino también a todos los animales, incluyendo aves, mamíferos, reptiles, insectos, peces y anfibios, así como a las plantas y los árboles. Esta interpretación está obviamente en conflicto con la hipótesis tradicional de que las mutaciones genéticas son la causa del cáncer, postulada hace más de 100 años por Theodor Boveri (1862-1915) en 1912. Sin embargo, la mayoría de las mutaciones genéticas que se han encontrado en las células cancerosas también se han hallado en las células de enfermedades no relacionadas con el cáncer <a class="reference-note" href="#reference-3" title={referenceText(2, 3)} aria-label="Referencias 3 y 4" data-reference={referenceText(2, 3)}>(3, 4)</a>. Por lo que el Dr. Arguello explica que las mutaciones genéticas y otras anormalidades que se encuentran en células cancerosas no son la causa del cáncer, sino cambios que resultan a consecuencia de la transformación maligna.</p>
+<p>Todo lo anterior explica por qué el cáncer no solo afecta a los seres humanos, sino también a todos los animales, incluyendo aves, mamíferos, reptiles, insectos, peces y anfibios, así como a las plantas y los árboles. Esta interpretación está obviamente en conflicto con la hipótesis tradicional de que las mutaciones genéticas son la causa del cáncer, postulada hace más de 100 años por Theodor Boveri (1862-1915) en 1912. Sin embargo, la mayoría de las mutaciones genéticas que se han encontrado en las células cancerosas también se han hallado en las células de enfermedades no relacionadas con el cáncer [<a class="reference-note" href="#reference-3" aria-label="Referencia 3" data-reference={referencePreview(2)}>3</a>] [<a class="reference-note" href="#reference-4" aria-label="Referencia 4" data-reference={referencePreview(3)}>4</a>]. Por lo que el Dr. Arguello explica que las mutaciones genéticas y otras anormalidades que se encuentran en células cancerosas no son la causa del cáncer, sino cambios que resultan a consecuencia de la transformación maligna.</p>
 <p>Por lo tanto, la quimioterapia atavistica consiste en el uso de medicamentos aprobados hace décadas por la FDA y por todas las agencias de salud del mundo, para tratar hombres, mujeres y niños con enfermedades causadas por células primitivas (organismos unicelulares) como es el caso de las células bacterianas, fúngicas y protozoarias.</p>
 </div>
 
@@ -439,7 +448,7 @@ const structuredData = {
 </div>
 <details class="acc mx-auto max-w-4xl">
 <summary>Ver las 15 referencias científicas</summary>
-<ol class="acc-body list-decimal space-y-3 pl-10 text-xs leading-relaxed text-slate-600 sm:text-sm">
+<ol class="acc-body list-decimal list-inside space-y-3 text-xs leading-relaxed text-slate-600 sm:text-sm">
 {REFERENCES.map((reference, index) => <li id={`reference-${index + 1}`}>{reference}</li>)}
 </ol>
 </details>
@@ -472,8 +481,76 @@ const structuredData = {
         ? event.target.closest('a.reference-note')
         : null
 
-      if (link) openReference(link.hash)
+      if (link) {
+        hideRefTip()
+        openReference(link.hash)
+      }
     })
+
+    const refTip = document.getElementById('ref-tooltip')
+    const REF_TIP_MARGIN = 8
+
+    const positionRefTip = (anchor) => {
+      if (!refTip) return
+      refTip.textContent = anchor.getAttribute('data-reference') || ''
+      refTip.hidden = false
+      const rect = anchor.getBoundingClientRect()
+      const tipWidth = refTip.offsetWidth
+      const tipHeight = refTip.offsetHeight
+      const gap = 8
+      let left = rect.left + rect.width / 2 - tipWidth / 2
+      left = Math.max(REF_TIP_MARGIN, Math.min(left, window.innerWidth - tipWidth - REF_TIP_MARGIN))
+      let top = rect.top - tipHeight - gap
+      if (top < REF_TIP_MARGIN) top = rect.bottom + gap
+      top = Math.max(REF_TIP_MARGIN, Math.min(top, window.innerHeight - tipHeight - REF_TIP_MARGIN))
+      refTip.style.left = `${left}px`
+      refTip.style.top = `${top}px`
+    }
+
+    function hideRefTip() {
+      if (refTip) refTip.hidden = true
+    }
+
+    document.addEventListener('mouseover', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a.reference-note')
+        : null
+
+      if (link) positionRefTip(link)
+    })
+
+    document.addEventListener('mouseout', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a.reference-note')
+        : null
+
+      if (link) hideRefTip()
+    })
+
+    document.addEventListener('focusin', (event) => {
+      const link = event.target instanceof Element
+        ? event.target.closest('a.reference-note')
+        : null
+
+      if (link) positionRefTip(link)
+    })
+
+    document.addEventListener('focusout', hideRefTip)
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') hideRefTip()
+    })
+    let refTipScrollTimer = 0
+    window.addEventListener('scroll', () => {
+      hideRefTip()
+      clearTimeout(refTipScrollTimer)
+      refTipScrollTimer = window.setTimeout(() => {
+        const active = document.activeElement instanceof Element
+          ? document.activeElement.closest('a.reference-note')
+          : null
+
+        if (active) positionRefTip(active)
+      }, 150)
+    }, { passive: true, capture: true })
 
     window.addEventListener('hashchange', () => openReference(window.location.hash))
     openReference(window.location.hash)

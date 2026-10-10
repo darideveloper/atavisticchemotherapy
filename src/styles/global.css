@@ -13,6 +13,17 @@
 	--color-app-bg: #f7f8fa;
 }
 
+/* Tailwind v4 changed buttons to `cursor: default` (see upgrade guide
+   "Preflight changes"). Restore v3 `pointer` affordance globally so every
+   current and future button / button-role shows it without per-element
+   `cursor-pointer` utilities. Utilities still override this (base layer). */
+@layer base {
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
+		cursor: pointer;
+	}
+}
+
 html,
 body {
 	margin: 0;
