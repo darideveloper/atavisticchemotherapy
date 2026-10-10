@@ -18,8 +18,8 @@ export const BUSINESS_DATA = {
     email: '',
     whatsapp: {
       username: {
-        label: '@FrankArguello7777',
-        url: 'https://wa.me/FrankArguello7777',
+        label: '+1 (301) 305-9591',
+        url: 'https://wa.me/13013059591',
       },
       mexico: {
         label: 'WhatsApp (656 338 2516)',
