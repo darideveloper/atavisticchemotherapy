@@ -34,17 +34,17 @@ The system SHALL show a shortened citation preview (truncated at a word boundary
 
 ### Requirement: Citation numbers look like links
 
-The system SHALL style `.reference-note` anchors with underline and a context-aware blue (light blue on dark plum backgrounds, standard blue on white backgrounds), with a distinct hover state and a visible `focus-visible` outline.
+The system SHALL style superscript `sup.reference-note` citations at faithful `0.75em` with `vertical-align: super` and `line-height: 0`, rendering the anchor inside in context-aware brand blue (light blue `#93c5fd` on dark plum backgrounds, standard blue `#1d4ed8` on white backgrounds) with NO underline by default and underline on hover, plus a visible `focus-visible` outline.
 
 #### Scenario: Dark card numbers read as links
 
 - **WHEN** a visitor views citation numbers inside the dark statistics accordion
-- **THEN** numbers appear light blue and underlined, not body-pink text
+- **THEN** numbers appear as raised superscript light-blue `[N]` with underline only on hover, not body-pink text
 
 #### Scenario: Light section numbers read as links
 
 - **WHEN** a visitor views citation numbers in the white `#atavica` section
-- **THEN** numbers appear standard link blue and underlined
+- **THEN** numbers appear as raised superscript standard-link-blue `[N]` with underline only on hover
 
 ### Requirement: No native title tooltip competes with the popup
 
@@ -57,7 +57,7 @@ The system SHALL NOT render a `title` attribute on any `.reference-note` anchor;
 
 ### Requirement: Each citation number has its own popup and target
 
-The system SHALL render each cited number as an individual anchor in `[N]` form with its own `href="#reference-N"`, single-item `data-reference`, and `aria-label="Referencia N"`, with brackets separated by single spaces as plain text outside the anchors (no commas).
+The system SHALL render each cited number as an individual superscript citation in the form `<sup class="reference-note"><a href="#reference-N" aria-label="Referencia N" data-reference="...">[N]</a></sup>` with brackets inside the anchor and the whole `[N]` clickable, each carrying its own single-item `data-reference` and `aria-label="Referencia N"`, with superscript citations separated by single spaces as plain text outside the `sup` elements (no commas).
 
 #### Scenario: Per-number popup in a former group
 
