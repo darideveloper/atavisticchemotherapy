@@ -5,7 +5,7 @@ import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 import Image from '@/components/atoms/Image.astro';
 import ClinicalCaseExamples from '@/components/organisms/ClinicalCaseExamples.astro';
 import TestimonialSlider from '@/components/organisms/TestimonialSlider';
-import { IMAGE_SLOTS, slideSet } from '@/lib/images';
+import { IMAGE_SLOTS, lcpPreload, slideSet } from '@/lib/images';
 import SiteFooter from '@/components/organisms/SiteFooter.astro';
 import eyeEnucleation from '@/assets/content/Eye-Enucleation.jpg';
 import mastectomy from '@/assets/content/Mastectomy.jpg';
@@ -19,8 +19,8 @@ import normalCell from '@/assets/content/Mother.png';
 import treatedPatients from '@/assets/content/alice-th.jpg';
 import frankArguelloPatient from '@/assets/content/frank-arguello-paciente-hospital.png';
 import headshot from '@/assets/content/headshot.webp';
-import dedicatoriaPadres from '@/assets/content/dedicatoria-padres.png';
-import prensa1984 from '@/assets/content/prensa-el-norte-1984.png';
+import dedicatoriaPadres from '@/assets/dedicatoria-padres.webp';
+import prensa1984 from '@/assets/content/prensa-el-norte-1984.webp';
 import libro2011 from '@/assets/content/libro-metamorfosis-atavica-2011.jpg';
 import logoWhite from '@/assets/content/logo-white.png';
 
@@ -37,6 +37,8 @@ const optimizedTestimonials = await Promise.all(
     ),
   })),
 );
+
+const logoLcp = await lcpPreload(logoWhite, IMAGE_SLOTS.logo);
 
 const REFERENCES = [
   'Theobald DL. A formal test of the theory of universal common ancestry. Nature. 2010 May 13;465(7295):219-22. doi: 10.1038/nature09014. PMID: 20463738.',
@@ -66,9 +68,9 @@ const referencePreview = (index: number, max = 160) => {
 
 const siteUrl = BUSINESS_DATA.url.replace(/\/$/, '');
 const canonicalUrl = `${siteUrl}/`;
-const socialImageUrl = `${siteUrl}/og-atavistic-chemotherapy-formal.png`;
-const pageTitle = 'Atavistic Chemotherapy | Quimioterapia Atavística';
-const pageDescription = 'Información sobre la Quimioterapia Atavística y evaluación de segunda opinión para el ensayo clínico NCT02366884.';
+const socialImageUrl = `${siteUrl}${BUSINESS_DATA.ogImage}`;
+const pageTitle = 'Atavistic Chemotherapy | Quimioterapia Atávica';
+const pageDescription = 'Información sobre la Quimioterapia Atávica y evaluación de segunda opinión para el ensayo clínico NCT02366884.';
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -123,12 +125,16 @@ const structuredData = {
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="googlebot" content="index, follow, max-image-preview:large" />
 <meta name="author" content="Dr. Frank Arguello" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" />
 <title>{pageTitle}</title>
 <meta name="description" content={pageDescription} />
 <meta name="keywords" content="quimioterapia atavística, atavistic chemotherapy, NCT02366884, segunda opinión oncológica, ensayo clínico de cáncer" />
 <link rel="canonical" href={canonicalUrl} />
 <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
 <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+<link rel="icon" href="/favicon.png?v=2" type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
 <link rel="manifest" href="/site.webmanifest?v=2" />
 <meta property="og:type" content="website" />
@@ -139,7 +145,7 @@ const structuredData = {
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={socialImageUrl} />
 <meta property="og:image:secure_url" content={socialImageUrl} />
-<meta property="og:image:type" content="image/png" />
+<meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atavística" />
@@ -149,8 +155,8 @@ const structuredData = {
 <meta name="twitter:image" content={socialImageUrl} />
 <meta name="twitter:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atavística" />
 <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+{logoLcp && <link rel="preload" as="image" imagesrcset={logoLcp.srcSet} imagesizes={logoLcp.sizes} fetchpriority="high" />}
 <style data-purpose="base-styling">
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
     html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
     .hero-card-blur { background: rgba(98, 24, 76, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
   </style>
@@ -167,6 +173,10 @@ const structuredData = {
     details.acc > summary::-webkit-details-marker { display: none; }
     details.acc > summary::after { content: '+'; font-size: 1.25rem; font-weight: 800; color: #9a3676; flex: none; }
     details.acc[open] > summary::after { content: '\2013'; }
+    .acc-link { border: 1px solid #f3d9ea; border-radius: 1rem; background: #ffffff; padding: 1rem 1.25rem; font-weight: 700; color: #4c1139; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .acc-link::after { content: '+'; font-size: 1.25rem; font-weight: 800; color: #9a3676; flex: none; }
+    .acc-link:hover { background: #fff7fb; }
+    .acc-link:focus-visible { outline: 2px solid #c24694; outline-offset: 2px; }
     details.acc.on-dark { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.06); }
     details.acc.on-dark > summary { color: #ffffff; }
     details.acc.on-dark > summary::after { color: #f9a8d4; }
@@ -218,10 +228,10 @@ const structuredData = {
 <ul class="space-y-3 mb-8 text-sm sm:text-base text-rose-50 font-medium">
 <li class="flex items-start gap-3">
 <span class="w-5 h-5 shrink-0 mt-1 rounded-full bg-white/20 flex items-center justify-center text-rose-200 text-xs font-bold">✓</span>
-                <span>La Quimioterapia Atavística ha demostrado erradicar cánceres inoperables o con metástasis en estudios clínicos registrados en los Estados Unidos. Platique con pacientes tratados <strong>con la quimioterapia atavística</strong> en México por los últimos 9 años.</span>
+                <span>La quimioterapia Atavística ha demostrado erradicar cánceres inoperables o con metástasis en estudios clínicos registrados en los Estados Unidos. Platique con pacientes tratados <strong>con la quimioterapia atavística</strong> en México por los últimos 9 años (la información de contacto es proporcionada).</span>
               </li><li class="flex items-start gap-3">
 <span class="w-5 h-5 shrink-0 mt-1 rounded-full bg-white/20 flex items-center justify-center text-rose-200 text-xs font-bold">✓</span>
-                <span>Medicamentos son tomados oralmente en la privacidad de su hogar. <strong>Mínimos efectos colaterales.</strong></span>
+                <span>Los medicamentos son tomados oralmente en la privacidad de su hogar. <strong>Mínimos efectos colaterales.</strong></span>
               </li><li class="flex items-start gap-3">
 <span class="w-5 h-5 shrink-0 mt-1 rounded-full bg-white/20 flex items-center justify-center text-rose-200 text-xs font-bold">✓</span>
                 <span><strong>No pague</strong> por su tratamiento hasta que vea una regresión objetiva y medible de su cáncer o metástasis.</span>
@@ -232,8 +242,8 @@ const structuredData = {
             </a>
 </div>
 </div>
-<div class="w-full lg:w-1/4 flex justify-center lg:justify-end">
-<Image src={logoWhite} alt="Atavistic Chemotherapy logo" class="w-full max-w-[200px] lg:max-w-[240px] h-auto" widths={[180, 360, 540]} sizes="(max-width: 1023px) 200px, 240px" loading="eager" fetchpriority="high" />
+<div class="w-full lg:w-1/4 flex justify-center lg:translate-x-[clamp(1.5rem,4vw,5rem)]">
+<Image src={logoWhite} alt="Atavistic Chemotherapy logo" class="w-[clamp(170px,18vw,260px)] max-w-full h-auto md:scale-150 md:origin-center" widths={[180, 360, 540]} sizes="clamp(170px, 18vw, 260px)" loading="eager" fetchpriority="high" />
 </div>
 </div>
 </div>
@@ -263,7 +273,7 @@ const structuredData = {
               </p>
 </div>
 <div class="space-y-4 text-[14px] leading-relaxed text-slate-600 font-normal">
-<p>El Dr. Frank Arguello ha dedicado su vida al estudio y tratamiento del cáncer después de ver morir a su madre en 1982 de cáncer cuando él iniciaba la carrera de medicina. Él obtuvo el título de Médico Cirujano y Partero de la Facultad de Medicina de la Universidad Autónoma de Nuevo León, ubicada en Monterrey, Nuevo León. Posteriormente, completó su formación en oncología en el Centro Médico de la Universidad de Connecticut y en la Escuela de Medicina y Odontología de la Universidad de Rochester, en Rochester, Nueva York. En esta institución, ocupó el cargo de Profesor de Oncología y Pediatría Hematología/Oncología, y más adelante se desempeñó como Investigador Principal en el Instituto Nacional del Cáncer dentro de la División de Tratamiento y Diagnóstico del Cáncer de los Institutos Nacionales de Salud, en Frederick, Maryland.</p>
+<p>El Dr. Frank Arguello ha dedicado su vida al estudio y tratamiento del cáncer después de ver morir a su madre en 1982 de cáncer cuando él iniciaba la carrera de medicina. Él obtuvo el título de Médico Cirujano y Partero de la Facultad de Medicina de la Universidad Autónoma de Nuevo León, ubicada en Monterrey, Nuevo León. Posteriormente, completó su formación en oncología en el Centro Médico de la Universidad de Connecticut, en Farmington, Connecticut, y en la Escuela de Medicina y Odontología de la Universidad de Rochester, en Rochester, Nueva York. En esta institución, ocupó el cargo de Profesor de Oncología y Pediatría Hematología/Oncología, y más adelante se desempeñó como Investigador Principal en el Instituto Nacional del Cáncer dentro de la División de Tratamiento y Diagnóstico del Cáncer de los Institutos Nacionales de Salud, en Frederick, Maryland.</p>
 <p>En el año 2011, el Dr. Arguello publicó un libro que se considera pionero y precursor de una manera más comprensiva sobre el origen y la biología de las células cancerosas. El título del libro en inglés es "Atavistic Metamorphosis: A New and Logical Explanation on the Origin and Nature of Cancer." (Metamorfosis Atavística: Una Nueva y Lógica Explicación Sobre el Origen y la Biología del Cáncer).</p>
 </div>
 <div class="pt-4 border-t border-slate-100">
@@ -282,7 +292,7 @@ const structuredData = {
 </div>
 <figcaption class="bg-[#4c1139] px-2 py-2.5 text-center flex-1 flex flex-col justify-center">
 <span class="block text-base sm:text-lg font-extrabold tracking-[0.2em] text-white">1984</span>
-<span class="mt-0.5 block text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rose-200">El Norte · UANL</span>
+<span class="mt-0.5 block text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-rose-200">El Norte · Monterrey, NL</span>
 </figcaption>
 </figure>
 <figure class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg flex flex-col">
@@ -296,7 +306,7 @@ const structuredData = {
 </figcaption>
 </figure>
 </div>
-<p class="pt-2 text-center text-xs text-slate-400">Toca cualquier imagen para ampliar</p>
+<p class="pt-2 text-left text-xs text-slate-400">Toca cualquier imagen para ampliar</p>
 </div>
 </div>
 </div>
@@ -307,8 +317,12 @@ const structuredData = {
 <section class="flow-reality py-20 lg:py-24 bg-gradient-plum-band text-white relative" data-purpose="plum-cards" id="realidad" style="order:3">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="max-w-5xl mx-auto mb-16">
-<h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 uppercase lg:whitespace-nowrap">La Realidad de la Oncología Actual</h2>
-<p class="max-w-4xl text-rose-100/90 text-sm sm:text-base leading-relaxed text-justify">Excluyendo algunas formas de leucemias, linfomas y tumores de células germinales que son curables con una combinación de quimioterapia tradicional y radiaciones, hoy en día, la única manera de curar un cáncer es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, con la excepción de una cirugía temprana para remover el órgano afectado por un cáncer, cuando todas las células cancerosas aún se encuentran localizadas en él, las quimioterapias, inmunoterapias y radiaciones que se usan actualmente no pueden curar un cáncer y ofrecen beneficios marginales a pacientes con cáncer.</p>
+<h2 class="text-center text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 uppercase lg:whitespace-nowrap">La Realidad de la Oncología Actual</h2>
+<p class="max-w-4xl text-left text-rose-100/90 text-sm sm:text-base leading-relaxed">Si excluimos algunas formas de leucemias, linfomas y tumores de células germinales que son actualmente curables mediante una combinación de quimioterapia tradicional y radioterapia, que en conjunto solo representan el 3% de todos los cánceres, la única opción para curar un cáncer hoy en día es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, para curar un cáncer, aun en el 2026, necesitamos detectarlo tempranamente y remover el órgano afectado y tejidos vecinos cuando todas las células cancerosas aún permanecen localizadas en dicho órgano. Los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radioterapia solo proporcionan beneficios marginales a los pacientes que no fueron curados con una cirugía temprana.</p>
+<blockquote class="mt-6 max-w-3xl text-right italic text-rose-100 sm:ml-auto sm:mr-8">
+  <p class="font-bold">“El cuchillo y el cauterio son, incluso hoy, nuestros únicos remedios contra el cáncer temprano. Pero, en la infancia de nuestro arte, ¿qué no eran los mismos?”</p>
+  <footer class="mt-4 text-right text-sm font-bold not-italic">Bernard Peyrilhe (1774)<br/><span class="mt-4 block">[poco parece haber cambiado desde entonces]</span></footer>
+</blockquote>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
 <article class="bg-white text-slate-800 rounded-2xl overflow-hidden shadow-xl flex flex-col transition duration-300 hover:-translate-y-1">
@@ -358,7 +372,7 @@ const structuredData = {
 </div>
 <div class="max-w-4xl mx-auto mt-12 space-y-4">
 <details class="acc on-dark">
-<summary><span class="flex-1 space-y-2"><h2 class="text-2xl sm:text-3xl font-extrabold text-pink-100 tracking-tight">Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir (<span class="text-blue-300 underline font-bold whitespace-nowrap">Leer Más</span>)</h2></span></summary>
+<summary><span class="flex-1 space-y-2"><h2 class="text-center text-2xl sm:text-3xl font-extrabold text-pink-100 tracking-tight">Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir <span class="whitespace-nowrap text-sm sm:text-base">(<span class="text-blue-300 underline font-bold">Leer Más</span>)</span></h2></span></summary>
 <div class="acc-body text-sm leading-relaxed space-y-4">
 <p>1) A pesar del aparente progreso en la investigación y el tratamiento del cáncer durante los últimos 60 años, el cáncer representa hoy en día una amenaza mucho mayor para el mundo que en cualquier otro momento de la historia de la medicina.</p><p>2) Diariamente, más de 27,000 hombres, mujeres y niños mueren de cáncer, o por la quimioterapia y procedimientos empleados para tratarlos <sup class="reference-note"><a href="#reference-9" aria-label="Referencia 9" data-reference={referencePreview(8)}>[9]</a></sup>.</p><p>3) En los Estados Unidos, más de 1,670 hombres, mujeres y niños mueren de cáncer diariamente en los mejores hospitales del mundo <sup class="reference-note"><a href="#reference-10" aria-label="Referencia 10" data-reference={referencePreview(9)}>[10]</a></sup>. El cáncer en ese país es la causa principal de muerte en todas las personas adultas antes de los 85 años <sup class="reference-note"><a href="#reference-11" aria-label="Referencia 11" data-reference={referencePreview(10)}>[11]</a></sup> <sup class="reference-note"><a href="#reference-12" aria-label="Referencia 12" data-reference={referencePreview(11)}>[12]</a></sup>, y también representa la causa principal de muerte por enfermedad en niños de 1 a 19 años. De hecho, el cáncer es responsable de más muertes en niños en ese país que todas las demás enfermedades infantiles combinadas <sup class="reference-note"><a href="#reference-13" aria-label="Referencia 13" data-reference={referencePreview(12)}>[13]</a></sup>.</p><p>4) La mayoría de la gente desconoce que hoy en día un cáncer es incurable y casi siempre mortal, aun recibiendo los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radiación, cuando el tumor es técnicamente inoperable, si no pudo ser removido quirúrgicamente en su totalidad, o si células cancerosas han migrado de su sitio de origen a otros órganos (metastatizado). En un estudio del Danna-Farber Cancer Institute en los Estados Unidos, se encontró que hasta el 80% de 1,193 pacientes entrevistados, quienes estaban recibiendo quimioterapia tradicional por cánceres del colon o pulmón con metástasis a otros órganos, contestaron que creían que el tratamiento que estaban recibiendo de quimioterapia los podría curar. Cuando desde el punto de vista oncológico todos morirían de su enfermedad, y así fue <sup class="reference-note"><a href="#reference-14" aria-label="Referencia 14" data-reference={referencePreview(13)}>[14]</a></sup>.</p><p>5) Se estima que 75,000 a 100,000 niños mueren de cáncer cada año en el mundo <sup class="reference-note"><a href="#reference-15" aria-label="Referencia 15" data-reference={referencePreview(14)}>[15]</a></sup>.</p><p>6) A pesar de una respuesta inicial aparente a la quimioterapia, inmunoterapias y radiación convencionales, las células cancerosas sobrevivientes se vuelven más agresivas y metastatizan con mayor facilidad. Solo en los últimos años este problema de exacerbación iatrogénica del cáncer inducida por fármacos, inmunoterapia y radiación ha sido reconocido más abiertamente por la comunidad médica <sup class="reference-note"><a href="#reference-5" aria-label="Referencia 5" data-reference={referencePreview(4)}>[5]</a></sup> <sup class="reference-note"><a href="#reference-6" aria-label="Referencia 6" data-reference={referencePreview(5)}>[6]</a></sup> <sup class="reference-note"><a href="#reference-7" aria-label="Referencia 7" data-reference={referencePreview(6)}>[7]</a></sup> <sup class="reference-note"><a href="#reference-8" aria-label="Referencia 8" data-reference={referencePreview(7)}>[8]</a></sup>.</p>
 </div>
@@ -394,7 +408,7 @@ const structuredData = {
 <p>Como se mencionó anteriormente, el Dr. Arguello publicó un libro con una explicación más racional y congruente sobre el origen y la conducta maligna de las células cancerosas. En este libro, el Dr. Arguello sostiene y documenta científicamente que el cáncer, o la transformación maligna, ocurre cuando hay una regresión evolutiva (atavismo) de una célula normal hacia su estado celular primitivo o ancestral. Es decir, una célula normal revierte de nuevo a su estado unicelular independiente, de donde se originaron nuestras células. Todos los organismos vivos que habitan este planeta están formados por células, y se ha demostrado con estudios genéticos que las células de todos los organismos, incluyendo los seres humanos, tienen un mismo origen celular. Todos descendemos de una colonia de células primitivas u organismos unicelulares, similares a las células bacterianas actuales, que existieron en este planeta hace billones de años. De esas células primitivas descienden todas las formas de vida actual <sup class="reference-note"><a href="#reference-1" aria-label="Referencia 1" data-reference={referencePreview(0)}>[1]</a></sup> <sup class="reference-note"><a href="#reference-2" aria-label="Referencia 2" data-reference={referencePreview(1)}>[2]</a></sup>. Esa conducta celular primitiva, invasiva e independiente de nuestros antepasados celulares quedó codificada en la memoria genética de todas las células que existen en la actualidad, aunque esta ha sido suprimida o inactivada a través de la evolución. Agentes que causan cáncer, muy seguramente lo hacen activando de nuevo estos genes primitivos de la vida celular independiente.</p>
 <blockquote class="italic text-[#641b4e]">
 <p class="font-bold">“Cualquier célula viva en este planeta lleva consigo la experiencia de miles de millones de años de la vida de sus antepasados celulares.”</p>
-<footer class="not-italic text-sm font-semibold mt-2">Max Delbrück (1906-1981)<br/><span class="font-normal">Premio Nobel de Medicina (1969)</span></footer>
+<footer class="mt-2 pr-4 text-right text-sm font-semibold not-italic sm:pr-6">Max Delbrück (1906-1981)<br/><span class="font-normal">Premio Nobel de Medicina (1969)</span></footer>
 </blockquote>
 <p>Todo lo anterior explica por qué el cáncer no solo afecta a los seres humanos, sino también a todos los animales, incluyendo aves, mamíferos, reptiles, insectos, peces y anfibios, así como a las plantas y los árboles. Esta interpretación está obviamente en conflicto con la hipótesis tradicional de que las mutaciones genéticas son la causa del cáncer, postulada hace más de 100 años por Theodor Boveri (1862-1915) en 1912. Sin embargo, la mayoría de las mutaciones genéticas que se han encontrado en las células cancerosas también se han hallado en las células de enfermedades no relacionadas con el cáncer <sup class="reference-note"><a href="#reference-3" aria-label="Referencia 3" data-reference={referencePreview(2)}>[3]</a></sup> <sup class="reference-note"><a href="#reference-4" aria-label="Referencia 4" data-reference={referencePreview(3)}>[4]</a></sup>. Por lo que el Dr. Arguello explica que las mutaciones genéticas y otras anormalidades que se encuentran en células cancerosas no son la causa del cáncer, sino cambios que resultan a consecuencia de la transformación maligna.</p>
 <p>Por lo tanto, la quimioterapia atavística consiste en el uso de medicamentos aprobados hace décadas por la FDA y por todas las agencias de salud del mundo, para tratar hombres, mujeres y niños con enfermedades causadas por células primitivas (organismos unicelulares) como es el caso de las células bacterianas, fúngicas y protozoarias.</p>
@@ -413,7 +427,7 @@ const structuredData = {
 <Image src={frankArguelloPatient} alt="Dr. Frank Arguello acompañando a una paciente en el hospital" class="w-full max-w-lg h-auto rounded-2xl shadow-lg cursor-zoom-in" widths={[480, 960]} sizes="(max-width: 1023px) calc(100vw - 2rem), 40vw" lightbox />
 </div>
 <div class="lg:col-span-7 space-y-7 lg:pr-6 lg:order-1">
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+<h2 class="scroll-mt-24 text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight" id="que-es-quimioterapia-atavistica">
               ¿Qué es la Quimioterapia Atavística y <span class="text-[#a83279]">Cómo ser Considerado</span> para Participar?
             </h2>
 <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-semibold">
@@ -423,7 +437,11 @@ const structuredData = {
 <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">¿En qué Consiste la Quimioterapia Atavística y Cómo ser Considerado para Participar?</h3>
 <p>La quimioterapia atavística consiste en el uso de cinco medicamentos aprobados hace décadas por la FDA y por todas las agencias de salud del mundo, para tratar hombres, mujeres y niños con enfermedades causadas por células primitivas, como es el caso de las células bacterianas, fúngicas y protozoarias. El Dr. Arguello descubrió que el uso selectivo, secuencial y combinado de estos medicamentos por vía oral crea un potente efecto anticanceroso, que ha sido demostrado clínicamente en muchos pacientes con varios tipos de cáncer avanzado. Los efectos colaterales son mínimos y bien tolerados.</p>
 <p>También, abajo, están los nombres y correo electrónico de cinco pacientes tratados por el Dr. Arguello en México. Conviene señalar que uno de esos pacientes es la hermana del Dr. Arguello, y otro una sobrina. Ellos han aceptado responder preguntas si usted está interesado(a) en esta nueva forma de quimioterapia atavística. Todos ellos tenían enfermedad metastásica (estadio IV), y desde el punto de vista oncológico actual, habrían muerto a causa de su enfermedad. Sin embargo, siguen con nosotros libres de cáncer después de 1 a 9 años de haber sido tratados. Cabe destacar que el récord de sobrevivencia libre de cáncer después del tratamiento con quimioterapia atavística lo lleva la Sra. Brealey, 13 años luego de haber sido tratada. Ella radica en Toronto, Canadá.</p>
-<p>Si su caso es aceptado por el Dr. Arguello y, después de firmar sus documentos de registro y consentimiento informado, su tratamiento iniciará mediante la toma de los medicamentos por vía oral en forma de pastillas o cápsulas. Esto se realiza en la comodidad del hogar del paciente, durante un periodo de tres meses. Se solicitan estudios rutinarios de laboratorio cada 15 días durante el tratamiento y se monitorea la respuesta del cáncer a través de PET, TAC, MRI, ultrasonido o marcadores tumorales, según sea el caso. El tratamiento tiene un costo mensual de XXXX, pero el primer mes no se paga si usted o sus médicos no ven una respuesta objetiva al tratamiento. Si usted no ve beneficios claros durante las primeras tres semanas, tal como disminución en el tamaño de su(s) tumor(es), disminución de dolor, o de cualquier otro síntoma causado por su enfermedad, el tratamiento se suspende y usted no debe pagar nada. En cambio, si los beneficios del tratamiento son evidentes, como en muchos otros casos ha ocurrido, usted tendría que pagar por el primer mes ya completado y el segundo mes para continuar. Si la mejoría continúa, un tercer mes de tratamiento será necesario. El objetivo del Dr. Arguello es eliminar el cáncer de su cuerpo. Si el Dr. Arguello cree que un cuarto mes de tratamiento se requiere para asegurarse de que el cáncer no regrese; ese cuarto mes se le dará sin costo alguno.</p>
+<p>Si su caso es aceptado por el Dr. Arguello y, después de firmar sus documentos de registro y consentimiento informado, su tratamiento iniciará mediante la toma de los medicamentos por vía oral en forma de pastillas o cápsulas. Esto se realiza en la comodidad del hogar del paciente, durante un periodo de tres meses. Se solicitan estudios rutinarios de laboratorio cada 15 días durante el tratamiento y se monitorea la respuesta del cáncer a través de PET, TAC, MRI, ultrasonido o marcadores tumorales, según sea el caso. El tratamiento tiene un costo mensual de $2,900 USD, pero el primer mes no se paga si usted o sus médicos no ven una respuesta objetiva al tratamiento. Si usted no ve beneficios claros durante las primeras tres semanas, tal como disminución en el tamaño de su(s) tumor(es), disminución de dolor, o de cualquier otro síntoma causado por su enfermedad, el tratamiento se suspende y usted no debe pagar nada. En cambio, si los beneficios del tratamiento son evidentes, como en muchos otros casos ha ocurrido, usted tendría que pagar por el primer mes ya completado y el segundo mes para continuar. Si la mejoría continúa, un tercer mes de tratamiento será necesario. El objetivo del Dr. Arguello es eliminar el cáncer de su cuerpo. Si el Dr. Arguello cree que un cuarto mes de tratamiento se requiere para asegurarse de que el cáncer no regrese; ese cuarto mes se le dará sin costo alguno.</p>
+<aside class="scroll-mt-24 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-slate-600" id="aviso-tratamiento-previo">
+  <p>La efectividad de esta nueva forma de quimioterapia disminuye significativamente si el cáncer en el paciente ha sido expuesto previamente por más de tres meses a los esquemas de quimioterapia o radiación usados tradicionalmente en oncología. Ya que la radiación y los fármacos usados actualmente, aunque sí tienen efecto en muchas de las células cancerosas, no son capaces de eliminarlas o erradicarlas completamente. Por lo tanto, causan que las células cancerosas sobrevivientes se vuelvan más agresivas con el tiempo, se diseminen más rápidamente en el cuerpo y se hagan resistentes a todo tipo de tratamientos en su lucha por sobrevivir <sup class="reference-note"><a href="#reference-5" aria-label="Referencia 5" data-reference={referencePreview(4)}>[5]</a></sup> <sup class="reference-note"><a href="#reference-6" aria-label="Referencia 6" data-reference={referencePreview(5)}>[6]</a></sup> <sup class="reference-note"><a href="#reference-7" aria-label="Referencia 7" data-reference={referencePreview(6)}>[7]</a></sup> <sup class="reference-note"><a href="#reference-8" aria-label="Referencia 8" data-reference={referencePreview(7)}>[8]</a></sup>. En estos casos, no podemos ofrecer el primer mes de prueba, por lo que su pago es necesario si el Dr. Arguello cree que vale la pena tratar y ver si el cáncer es aún sensible al tratamiento. Si más tratamiento es necesario más allá del tercer mes, en personas previamente tratadas convencionalmente, los meses adicionales tendrán que pagarse también (estos costos pueden eliminarse según el caso).</p>
+</aside>
+<a data-contact-open class="inline-block px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-gradient-to-r from-[#9b3174] to-[#c24694] hover:from-[#892764] hover:to-[#ad3c82] shadow-lg hover:shadow-rose-900/30 transition-all transform hover:-translate-y-0.5" href="#contacto">Solicitar una segunda opinión</a>
 </div>
 
 </div>
@@ -437,7 +455,7 @@ const structuredData = {
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-6 max-w-lg text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900" id="testimonios-heading">Pacientes tratados en México</h2>
-<p class="mt-2 text-sm leading-relaxed text-slate-600">Solicite la opinión de estos pacientes que han sido tratados con quimioterapia atavística por el Dr. Arguello en México.</p>
+<p class="mt-2 text-left text-sm leading-relaxed text-slate-600">Solicite la opinión de estos pacientes que han sido tratados con quimioterapia atavística por el Dr. Arguello en México.</p>
 </div>
 <TestimonialSlider testimonials={optimizedTestimonials} client:load />
 </div>
@@ -449,16 +467,16 @@ const structuredData = {
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-8 max-w-3xl text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" id="comparacion-heading">Quimioterapia tradicional<br/>vs<br/>Quimioterapia atavística</h2>
-<p class="mt-2 text-sm leading-relaxed text-slate-600">Conozca las diferencias generales entre ambos enfoques de tratamiento.</p>
+<p class="mt-2 text-left text-sm leading-relaxed text-slate-600">Ambas son quimioterapias en que ambas se basan en el uso de químicos o fármacos como tratamiento fundamental.</p>
 </div>
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 <article class="rounded-2xl border border-rose-100 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
 <h3 class="text-lg font-extrabold text-[#5c1642]">Quimioterapia tradicional</h3>
-<p class="mt-3 text-sm leading-relaxed text-slate-600">Utiliza esquemas establecidos para distintos tipos y etapas de cáncer. En la página se describen sus limitaciones cuando el tumor es inoperable o cuando las células cancerosas se han diseminado a otros órganos.</p>
+<p class="mt-3 text-sm leading-relaxed text-slate-600">En la quimioterapia tradicional, los químicos utilizados están predominantemente dirigidos a interferir con la multiplicación de las células, lo que afecta tanto a células cancerosas como a las normales, y de ahí su toxicidad.</p>
 </article>
 <article class="rounded-2xl border border-rose-100 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
 <h3 class="text-lg font-extrabold text-[#5c1642]">Quimioterapia atavística</h3>
-<p class="mt-3 text-sm leading-relaxed text-slate-600">Consiste en el uso selectivo, secuencial y combinado de cinco medicamentos aprobados, administrados por vía oral. La información de esta página presenta el enfoque y los casos clínicos tratados bajo este protocolo.</p>
+<p class="mt-3 text-sm leading-relaxed text-slate-600">En la quimioterapia atavística, los cinco medicamentos utilizados están estratégicamente orientados a interferir con las funciones vitales y de defensa de organismos unicelulares, similar a los que se emplean para tratar a niños y adultos con infecciones graves por organismos unicelulares, como es el caso de células bacterianas, fúngicas y protozoarias.</p>
 </article>
 </div>
 </div>
@@ -470,7 +488,7 @@ const structuredData = {
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-6 max-w-lg text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900" id="referencias-heading">Referencias</h2>
-<p class="mt-2 text-xs leading-relaxed text-slate-600">Fuentes científicas mencionadas a lo largo de esta página.</p>
+<p class="mt-2 text-left text-xs leading-relaxed text-slate-600">Fuentes científicas mencionadas a lo largo de esta página.</p>
 </div>
 <details class="acc mx-auto max-w-4xl">
 <summary>Ver las 15 referencias científicas</summary>
@@ -485,16 +503,17 @@ const structuredData = {
 <!-- BEGIN: DedicationSection -->
 <section class="flow-dedication bg-white py-20 lg:py-24" aria-labelledby="dedicatoria-heading" id="dedicatoria" style="order:9">
 <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-<h2 class="font-extrabold tracking-tight text-slate-900 text-3xl sm:text-4xl" id="dedicatoria-heading" style="font-family:'Playfair Display',serif">Dedicatoria a mi madre</h2>
+<h2 class="font-extrabold tracking-tight text-slate-900 text-3xl sm:text-4xl" id="dedicatoria-heading" style="font-family:'Playfair Display',serif">Dedicatoria</h2>
 <p class="mt-4 text-[#4c1139]" aria-hidden="true">── ◆ ──</p>
 <figure class="mx-auto mt-8 w-full max-w-md">
 <div class="relative overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-xl group">
 <Image src={dedicatoriaPadres} alt="Celia Astorga de Arguello (1932-1982) junto a su esposo" class="w-full h-auto cursor-zoom-in transition duration-500 group-hover:scale-102" widths={[400, 800]} sizes="(max-width: 639px) calc(100vw - 2rem), 448px" lightbox />
 <span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
 </div>
+<figcaption class="mt-3 text-center text-sm font-medium text-slate-600"><p class="text-left">Celia Astorga de Arguello<br />(1932-1982)</p></figcaption>
 </figure>
-<div class="mt-8 space-y-4 text-lg leading-relaxed text-slate-700" style="font-family:'Playfair Display',serif;font-style:italic">
-<p>Dedico este trabajo a la amorosa memoria de mi madre, quien falleció de cáncer de vesícula biliar a la prematura edad de 50 años, cuando yo tenía 21 años e iniciaba mi carrera de medicina.</p>
+<div class="mt-8 space-y-4 text-left text-lg leading-relaxed text-slate-700" style="font-family:'Playfair Display',serif;font-style:italic">
+<p class="font-bold">Dedico este trabajo a la amorosa memoria de mi madre, quien falleció de cáncer de vesícula biliar a la prematura edad de 50 años, cuando yo tenía 21 años e iniciaba mi carrera de medicina.</p>
 <p>Si el amor de tus pequeños hijos hubiera sido suficiente para salvarte, sin duda no habrías muerto. Pero nuestro amor y nuestras lágrimas no fueron suficientes. Nunca entendí por qué Dios te tuvo que arrebatar de nuestras vidas tan pronto; hasta ahora, este descubrimiento jamás se habría hecho. Espero que este trabajo y los esfuerzos derivados de estos conceptos por otros médicos eviten que otras familias sufran el dolor y la tristeza que nosotros vivimos a causa de tu muerte prematura.</p>
 </div>
 <p class="mt-6 text-right text-lg font-semibold text-slate-800" style="font-family:'Playfair Display',serif;font-style:italic">— Frank Arguello Astorga</p>
@@ -616,10 +635,7 @@ const structuredData = {
 <input required name="preferredDay" placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
 <input required name="preferredTime" placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
 <textarea name="message" placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
-<details class="acc sm:col-span-2">
-<summary>IMPORTANTE: Si usted ya ha recibido quimioterapia tradicional o radiaciones para tratar su cáncer, haga clic aquí.</summary>
-<div class="acc-body text-xs sm:text-sm leading-relaxed text-slate-600"><p>La efectividad de esta nueva forma de quimioterapia disminuye significativamente si el cáncer en el paciente ha sido expuesto previamente por más de tres meses a los esquemas de quimioterapia o radiación usados tradicionalmente en oncología. Ya que la radiación y los fármacos usados actualmente, aunque sí tienen efecto en muchas de las células cancerosas, no son capaces de eliminarlas o erradicarlas completamente. Por lo tanto, causan que las células cancerosas sobrevivientes se vuelvan más agresivas con el tiempo, se diseminen más rápidamente en el cuerpo y se hagan resistentes a todo tipo de tratamientos en su lucha por sobrevivir (5, 6, 7, 8). En estos casos, no podemos ofrecer el primer mes de prueba, por lo que su pago es necesario si el Dr. Arguello cree que vale la pena tratar y ver si el cáncer es aún sensible al tratamiento. Si más tratamiento es necesario más allá del tercer mes, en personas previamente tratadas convencionalmente, los meses adicionales tendrán que pagarse también (estos costos pueden eliminarse según el caso).</p></div>
-</details>
+<a data-contact-section-link class="acc-link sm:col-span-2" href="#que-es-quimioterapia-atavistica">¿Qué es la Quimioterapia Atavística y Cómo ser Considerado para Participar?</a>
 <button type="submit" class="sm:col-span-2 justify-self-start rounded-full bg-gradient-to-r from-[#9b3174] to-[#c24694] hover:from-[#892764] hover:to-[#ad3c82] px-8 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-lg transition">Solicitar mi segunda opinión ahora</button>
 </form>
 <p id="contact-error" role="alert" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3 mt-4"></p>
@@ -653,16 +669,25 @@ if (modal && form && success && errorMessage && submitButton) {
     else success.focus()
   }
 
-  const close = () => {
+  const close = (restoreFocus = true) => {
     modal.classList.add('hidden')
     modal.classList.remove('flex')
     document.body.style.overflow = ''
-    returnFocus?.focus()
+    if (restoreFocus) returnFocus?.focus()
   }
 
   document.addEventListener('click', (event) => {
     if (!(event.target instanceof Element)) return
     if (event.target.closest('[data-contact-open]')) open(event)
+    else if (event.target.closest<HTMLAnchorElement>('[data-contact-section-link]')) {
+      const link = event.target.closest<HTMLAnchorElement>('[data-contact-section-link]')
+      const target = link?.hash ? document.querySelector<HTMLElement>(link.hash) : null
+      if (!target) return
+      event.preventDefault()
+      close(false)
+      window.history.replaceState(null, '', link.hash)
+      window.requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+    }
     else if (event.target === modal || event.target.closest('[data-contact-close]')) close()
     else if (event.target.closest('[data-contact-reset]')) {
       form.reset()
