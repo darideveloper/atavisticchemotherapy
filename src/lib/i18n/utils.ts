@@ -1,55 +1,37 @@
-import { defaultLang, supportedLangs, ui } from '@/lib/i18n/ui'
+import { defaultLang, ui } from '@/lib/i18n/ui'
 import { routes, type PageKey } from '@/lib/i18n/routes'
 
-export function getLangFromUrl(url: URL) {
-	const [, firstSegment] = url.pathname.split('/')
-	if (
-		(supportedLangs as string[]).includes(firstSegment) &&
-		firstSegment !== defaultLang
-	)
-		return firstSegment
+export function getLangFromUrl(_url: URL) {
 	return defaultLang
 }
 
-export function getLocalizedPath(pageKey: PageKey, lang: keyof typeof ui) {
-	const path = routes[pageKey]?.[lang]
-	return path === undefined || path === '' ? '/' : `/${path}`
+export function getLocalizedPath(pageKey: PageKey) {
+	const path = routes[pageKey]
+	return path === '' ? '/' : `/${path}`
 }
 
 export function getPageKeyFromUrl(url: URL): PageKey | null {
-	const lang = getLangFromUrl(url)
 	const pathname =
 		url.pathname.length > 1 ? url.pathname.replace(/\/$/, '') : url.pathname
-	for (const [key, localized] of Object.entries(routes)) {
-		if (getLocalizedPath(key as PageKey, lang) === pathname) return key as PageKey
+	for (const key of Object.keys(routes) as PageKey[]) {
+		if (getLocalizedPath(key) === pathname) return key
 	}
 	return null
 }
 
-export function getTranslations(lang: keyof typeof ui) {
+export function getTranslations(_lang: keyof typeof ui = defaultLang) {
 	return function t(key: string, vars?: Record<string, string>) {
 		const keys = key.split('.')
-		let value: any = ui[lang]
+		let value: any = ui[defaultLang]
 
 		for (const k of keys) {
 			value = value?.[k]
 			if (value === undefined) break
 		}
 
-		if (value === undefined) {
-			let fallbackValue: any = ui[defaultLang]
-			for (const k of keys) {
-				fallbackValue = fallbackValue?.[k]
-				if (fallbackValue === undefined) break
-			}
-			value = fallbackValue
-
-			if (value === undefined) {
-				if (import.meta.env.DEV) {
-					console.error(`[i18n] Missing translation key: "${key}"`)
-					return `MISSING: ${key}`
-				}
-			}
+		if (value === undefined && import.meta.env.DEV) {
+			console.error(`[i18n] Missing translation key: "${key}"`)
+			return `MISSING: ${key}`
 		}
 
 		if (typeof value === 'string' && vars) {

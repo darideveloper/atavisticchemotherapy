@@ -3,13 +3,14 @@ import BaseSEO from '@/components/seo/BaseSEO.astro'
 
 const {
 	currentPage,
-	lang = 'en',
+	lang = 'es',
 	title,
+	schemaName,
 	description,
 	baseDescription,
 	keywords,
 	baseKeywords,
-	jsonType = 'LocalBusiness',
+	jsonType = 'Organization',
 	extraJson = {},
 	ogImage,
 	useTagLine,
@@ -17,4 +18,4 @@ const {
 } = Astro.props
 ---
 
-<BaseSEO currentPage={currentPage} lang={lang} title={title} description={description} baseDescription={baseDescription} keywords={keywords} baseKeywords={baseKeywords} jsonType={jsonType} extraJson={extraJson} ogImage={ogImage} useTagLine={useTagLine} noIndex={noIndex} />
+<BaseSEO currentPage={currentPage} lang={lang} title={title} schemaName={schemaName} description={description} baseDescription={baseDescription} keywords={keywords} baseKeywords={baseKeywords} jsonType={jsonType} extraJson={extraJson} ogImage={ogImage} useTagLine={useTagLine} noIndex={noIndex} />

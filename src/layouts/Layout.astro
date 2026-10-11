@@ -5,7 +5,7 @@ import SiteHeader from '@/components/organisms/SiteHeader.astro'
 import SiteFooter from '@/components/organisms/SiteFooter.astro'
 
 const {
-	lang = 'en',
+	lang = 'es',
 	preloadImage,
 	preloadSrcSet,
 	preloadSizes,
@@ -28,13 +28,16 @@ const {
 		<link rel="manifest" href="/site.webmanifest?v=2" />
 		<meta name="theme-color" content="#0f315d" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,800;1,400;1,600;1,700&display=swap" />
 		<slot name="seo" />
 		{preloadSrcSet
 			? <link rel="preload" as="image" imagesrcset={preloadSrcSet} imagesizes={preloadSizes ?? '100vw'} fetchpriority="high" />
 			: preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 		<ClientRouter />
 	</head>
-	<body>
+	<body class="bg-[#fcfafc] text-slate-800 antialiased selection:bg-[#9a3676] selection:text-white">
 		<SiteHeader lang={lang} />
 		<main>
 			<slot />

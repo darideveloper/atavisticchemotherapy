@@ -13,7 +13,7 @@ Canales de contacto: teléfono +1 (301) 305-9591 · WhatsApp +52 656 338 2516.
 ## Datos que recopilamos
 
 - La información que envías a través del formulario de evaluación: nombre, apellidos, correo electrónico, teléfono, día y hora preferidos de contacto, y el contexto médico que describes.
-- No se recopila nada más automáticamente. Este sitio no utiliza analítica, publicidad ni seguimiento entre sitios (ver la [Política de Cookies](/es/cookies)).
+- No se recopila nada más automáticamente. Este sitio no utiliza analítica, publicidad ni seguimiento entre sitios (ver la [Política de Cookies](/cookies)).
 
 ## Cómo los usamos
 

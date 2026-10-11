@@ -1,12 +1,12 @@
 ---
-import '@/styles/global.css';
 import { BUSINESS_DATA } from '@/data/site-config';
 import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 import Image from '@/components/atoms/Image.astro';
 import ClinicalCaseExamples from '@/components/organisms/ClinicalCaseExamples.astro';
 import TestimonialSlider from '@/components/organisms/TestimonialSlider';
 import { IMAGE_SLOTS, lcpPreload, slideSet } from '@/lib/images';
-import SiteFooter from '@/components/organisms/SiteFooter.astro';
+import Layout from '@/layouts/Layout.astro';
+import PageSEO from '@/components/seo/PageSEO.astro';
 import eyeEnucleation from '@/assets/content/Eye-Enucleation.jpg';
 import mastectomy from '@/assets/content/Mastectomy.jpg';
 import brainMetastases from '@/assets/content/tumores-metastasicos-cerebro.png';
@@ -66,96 +66,20 @@ const referencePreview = (index: number, max = 160) => {
   return `${cut.slice(0, boundary > 0 ? boundary : max)}…`;
 };
 
-const siteUrl = BUSINESS_DATA.url.replace(/\/$/, '');
-const canonicalUrl = `${siteUrl}/`;
-const socialImageUrl = `${siteUrl}${BUSINESS_DATA.ogImage}`;
-const pageTitle = 'Atavistic Chemotherapy | Quimioterapia Atávica';
-const pageDescription = 'Información sobre la Quimioterapia Atávica y evaluación de segunda opinión para el ensayo clínico NCT02366884.';
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${siteUrl}/#organization`,
-      name: 'Atavistic Chemotherapy',
-      alternateName: 'Quimioterapia Atavística',
-      url: canonicalUrl,
-      logo: `${siteUrl}/favicon.svg`,
-      description: pageDescription,
-      contactPoint: {
-        '@type': 'ContactPoint',
-        telephone: BUSINESS_DATA.contact.phone,
-        contactType: 'patient support',
-        availableLanguage: ['Spanish', 'English'],
-      },
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
-      name: 'Atavistic Chemotherapy',
-      url: canonicalUrl,
-      inLanguage: 'es-MX',
-      publisher: { '@id': `${siteUrl}/#organization` },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': `${canonicalUrl}#webpage`,
-      url: canonicalUrl,
-      name: pageTitle,
-      description: pageDescription,
-      inLanguage: 'es-MX',
-      isPartOf: { '@id': `${siteUrl}/#website` },
-      about: {
-        '@type': 'MedicalStudy',
-        identifier: 'NCT02366884',
-        name: 'Atavistic Chemotherapy Clinical Trial',
-        url: 'https://clinicaltrials.gov/study/NCT02366884',
-      },
-      primaryImageOfPage: socialImageUrl,
-    },
-  ],
-};
 ---
-<!DOCTYPE html>
-
-<html lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta name="theme-color" content="#0f315d" />
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<meta name="googlebot" content="index, follow, max-image-preview:large" />
-<meta name="author" content="Dr. Frank Arguello" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,800;1,400;1,600;1,700&display=swap" />
-<title>{pageTitle}</title>
-<meta name="description" content={pageDescription} />
-<meta name="keywords" content="quimioterapia atavística, atavistic chemotherapy, NCT02366884, segunda opinión oncológica, ensayo clínico de cáncer" />
-<link rel="canonical" href={canonicalUrl} />
-<link rel="icon" href="/favicon.ico?v=2" sizes="any" />
-<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
-<link rel="icon" href="/favicon.png?v=2" type="image/png" sizes="32x32" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
-<link rel="manifest" href="/site.webmanifest?v=2" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="es_MX" />
-<meta property="og:site_name" content="Atavistic Chemotherapy" />
-<meta property="og:title" content={pageTitle} />
-<meta property="og:description" content={pageDescription} />
-<meta property="og:url" content={canonicalUrl} />
-<meta property="og:image" content={socialImageUrl} />
-<meta property="og:image:secure_url" content={socialImageUrl} />
-<meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atavística" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content={pageTitle} />
-<meta name="twitter:description" content={pageDescription} />
-<meta name="twitter:image" content={socialImageUrl} />
-<meta name="twitter:image:alt" content="Atavistic Chemotherapy — Quimioterapia Atavística" />
-<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-{logoLcp && <link rel="preload" as="image" imagesrcset={logoLcp.srcSet} imagesizes={logoLcp.sizes} fetchpriority="high" />}
+<Layout lang="es" preloadSrcSet={logoLcp?.srcSet} preloadSizes={logoLcp?.sizes}>
+<PageSEO
+  slot="seo"
+  currentPage="home"
+  lang="es"
+  title="Atavistic Chemotherapy | Quimioterapia Atavística"
+  schemaName="Atavistic Chemotherapy"
+  description="Información sobre la Quimioterapia Atavística y evaluación de segunda opinión para el ensayo clínico NCT02366884."
+  keywords="quimioterapia atavística, atavistic chemotherapy, NCT02366884, segunda opinión oncológica, ensayo clínico de cáncer"
+  jsonType="Organization"
+  useTagLine={false}
+  extraJson={{ alternateName: 'Quimioterapia Atavística' }}
+/>
 <style data-purpose="base-styling">
     html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
     .hero-card-blur { background: rgba(98, 24, 76, 0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
@@ -191,22 +115,19 @@ const structuredData = {
     sup.reference-note a:focus-visible { outline: 2px solid #c24694; outline-offset: 2px; }
     #ref-tooltip { position: fixed; z-index: 60; left: 0; top: 0; width: min(24rem, 72vw); max-width: calc(100vw - 16px); padding: .65rem .75rem; border: 1px solid #f3d9ea; border-radius: .75rem; background: #fff; color: #475569; box-shadow: 0 10px 24px rgba(100, 27, 78, .18); font-size: .75rem; font-weight: 400; line-height: 1.45; text-align: left; white-space: normal; pointer-events: none; }
     #ref-tooltip[hidden] { display: none; }
-    main.page-flow { display: flex; flex-direction: column; }
-    main.page-flow > .flow-hero { order: 1; }
-    main.page-flow > .flow-doctor { order: 2; }
-    main.page-flow > .flow-reality { order: 3; }
-    main.page-flow > .flow-clinical { order: 4; }
-    main.page-flow > .flow-testimonials { order: 5; }
-    main.page-flow > .flow-what-is { order: 6; }
-    main.page-flow > .flow-logic { order: 7; }
-    main.page-flow > .flow-comparison { order: 8; }
-    main.page-flow > .flow-references { order: 9; }
-    main.page-flow > .flow-footer { order: 10; }
-    main.page-flow > #contact-modal, main.page-flow > #lightbox { order: 99; }
+    .page-flow { display: flex; flex-direction: column; }
+    .page-flow > .flow-hero { order: 1; }
+    .page-flow > .flow-doctor { order: 2; }
+    .page-flow > .flow-reality { order: 3; }
+    .page-flow > .flow-clinical { order: 4; }
+    .page-flow > .flow-testimonials { order: 5; }
+    .page-flow > .flow-what-is { order: 6; }
+    .page-flow > .flow-logic { order: 7; }
+    .page-flow > .flow-comparison { order: 8; }
+    .page-flow > .flow-references { order: 9; }
+    .page-flow > #contact-modal, .page-flow > #lightbox { order: 99; }
   </style>
-</head>
-<body class="bg-[#fcfafc] text-slate-800 antialiased selection:bg-[#9a3676] selection:text-white">
-<main id="top" class="page-flow" style="display:flex;flex-direction:column">
+<div id="top" class="page-flow" style="display:flex;flex-direction:column">
 <div id="ref-tooltip" role="tooltip" hidden></div>
 <!-- BEGIN: HeroSection -->
 <section class="flow-hero relative min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden bg-gradient-plum-band" data-purpose="hero-banner" style="order:1">
@@ -522,7 +443,6 @@ const structuredData = {
 <!-- END: DedicationSection -->
 
 <!-- BEGIN: MainFooter -->
-<SiteFooter lang="es" />
 <!-- END: MainFooter -->
 
 <script is:inline>
@@ -755,5 +675,5 @@ if (modal && form && success && errorMessage && submitButton) {
 (function(){var lb=document.getElementById('lightbox'),img=document.getElementById('lightbox-img'),cap=document.getElementById('lightbox-cap');function open(src,alt){img.src=src;img.alt=alt||'';cap.textContent=alt||'';lb.classList.remove('hidden');lb.classList.add('flex');document.body.style.overflow='hidden';}function close(){lb.classList.add('hidden');lb.classList.remove('flex');img.src='';document.body.style.overflow='';}document.addEventListener('click',function(e){var t=e.target.closest('[data-lightbox]');if(t){open(t.src,t.alt);}});lb.addEventListener('click',function(e){if(e.target===lb||e.target.closest('#lightbox-close'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.classList.contains('hidden'))close();});})();
 </script>
 <!-- END: LightboxModal -->
-</main>
-</body></html>
+</div>
+</Layout>
