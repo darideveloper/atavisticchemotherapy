@@ -70,16 +70,19 @@ const baseSchema = {
 }
 
 const isLocalBusiness = jsonType === 'LocalBusiness' || jsonType === 'TravelAgency'
-if (isLocalBusiness) {
-	baseSchema.logo = `${BUSINESS_DATA.url}${BUSINESS_DATA.logo}`
-	baseSchema.telephone = BUSINESS_DATA.contact.phone
-	baseSchema.address = BUSINESS_DATA.contact.address
-	baseSchema.geo = BUSINESS_DATA.contact.geo
-	baseSchema.openingHoursSpecification = BUSINESS_DATA.hours
-	baseSchema.sameAs = Object.values(BUSINESS_DATA.socialLinks).filter(Boolean)
-}
+const sameAs = BUSINESS_DATA.socialLinks.filter(Boolean)
+const localBusinessSchema = isLocalBusiness
+	? {
+		logo: `${BUSINESS_DATA.url}${BUSINESS_DATA.logo}`,
+		...(BUSINESS_DATA.contact.phone && { telephone: BUSINESS_DATA.contact.phone }),
+		...(BUSINESS_DATA.contact.address && { address: BUSINESS_DATA.contact.address }),
+		...(BUSINESS_DATA.contact.geo && { geo: BUSINESS_DATA.contact.geo }),
+		...(BUSINESS_DATA.hours.length && { openingHoursSpecification: BUSINESS_DATA.hours }),
+		...(sameAs.length && { sameAs }),
+	}
+	: {}
 
-const jsonLd = { ...baseSchema, ...extraJson }
+const jsonLd = { ...baseSchema, ...localBusinessSchema, ...extraJson }
 
 const ogTypeMap = {
 	Organization: 'website',
@@ -97,10 +100,17 @@ const ogType = ogTypeMap[jsonType] || 'website'
 {resolvedKeywords && <meta name="keywords" content={resolvedKeywords} />}
 <meta property="og:type" content={ogType} />
 <meta property="og:locale" content={LOCALE_MAP[lang]} />
+<meta property="og:site_name" content={BUSINESS_DATA.name} />
 <meta property="og:title" content={finalTitle} />
 <meta property="og:description" content={resolvedDescription} />
+<meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={ogUrl} />
+<meta property="og:image:alt" content={finalTitle} />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={finalTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={ogUrl} />
+<meta name="twitter:image:alt" content={finalTitle} />
 <link rel="canonical" href={canonicalUrl} />
 <link rel="alternate" hreflang="en" href={alternateUrls.en} />
 <link rel="alternate" hreflang="es" href={alternateUrls.es} />

@@ -14,7 +14,7 @@ export const BUSINESS_DATA = {
   name: 'Atavistic Chemotherapy',
   legalName: 'The Atavistic Chemotherapy Clinical Trial',
   logo: '/favicon.svg',
-  ogImage: '/og-atavistic-chemotherapy-formal.png',
+  ogImage: '/og-image.jpg',
   contact: {
     phone: '+13013059591',
     phoneDisplay: '+1 (301) 305-9591',
@@ -29,31 +29,12 @@ export const BUSINESS_DATA = {
         url: 'https://wa.me/526563382516',
       },
     },
-    address: {
-      street: '',
-      city: '',
-      region: '',
-      country: '',
-      zip: '',
-    },
-    geo: {
-      lat: 0,
-      lng: 0,
-    },
+    // Add a schema.org PostalAddress and GeoCoordinates only when verified.
+    // Empty values and 0,0 are invalid business data in structured metadata.
+    address: null,
+    geo: null,
   },
-  hours: {
-    monday: '9:00-17:00',
-    tuesday: '9:00-17:00',
-    wednesday: '9:00-17:00',
-    thursday: '9:00-17:00',
-    friday: '9:00-17:00',
-    saturday: 'Closed',
-    sunday: 'Closed',
-  },
-  socialLinks: {
-    facebook: '',
-    instagram: '',
-    youtube: '',
-    twitter: '',
-  },
+  // Values must use Schema.org OpeningHoursSpecification objects.
+  hours: [],
+  socialLinks: [],
 } as const
