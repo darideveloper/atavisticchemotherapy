@@ -83,14 +83,15 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
         {testimonials.map((testimonial) => (
           <SwiperSlide key={testimonial.name} className="!h-auto">
             <article className="flex h-full min-h-[56rem] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
-              <div className={`grid h-56 shrink-0 grid-rows-[minmax(0,1fr)] gap-1 bg-white p-2 ${testimonial.images.length > 1 ? 'grid-cols-2' : 'grid-cols-1'}`}>
+              <div className={`shrink-0 bg-white p-2 ${testimonial.images.length > 1 ? 'grid h-56 grid-cols-2 grid-rows-[minmax(0,1fr)] gap-1' : 'block'}`}>
                 {testimonial.images.map((image) => {
-                  const imageClass = testimonial.images.length > 1
+                  const isSingle = testimonial.images.length === 1;
+                  const imageClass = !isSingle
                     ? `min-h-0 min-w-0 h-full w-full object-contain cursor-zoom-in ${image.dark ? 'bg-black' : 'bg-white'}`
-                    : 'h-full w-full object-fill cursor-zoom-in';
+                    : 'h-auto w-full rounded-t-xl object-cover cursor-zoom-in';
 
                   return image.set ? (
-                    <picture key={image.src} className="block h-full min-h-0 min-w-0 w-full">
+                    <picture key={image.src} className={isSingle ? 'block h-auto w-full' : 'block h-full min-h-0 min-w-0 w-full'}>
                       <source type="image/avif" srcSet={image.set.avifSrcSet} sizes={image.set.sizes} />
                       <source type="image/webp" srcSet={image.set.webpSrcSet} sizes={image.set.sizes} />
                       <img

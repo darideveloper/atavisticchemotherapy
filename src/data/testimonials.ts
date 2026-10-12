@@ -1,10 +1,8 @@
-import annaVictoriaPhotos from '@/assets/content/testimonio-anna-victoria-fotos.webp'
-import antonioRadiology from '@/assets/content/testimonio-antonio-radiologia.webp'
-import antonioPortrait from '@/assets/content/testimonio-antonio-retrato.webp'
-import isauraPhotos from '@/assets/content/testimonio-isaura-fotos.png'
-import lourdes2017 from '@/assets/content/testimonio-lourdes-2017.webp'
-import lourdes2026 from '@/assets/content/testimonio-lourdes-2026.webp'
-import marisolPhotos from '@/assets/content/testimonio-marisol-fotos.png'
+import annaVictoriaPhotos from '@/assets/content/testimonio-anna-victoria.webp'
+import antonioPhotos from '@/assets/content/testimonio-antonio.webp'
+import isauraPhotos from '@/assets/content/testimonio-isaura.webp'
+import lourdesPhotos from '@/assets/content/testimonio-lourdes.webp'
+import marisolPhotos from '@/assets/content/testimonio-marisol.webp'
 
 export const PATIENT_TESTIMONIALS = [
   {
@@ -19,8 +17,7 @@ export const PATIENT_TESTIMONIALS = [
   {
     name: 'Lourdes',
     images: [
-      { src: lourdes2017, alt: 'Fotografía de Lourdes de 2017' },
-      { src: lourdes2026, alt: 'Fotografía de Lourdes de 2026' },
+      { src: lourdesPhotos, alt: 'Fotografía de Lourdes' },
     ],
     diagnosis: 'Carcinoma de estadio IV de las glándulas suprarrenales (múltiples metástasis en la cavidad peritoneal)',
     history: 'En 2017, Lourdes se sometió a una nefrectomía total izquierda y a la extirpación de la glándula suprarrenal izquierda debido a la presencia de una masa tumoral de 11 cm. El informe de patología, obtenido del Departamento de Patología de la Universidad de Michigan en Ann Arbor, Michigan, describió la lesión como un carcinoma corticosuprarrenal de tipo oncocítico. Una tomografía por emisión de positrones (PET-CT), realizada en el Instituto Nacional del Cáncer de Bethesda, Maryland, reveló múltiples lesiones metastásicas en la cavidad peritoneal. Hasta donde sabemos, este es el único caso de carcinoma corticosuprarrenal en la historia clínica que ha sobrevivido.',
@@ -49,8 +46,7 @@ export const PATIENT_TESTIMONIALS = [
   {
     name: 'Antonio',
     images: [
-      { src: antonioRadiology, alt: 'Tomografía de Antonio con recurrencia tumoral y nódulos cancerosos', dark: true },
-      { src: antonioPortrait, alt: 'Retrato de Antonio' },
+      { src: antonioPhotos, alt: 'Fotografía de Antonio' },
     ],
     diagnosis: 'Carcinoma de células claras, grado nuclear Fuhrman 1, riñón derecho',
     history: 'Antonio, paciente de 57 años, se sometió a una nefrectomía parcial laparoscópica asistida por robot (NPAR) con el propósito de extirpar un tumor de 7 cm de diámetro, localizado en el polo inferior del riñón derecho. Tres meses después de la cirugía, el 6 de junio de 2025, la tomografía de abdomen mostró una recurrencia tumoral en el área operada. Un PET-CT, realizado el 20 de junio de 2025, demostró tres áreas de actividad metabólica tumoral: el polo inferior del riñón derecho, el psoas derecho, el área subdiafragmática izquierda y la fosa pélvica izquierda. Al revisar las imágenes, concluí que el tumor había sido diseminado durante el procedimiento quirúrgico.',
