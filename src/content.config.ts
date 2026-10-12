@@ -5,7 +5,7 @@ const legal = defineCollection({
 	loader: glob({
 		pattern: '**/*.md',
 		base: './src/content/legal',
-		generateId: ({ entry }) => entry.replace(/\.md$/, ''), // "<slug>.<lang>"
+		generateId: ({ entry }) => entry.replace(/\.md$/, ''), // "<slug>.es"
 	}),
 	schema: z.object({
 		title: z.string(),

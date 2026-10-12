@@ -9,9 +9,9 @@ version: 2026-09-27+local
 
 ## This project
 
-- **Default language EN (unprefixed), Spanish ES prefixed (`/es/`).** `defaultLang = 'en'`.
-- `routes.ts`: `home` → `en: ""`, `es: "es"`; legal pages `privacy`/`terms` map to `en: privacy|terms`, `es: es/privacidad|es/terminos`.
-- `src/messages/en.json` is the source of truth; `es.json` mirrors the same key set (enforced by `validate-i18n`).
-- Legacy redirect: `/en/<path>` → `/<path>` (and `/en` → `/`) via `astro.config.mjs` `redirects`.
-- Legal pageKeys (privacy, terms) are wired into the route map and served by the catch-all `[...path].astro` via `LegalPage`.
+- **Spanish is the sole public language and is unprefixed.** `defaultLang = 'es'`.
+- `routes.ts`: `home` → `""`; legal pages use their canonical Spanish slugs, such as `/privacidad` and `/terminos`.
+- `src/messages/es.json` is the only UI catalog; `validate-i18n` ensures it is valid JSON and no inactive language catalogs remain.
+- Legacy `/en/...` and `/es/...` URLs redirect to each page's canonical Spanish URL via `astro.config.mjs` `redirects`.
+- Legal pageKeys are wired into the route map and served by the catch-all `[...path].astro` via `LegalPage`.
 

@@ -8,16 +8,14 @@ export async function getStaticPaths() {
 	// compiled chunk where frontmatter top-level bindings are not in scope.
 	const legalKeys = (Object.keys(routes) as PageKey[]).filter((key) => key !== 'home')
 
-	return legalKeys.flatMap((pageKey) => {
-		const localized = routes[pageKey]
-		return (['en', 'es'] as const).map((lang) => ({
-			params: { path: localized[lang] },
-			props: { pageKey, lang },
-		}))
-	})
+	return legalKeys.map((pageKey) => ({
+		params: { path: routes[pageKey] },
+		props: { pageKey },
+	}))
 }
 
-const { pageKey, lang } = Astro.props as { pageKey: PageKey; lang: 'en' | 'es' }
+const { pageKey } = Astro.props as { pageKey: PageKey }
+const lang = 'es'
 
 const entries = await getCollection('legal')
 const entry = entries.find((candidate) => candidate.id === `${pageKey}.${lang}`)

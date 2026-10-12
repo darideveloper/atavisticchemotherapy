@@ -15,5 +15,5 @@ updated: "Última actualización: octubre 2026"
 
 ## Contenido
 
-- El contenido médico es informativo y se encuentra en investigación; ver el [Aviso Médico](/es/aviso-medico). Las historias de pacientes aparecen con el consentimiento documentado de cada paciente.
-- El uso de los datos personales se describe en la [Política de Privacidad](/es/privacidad), y las normas de uso en los [Términos de Uso](/es/terminos).
+- El contenido médico es informativo y se encuentra en investigación; ver el [Aviso Médico](/aviso-medico). Las historias de pacientes aparecen con el consentimiento documentado de cada paciente.
+- El uso de los datos personales se describe en la [Política de Privacidad](/privacidad), y las normas de uso en los [Términos de Uso](/terminos).
