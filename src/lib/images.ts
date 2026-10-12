@@ -40,10 +40,11 @@ export interface SlideSet {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 /** Build a single AVIF responsive srcset for an LCP/hero preload. Returns null on failure. */
-export async function lcpPreload(src: string, slot: ImageSlot): Promise<LcpPreload | null> {
+export async function lcpPreload(src: string | ImageMetadata, slot: ImageSlot): Promise<LcpPreload | null> {
 	for (let attempt = 0; attempt < 4; attempt++) {
 		try {
-			const img = await getImage({ src, inferSize: true, widths: slot.widths, format: 'avif', quality: AVIF_QUALITY })
+			const base = typeof src === 'string' ? { src, inferSize: true } : { src }
+			const img = await getImage({ ...base, widths: slot.widths, format: 'avif', quality: AVIF_QUALITY })
 			const srcSet = img.srcSet.attribute
 			if (!srcSet) return null
 			return { srcSet, sizes: slot.sizes }

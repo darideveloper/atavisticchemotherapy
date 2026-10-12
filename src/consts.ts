@@ -4,9 +4,8 @@
 
 export const SITE_TITLE = 'Atavistic Chemotherapy'
 export const SITE_DESCRIPTION =
-  'Second-opinion evaluation for the Atavistic Chemotherapy trial (NCT02366884).'
+  'Evaluación de segunda opinión para el ensayo de Quimioterapia Atavística (NCT02366884).'
 
 export const LOCALE_MAP = {
-  en: 'en_US',
-  es: 'es_ES',
+	es: 'es_MX',
 } as const

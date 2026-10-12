@@ -20,7 +20,7 @@ Al utilizar este sitio web aceptas estos términos. Si no los aceptas, por favor
 
 ## Información médica
 
-- Todo el contenido médico de este sitio es únicamente informativo y nunca sustituye el consejo de un oncólogo calificado. Lee el [Aviso Médico](/es/aviso-medico) antes de tomar cualquier decisión de salud.
+- Todo el contenido médico de este sitio es únicamente informativo y nunca sustituye el consejo de un oncólogo calificado. Lee el [Aviso Médico](/aviso-medico) antes de tomar cualquier decisión de salud.
 
 ## Uso aceptable
 
@@ -36,4 +36,4 @@ Al utilizar este sitio web aceptas estos términos. Si no los aceptas, por favor
 
 ## Contacto
 
-- Para preguntas sobre estos términos, escribe a los canales de contacto indicados en el [Aviso Legal](/es/aviso-legal).
+- Para preguntas sobre estos términos, escribe a los canales de contacto indicados en el [Aviso Legal](/aviso-legal).

@@ -6,13 +6,13 @@ import sitemap from '@astrojs/sitemap'
 // Config runs under Node — `@/` alias does not resolve here, so import relative.
 import { routes } from './src/lib/i18n/routes.ts'
 
-// Legacy redirects: map old prefixed /en/<path> → /<path> (EN is default/unprefixed).
-const legacyRedirects = Object.values(routes).reduce((acc, route) => {
-	if (route.en === '') {
-		acc['/en'] = '/'
-	} else {
-		acc[`/en/${route.en}`] = `/${route.en}`
-	}
+// The public site is Spanish-only. Preserve useful legacy URLs while sending
+// visitors and search engines to the one canonical Spanish path per page.
+const legacyRedirects = Object.entries(routes).reduce((acc, [pageKey, path]) => {
+	const canonical = path === '' ? '/' : `/${path}`
+	const legacyKey = pageKey === 'home' ? '' : `/${pageKey}`
+	acc[`/es${canonical}`] = canonical
+	acc[`/en${legacyKey}`] = canonical
 	return acc
 }, {})
 

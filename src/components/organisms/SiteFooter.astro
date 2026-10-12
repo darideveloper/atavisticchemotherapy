@@ -5,7 +5,7 @@ export interface Props {
 	lang?: string
 }
 
-const { lang = 'en' } = Astro.props
+const { lang = 'es' } = Astro.props
 const t = getTranslations(lang)
 ---
 
@@ -13,11 +13,11 @@ const t = getTranslations(lang)
 <div class="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 text-center text-xs text-slate-500 sm:px-6 lg:px-8">
 <p>© {new Date().getFullYear()} Atavistic Chemotherapy Clinical Trial™. Todos los derechos reservados.</p>
 <nav class="flex flex-wrap justify-center gap-x-5 gap-y-2" aria-label="Enlaces legales">
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('privacy', lang)}>{t('global.footer.privacy')}</a>
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('terms', lang)}>{t('global.footer.terms')}</a>
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('cookies', lang)}>{t('global.footer.cookies')}</a>
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('medical-disclaimer', lang)}>{t('global.footer.medicalDisclaimer')}</a>
-<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('legal-notice', lang)}>{t('global.footer.legalNotice')}</a>
+<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('privacy')}>{t('global.footer.privacy')}</a>
+<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('terms')}>{t('global.footer.terms')}</a>
+<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('cookies')}>{t('global.footer.cookies')}</a>
+<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('medical-disclaimer')}>{t('global.footer.medicalDisclaimer')}</a>
+<a class="underline underline-offset-2 transition hover:text-[#9a3676]" href={getLocalizedPath('legal-notice')}>{t('global.footer.legalNotice')}</a>
 </nav>
 </div>
 </footer>
