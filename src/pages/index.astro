@@ -2,6 +2,7 @@
 import { BUSINESS_DATA } from '@/data/site-config';
 import { PATIENT_TESTIMONIALS } from '@/data/testimonials';
 import Image from '@/components/atoms/Image.astro';
+import AccLink from '@/components/atoms/AccLink.astro';
 import ClinicalCaseExamples from '@/components/organisms/ClinicalCaseExamples.astro';
 import TestimonialSlider from '@/components/organisms/TestimonialSlider';
 import { IMAGE_SLOTS, lcpPreload, slideSet } from '@/lib/images';
@@ -97,10 +98,6 @@ const referencePreview = (index: number, max = 160) => {
     details.acc > summary::-webkit-details-marker { display: none; }
     details.acc > summary::after { content: '+'; font-size: 1.25rem; font-weight: 800; color: #9a3676; flex: none; }
     details.acc[open] > summary::after { content: '\2013'; }
-    .acc-link { border: 1px solid #f3d9ea; border-radius: 1rem; background: #ffffff; padding: 1rem 1.25rem; font-weight: 700; color: #4c1139; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .acc-link::after { content: '+'; font-size: 1.25rem; font-weight: 800; color: #9a3676; flex: none; }
-    .acc-link:hover { background: #fff7fb; }
-    .acc-link:focus-visible { outline: 2px solid #c24694; outline-offset: 2px; }
     details.acc.on-dark { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.06); }
     details.acc.on-dark > summary { color: #ffffff; }
     details.acc.on-dark > summary::after { color: #f9a8d4; }
@@ -149,7 +146,7 @@ const referencePreview = (index: number, max = 160) => {
 <ul class="space-y-3 mb-8 text-sm sm:text-base text-rose-50 font-medium">
 <li class="flex items-start gap-3">
 <span class="w-5 h-5 shrink-0 mt-1 rounded-full bg-white/20 flex items-center justify-center text-rose-200 text-xs font-bold">✓</span>
-                <span>La quimioterapia Atavística ha demostrado erradicar cánceres inoperables o con metástasis en estudios clínicos registrados en los Estados Unidos. Platique con pacientes tratados <strong>con la quimioterapia atavística</strong> en México por los últimos 9 años (la información de contacto es proporcionada).</span>
+                <span>La quimioterapia atavística ha demostrado erradicar cánceres inoperables o con metástasis en estudios clínicos registrados en los Estados Unidos. Platique con pacientes tratados <strong>con la quimioterapia atavística</strong> en México por los últimos 9 años (la información de contacto es proporcionada).</span>
               </li><li class="flex items-start gap-3">
 <span class="w-5 h-5 shrink-0 mt-1 rounded-full bg-white/20 flex items-center justify-center text-rose-200 text-xs font-bold">✓</span>
                 <span>Los medicamentos son tomados oralmente en la privacidad de su hogar. <strong>Mínimos efectos colaterales.</strong></span>
@@ -229,6 +226,7 @@ const referencePreview = (index: number, max = 160) => {
 </div>
 <p class="pt-2 text-left text-xs text-slate-400">Toca cualquier imagen para ampliar</p>
 </div>
+<AccLink href="https://scholar.google.com/citations?user=H9kKoOQAAAAJ&hl=en" target="_blank" icon="external">Ver perfil de publicaciones en Google Scholar</AccLink>
 </div>
 </div>
 </div>
@@ -239,7 +237,7 @@ const referencePreview = (index: number, max = 160) => {
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="max-w-5xl mb-16" style="margin-left: auto; margin-right: auto;">
 <h2 class="text-center text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 uppercase lg:whitespace-nowrap">La Realidad de la Oncología Actual</h2>
-<p class="max-w-4xl text-left text-rose-100/90 text-sm sm:text-base leading-relaxed">Si excluimos algunas formas de leucemias, linfomas y tumores de células germinales que son actualmente curables mediante una combinación de quimioterapia tradicional y radioterapia, que en conjunto solo representan el 3% de todos los cánceres, la única opción para curar un cáncer hoy en día es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, para curar un cáncer, aun en el 2026, necesitamos detectarlo tempranamente y remover el órgano afectado y tejidos vecinos cuando todas las células cancerosas aún permanecen localizadas en dicho órgano. Los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radioterapia solo proporcionan beneficios marginales a los pacientes que no fueron curados con una cirugía temprana.</p>
+<p class="max-w-4xl mx-auto text-justify text-rose-100/90 text-sm sm:text-base leading-relaxed">Si excluimos algunas formas de leucemias, linfomas y tumores de células germinales que son actualmente curables mediante una combinación de quimioterapia tradicional y radioterapia, que en conjunto solo representan el 3% de todos los cánceres, la única opción para curar un cáncer hoy en día es recurriendo tempranamente a los procedimientos quirúrgicos mutilantes que inventaron nuestros antepasados hace siglos. Es decir, para curar un cáncer, aun en el 2026, necesitamos detectarlo tempranamente y remover el órgano afectado y tejidos vecinos cuando todas las células cancerosas aún permanecen localizadas en dicho órgano. Los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radioterapia solo proporcionan beneficios marginales a los pacientes que no fueron curados con una cirugía temprana.</p>
 <blockquote class="mt-6 max-w-3xl text-right italic text-rose-100 sm:ml-auto sm:mr-8">
   <p class="font-bold">“El cuchillo y el cauterio son, incluso hoy, nuestros únicos remedios contra el cáncer temprano. Pero, en la infancia de nuestro arte, ¿qué no eran los mismos?”</p>
   <footer class="mt-4 text-right text-sm font-bold not-italic">Bernard Peyrilhe (1774)<br/><span class="mt-4 block">[poco parece haber cambiado desde entonces]</span></footer>
@@ -291,9 +289,9 @@ const referencePreview = (index: number, max = 160) => {
 </div>
 </article>
 </div>
-<div class="max-w-4xl mx-auto mt-12 space-y-4">
+<div class="max-w-3xl mx-auto mt-12 space-y-4">
 <details class="acc on-dark">
-<summary><span class="flex-1 space-y-2"><h2 class="text-center text-2xl sm:text-3xl font-extrabold text-pink-100 tracking-tight">Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir <span class="whitespace-nowrap text-sm sm:text-base">(<span class="text-blue-300 underline font-bold">Leer Más</span>)</span></h2></span></summary>
+<summary><span class="flex-1 space-y-2"><h2 class="text-left text-2xl sm:text-3xl font-extrabold text-pink-100 tracking-tight">Las Estadísticas Mundiales Sobre el Cáncer No Pueden Mentir <span class="whitespace-nowrap text-sm sm:text-base">(<span class="text-blue-300 underline font-bold">Leer Más</span>)</span></h2></span></summary>
 <div class="acc-body text-sm leading-relaxed space-y-4">
 <p>1) A pesar del aparente progreso en la investigación y el tratamiento del cáncer durante los últimos 60 años, el cáncer representa hoy en día una amenaza mucho mayor para el mundo que en cualquier otro momento de la historia de la medicina.</p><p>2) Diariamente, más de 27,000 hombres, mujeres y niños mueren de cáncer, o por la quimioterapia y procedimientos empleados para tratarlos <sup class="reference-note"><a href="#reference-9" aria-label="Referencia 9" data-reference={referencePreview(8)}>[9]</a></sup>.</p><p>3) En los Estados Unidos, más de 1,670 hombres, mujeres y niños mueren de cáncer diariamente en los mejores hospitales del mundo <sup class="reference-note"><a href="#reference-10" aria-label="Referencia 10" data-reference={referencePreview(9)}>[10]</a></sup>. El cáncer en ese país es la causa principal de muerte en todas las personas adultas antes de los 85 años <sup class="reference-note"><a href="#reference-11" aria-label="Referencia 11" data-reference={referencePreview(10)}>[11]</a></sup> <sup class="reference-note"><a href="#reference-12" aria-label="Referencia 12" data-reference={referencePreview(11)}>[12]</a></sup>, y también representa la causa principal de muerte por enfermedad en niños de 1 a 19 años. De hecho, el cáncer es responsable de más muertes en niños en ese país que todas las demás enfermedades infantiles combinadas <sup class="reference-note"><a href="#reference-13" aria-label="Referencia 13" data-reference={referencePreview(12)}>[13]</a></sup>.</p><p>4) La mayoría de la gente desconoce que hoy en día un cáncer es incurable y casi siempre mortal, aun recibiendo los tratamientos actuales de quimioterapia tradicional, inmunoterapia y radiación, cuando el tumor es técnicamente inoperable, si no pudo ser removido quirúrgicamente en su totalidad, o si células cancerosas han migrado de su sitio de origen a otros órganos (metastatizado). En un estudio del Danna-Farber Cancer Institute en los Estados Unidos, se encontró que hasta el 80% de 1,193 pacientes entrevistados, quienes estaban recibiendo quimioterapia tradicional por cánceres del colon o pulmón con metástasis a otros órganos, contestaron que creían que el tratamiento que estaban recibiendo de quimioterapia los podría curar. Cuando desde el punto de vista oncológico todos morirían de su enfermedad, y así fue <sup class="reference-note"><a href="#reference-14" aria-label="Referencia 14" data-reference={referencePreview(13)}>[14]</a></sup>.</p><p>5) Se estima que 75,000 a 100,000 niños mueren de cáncer cada año en el mundo <sup class="reference-note"><a href="#reference-15" aria-label="Referencia 15" data-reference={referencePreview(14)}>[15]</a></sup>.</p><p>6) A pesar de una respuesta inicial aparente a la quimioterapia, inmunoterapias y radiación convencionales, las células cancerosas sobrevivientes se vuelven más agresivas y metastatizan con mayor facilidad. Solo en los últimos años este problema de exacerbación iatrogénica del cáncer inducida por fármacos, inmunoterapia y radiación ha sido reconocido más abiertamente por la comunidad médica <sup class="reference-note"><a href="#reference-5" aria-label="Referencia 5" data-reference={referencePreview(4)}>[5]</a></sup> <sup class="reference-note"><a href="#reference-6" aria-label="Referencia 6" data-reference={referencePreview(5)}>[6]</a></sup> <sup class="reference-note"><a href="#reference-7" aria-label="Referencia 7" data-reference={referencePreview(6)}>[7]</a></sup> <sup class="reference-note"><a href="#reference-8" aria-label="Referencia 8" data-reference={referencePreview(7)}>[8]</a></sup>.</p>
 </div>
@@ -386,9 +384,9 @@ const referencePreview = (index: number, max = 160) => {
 <!-- BEGIN: TraditionalVsAtavisticSection -->
 <section class="flow-comparison bg-[#f8f5f8] py-12 lg:py-14" aria-labelledby="comparacion-heading" id="comparacion" style="order:8">
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-<div class="mx-auto mb-8 max-w-3xl text-center">
+<div class="mx-auto mb-8 max-w-5xl text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" id="comparacion-heading">Quimioterapia tradicional<br/>vs<br/>Quimioterapia atavística</h2>
-<p class="mt-2 text-left text-sm leading-relaxed text-slate-600">Ambas son quimioterapias en que ambas se basan en el uso de químicos o fármacos como tratamiento fundamental.</p>
+<p class="mt-2 text-center text-sm leading-relaxed text-slate-600">Ambas son quimioterapias en que ambas se basan en el uso de químicos o fármacos como tratamiento fundamental.</p>
 </div>
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 <article class="rounded-2xl border border-rose-100 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
@@ -431,7 +429,7 @@ const referencePreview = (index: number, max = 160) => {
 <Image src={dedicatoriaPadres} alt="Celia Astorga de Arguello (1932-1982) junto a su esposo" class="w-full h-auto cursor-zoom-in transition duration-500 group-hover:scale-102" widths={[400, 800]} sizes="(max-width: 639px) calc(100vw - 2rem), 448px" lightbox />
 <span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
 </div>
-<figcaption class="mt-3 text-center text-sm font-medium text-slate-600"><p class="text-left">Celia Astorga de Arguello<br />(1932-1982)</p></figcaption>
+<figcaption class="mt-3 text-center text-sm font-medium text-slate-600"><p class="text-center">Celia Astorga de Arguello<br />(1932-1982)</p></figcaption>
 </figure>
 <div class="mt-8 space-y-4 text-left text-lg leading-relaxed text-slate-700" style="font-family:'Playfair Display',serif;font-style:italic">
 <p class="font-bold">Dedico este trabajo a la amorosa memoria de mi madre, quien falleció de cáncer de vesícula biliar a la prematura edad de 50 años, cuando yo tenía 21 años e iniciaba mi carrera de medicina.</p>
@@ -555,7 +553,7 @@ const referencePreview = (index: number, max = 160) => {
 <input required name="preferredDay" placeholder="Día preferido*" aria-label="Día preferido" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
 <input required name="preferredTime" placeholder="Hora preferida*" aria-label="Hora preferida" class="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none"/>
 <textarea name="message" placeholder="Mensaje" aria-label="Mensaje" rows="4" class="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:border-[#9a3676] focus:ring-2 focus:ring-[#9a3676]/30 outline-none resize-y"></textarea>
-<a data-contact-section-link class="acc-link sm:col-span-2" href="#aviso-tratamiento-previo">¿Qué es la Quimioterapia Atavística y Cómo ser Considerado para Participar?</a>
+<AccLink data-contact-section-link class="sm:col-span-2" href="#aviso-tratamiento-previo">¿Qué es la Quimioterapia Atavística y Cómo ser Considerado?</AccLink>
 <button type="submit" class="sm:col-span-2 justify-self-start rounded-full bg-gradient-to-r from-[#9b3174] to-[#c24694] hover:from-[#892764] hover:to-[#ad3c82] px-8 py-3.5 text-xs sm:text-sm font-bold tracking-wider uppercase text-white shadow-lg transition">Solicitar mi segunda opinión ahora</button>
 </form>
 <p id="contact-error" role="alert" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3 mt-4"></p>

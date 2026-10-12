@@ -1,0 +1,50 @@
+---
+export interface Props {
+	href: string
+	target?: string
+	rel?: string
+	icon?: '+' | 'external' | 'none'
+	class?: string
+	[key: string]: unknown
+}
+
+const { href, target, rel, icon = '+', class: className, ...rest } = Astro.props
+const resolvedRel = target === '_blank' ? (rel ?? 'noopener noreferrer') : rel
+---
+
+<a href={href} target={target} rel={resolvedRel} class:list={['acc-link', className]} {...rest}>
+	<slot />
+	{icon !== 'none' && <span class="acc-link__icon" aria-hidden="true">{icon === 'external' ? '↗' : '+'}</span>}
+</a>
+
+<style>
+	.acc-link {
+		border: 1px solid #f3d9ea;
+		border-radius: 1rem;
+		background: #ffffff;
+		padding: 1rem 1.25rem;
+		font-weight: 700;
+		color: #4c1139;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.acc-link:hover {
+		background: #fff7fb;
+	}
+
+	.acc-link:focus-visible {
+		outline: 2px solid #c24694;
+		outline-offset: 2px;
+	}
+
+	.acc-link__icon {
+		flex: none;
+		font-size: 1.25rem;
+		font-weight: 800;
+		line-height: 1;
+		color: #9a3676;
+	}
+</style>
