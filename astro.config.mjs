@@ -31,7 +31,7 @@ export default defineConfig({
   // its own branch-subdomain URL), explicit SITE_URL covers Docker/CI builds.
   // Fallback is the prod domain: dev never reaches it (Portless always injects
   // PORTLESS_URL), and a build without env must emit prod — never localhost.
-  site: process.env.PORTLESS_URL ?? process.env.SITE_URL ?? 'https://atavisticchemotherapy.com',
+  site: process.env.PORTLESS_URL ?? process.env.SITE_URL ?? 'https://quimioterapia-atavistica.org',
   build: {
     inlineStylesheets: 'always',
   },

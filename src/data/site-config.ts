@@ -6,7 +6,7 @@
 const origin = (
   process.env.PORTLESS_URL ??
   process.env.SITE_URL ??
-  'https://atavisticchemotherapy.com'
+  'https://quimioterapia-atavistica.org'
 ).replace(/\/+$/, '')
 
 export const BUSINESS_DATA = {

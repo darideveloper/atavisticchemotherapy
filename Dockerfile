@@ -7,7 +7,7 @@ WORKDIR /app
 
 # Build-time environment variables — Pattern B (default): SITE_URL is a
 # server-only Docker build arg so production canonicals resolve per
-# environment. Pass --build-arg SITE_URL=https://atavisticchemotherapy.com
+# environment. Pass --build-arg SITE_URL=https://quimioterapia-atavistica.org
 ARG SITE_URL
 ENV SITE_URL=$SITE_URL
 
