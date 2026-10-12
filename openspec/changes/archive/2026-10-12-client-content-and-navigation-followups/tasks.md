@@ -20,5 +20,5 @@
 ## 4. Verification
 
 - [x] 4.1 Run `git diff --check` and `pnpm run validate-imports`.
-- [ ] 4.2 Verify the modal link, static warning, references, and CTA in desktop and mobile browser captures.
-- [ ] 4.3 Run `openspec validate client-content-and-navigation-followups` once the local schema installation is available.
+- [x] 4.2 Verify the modal link, static warning, references, and CTA in desktop and mobile browser captures.
+- [x] 4.3 Run `openspec validate client-content-and-navigation-followups` once the local schema installation is available.

@@ -1,6 +1,4 @@
-# Reference Popup Specification
-
-## Requirements
+## ADDED Requirements
 
 ### Requirement: Moved warning references remain interactive
 References 5, 6, 7, and 8 in the moved warning SHALL use the existing superscript reference-note pattern.
