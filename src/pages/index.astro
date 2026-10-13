@@ -306,8 +306,8 @@ const referencePreview = (index: number, max = 160) => {
 <!-- BEGIN: WhyActingNowSection (¿Qué es la Quimioterapia Atavística?) -->
 <section class="flow-logic py-20 lg:py-24 bg-white" data-purpose="what-is-atavistic" id="atavica" style="order:7">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid grid-cols-1 min-[900px]:grid-cols-12 gap-12 items-center min-[900px]:items-start lg:items-center">
-<div class="mx-auto min-[900px]:mx-0 min-[900px]:col-span-5 grid w-full max-w-lg grid-cols-2 gap-4 lg:sticky lg:top-24 self-start">
+<div class="flex flex-col gap-8 min-[900px]:grid min-[900px]:grid-cols-12 min-[900px]:gap-x-12 min-[900px]:gap-y-4 min-[900px]:items-start lg:items-center">
+<div class="order-2 min-[900px]:order-none mx-auto min-[900px]:mx-0 min-[900px]:col-span-5 min-[900px]:col-start-1 min-[900px]:row-start-1 min-[900px]:row-span-2 grid w-full max-w-lg grid-cols-2 gap-4 lg:sticky lg:top-24 self-start">
 <div class="aspect-square overflow-hidden rounded-2xl border border-pink-100 bg-white shadow-lg">
 <Image src={luca} alt="LUCA, ancestro común universal" class="h-full w-full cursor-zoom-in object-fill" widths={[240, 480]} sizes="(max-width: 899px) calc(50vw - 2rem), 256px" lightbox />
 </div>
@@ -321,7 +321,7 @@ const referencePreview = (index: number, max = 160) => {
 <Image src={organisms} alt="Los organismos conservan en su memoria genética los genes de sus antepasados primitivos" class="h-full w-full cursor-zoom-in object-fill" widths={[500, 1000]} sizes="(max-width: 899px) calc(50vw - 2rem), 256px" lightbox />
 </div>
 </div>
-<div class="min-[900px]:col-span-7 space-y-7 min-[900px]:pl-6">
+<div class="order-1 min-[900px]:order-none min-[900px]:col-span-7 min-[900px]:col-start-6 min-[900px]:row-start-1 min-[900px]:pl-6">
 <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
 <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">¿Cuál es la Lógica Detrás de la Quimioterapia Atavística?</h2>
 <p>Como se mencionó anteriormente, el Dr. Arguello publicó un libro con una explicación más racional y congruente sobre el origen y la conducta maligna de las células cancerosas. En este libro, el Dr. Arguello sostiene y documenta científicamente que el cáncer, o la transformación maligna, ocurre cuando hay una regresión evolutiva (atavismo) de una célula normal hacia su estado celular primitivo o ancestral. Es decir, una célula normal revierte de nuevo a su estado unicelular independiente, de donde se originaron nuestras células. Todos los organismos vivos que habitan este planeta están formados por células, y se ha demostrado con estudios genéticos que las células de todos los organismos, incluyendo los seres humanos, tienen un mismo origen celular. Todos descendemos de una colonia de células primitivas u organismos unicelulares, similares a las células bacterianas actuales, que existieron en este planeta hace billones de años. De esas células primitivas descienden todas las formas de vida actual <sup class="reference-note"><a href="#reference-1" aria-label="Referencia 1" data-reference={referencePreview(0)}>[1]</a></sup> <sup class="reference-note"><a href="#reference-2" aria-label="Referencia 2" data-reference={referencePreview(1)}>[2]</a></sup>. Esa conducta celular primitiva, invasiva e independiente de nuestros antepasados celulares quedó codificada en la memoria genética de todas las células que existen en la actualidad, aunque esta ha sido suprimida o inactivada a través de la evolución. Agentes que causan cáncer, muy seguramente lo hacen activando de nuevo estos genes primitivos de la vida celular independiente.</p>
@@ -329,6 +329,10 @@ const referencePreview = (index: number, max = 160) => {
 <p class="font-bold">“Cualquier célula viva en este planeta lleva consigo la experiencia de miles de millones de años de la vida de sus antepasados celulares.”</p>
 <footer class="mt-2 pr-4 text-right text-sm font-semibold not-italic sm:pr-6">Max Delbrück (1906-1981)<br/><span class="font-normal">Premio Nobel de Medicina (1969)</span></footer>
 </blockquote>
+</div>
+</div>
+<div class="order-3 min-[900px]:order-none min-[900px]:col-span-7 min-[900px]:col-start-6 min-[900px]:row-start-2 min-[900px]:pl-6">
+<div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
 <p>Todo lo anterior explica por qué el cáncer no solo afecta a los seres humanos, sino también a todos los animales, incluyendo aves, mamíferos, reptiles, insectos, peces y anfibios, así como a las plantas y los árboles. Esta interpretación está obviamente en conflicto con la hipótesis tradicional de que las mutaciones genéticas son la causa del cáncer, postulada hace más de 100 años por Theodor Boveri (1862-1915) en 1912. Sin embargo, la mayoría de las mutaciones genéticas que se han encontrado en las células cancerosas también se han hallado en las células de enfermedades no relacionadas con el cáncer <sup class="reference-note"><a href="#reference-3" aria-label="Referencia 3" data-reference={referencePreview(2)}>[3]</a></sup> <sup class="reference-note"><a href="#reference-4" aria-label="Referencia 4" data-reference={referencePreview(3)}>[4]</a></sup>. Por lo que el Dr. Arguello explica que las mutaciones genéticas y otras anormalidades que se encuentran en células cancerosas no son la causa del cáncer, sino cambios que resultan a consecuencia de la transformación maligna.</p>
 <p>Por lo tanto, la quimioterapia atavística consiste en el uso de medicamentos aprobados hace décadas por la FDA y por todas las agencias de salud del mundo, para tratar hombres, mujeres y niños con enfermedades causadas por células primitivas (organismos unicelulares) como es el caso de las células bacterianas, fúngicas y protozoarias.</p>
 </div>
