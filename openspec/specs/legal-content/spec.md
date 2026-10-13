@@ -1,9 +1,7 @@
 ## Purpose
 
 Bilingual risk-free legal documents.
-
-## ADDED Requirements
-
+## Requirements
 ### Requirement: Five risk-free legal pages in both languages
 The system SHALL ship five legal documents — `privacy`, `terms`, `cookies`, `medical-disclaimer`, `legal-notice` — each as `src/content/legal/{slug}.en.md` and `src/content/legal/{slug}.es.md` (10 files), front-matter `{ title, description, updated }`, bodies containing only verified facts and risk-free wording as defined below.
 
@@ -48,11 +46,15 @@ The `medical-disclaimer` pages SHALL state the site provides information only an
 - **THEN** it states the content never replaces the criteria of "sus médicos" who know the case, and notes the registration/consent requirement for accepted patients
 
 ### Requirement: Legal notice identifies the responsible person with owner-supplied license number
-The `legal-notice` pages SHALL identify Dr. Arguello (Médico Cirujano y Partero, UANL Monterrey; oncology training Rochester / NCI Frederick per `content.md`) as the responsible individual behind The Atavistic Chemotherapy Clinical Trial, state he is legally authorized to practice medicine in Mexico with cédula profesional `1150234` (number highlighted blue), give the published contact channels, and note testimonials are published with documented consent. The pages SHALL NOT invent an address, registration number beyond the supplied cédula, or corporate entity.
+The `legal-notice` pages SHALL identify Dr. Arguello (Médico Cirujano y Partero, UANL Monterrey; oncology training Rochester / NCI Frederick per `content.md`) as the responsible individual behind The Atavistic Chemotherapy Clinical Trial, state he is legally authorized to practice medicine in Mexico with cédula profesional `1150234` (number highlighted blue), give the published contact channels, and note testimonials are published with documented consent. The credentials and the professional license SHALL read as one continuous statement — the authorization and cédula appended to the training-history item of the responsible-person list — rather than as a separate list item. The pages SHALL NOT invent an address, registration number beyond the supplied cédula, or corporate entity.
 
 #### Scenario: Legal notice shows credentials and cédula
 - **WHEN** the legal notice is read
 - **THEN** it names the training history from `content.md`, shows the owner-supplied cédula `1150234` highlighted blue, and contains no fabricated address or corporate entity
+
+#### Scenario: Credentials and license share one item
+- **WHEN** the responsible-person list of the Spanish legal notice is inspected
+- **THEN** the authorization sentence with the highlighted cédula appears at the end of the same list item as the training history, with no separate bullet for it
 
 ### Requirement: Medical disclaimer explains informed consent
 The `medical-disclaimer` pages SHALL include a "Qué es un consentimiento informado" section (before "Qué hacer") with the four owner-supplied bullets covering: documentation of understanding/acceptance and the right to refuse; the capacity and pressure-free-decision presumptions; comprehension of the strategy, purpose, and risks via the website and Dr. Arguello's explanations with opportunity to ask questions; the binding nature of the signed form until revoked, copy/original handling, and either party's freedom to stop treatment; and the registration-review flow. A small right-aligned `Rev.10/2026` line SHALL close the section.
@@ -67,3 +69,4 @@ The `terms` pages SHALL state medical content never replaces the advice of the r
 #### Scenario: Terms uses "sus médicos"
 - **WHEN** the terms page is read
 - **THEN** the medical-advice sentence refers to "sus médicos", not "un oncólogo calificado"
+

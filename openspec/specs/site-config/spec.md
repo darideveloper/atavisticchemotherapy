@@ -1,11 +1,9 @@
 ## Purpose
 
 Centralized typed business data and const fallbacks.
-
 ## Requirements
-
 ### Requirement: Centralized typed business data
-The project SHALL provide `src/data/site-config.ts` exporting typed, `as const` placeholder `BUSINESS_DATA` (url canonical fallback `https://atavisticchemotherapy.com`, phones, email, address, social links, business hours) plus a `BUSINESS_DATA` SEO bundle, consumed by the layout shell and SEO components rather than hardcoded values. `url` SHALL resolve the same `PORTLESS_URL → SITE_URL → https://atavisticchemotherapy.com` chain as the config.
+The project SHALL provide `src/data/site-config.ts` exporting typed, `as const` placeholder `BUSINESS_DATA` (url canonical fallback `https://quimioterapia-atavistica.org`, display `name`, phones, email, address, social links, business hours) plus a `BUSINESS_DATA` SEO bundle, consumed by the layout shell and SEO components rather than hardcoded values. `url` SHALL resolve the same `PORTLESS_URL → SITE_URL → https://quimioterapia-atavistica.org` chain as the config. `name` SHALL carry the Spanish display brand `Quimioterapia Atavística` and SHALL be distinct from `legalName`, which stays the English trial identifier `The Atavistic Chemotherapy Clinical Trial`.
 
 #### Scenario: No hardcoded business data in pages
 - **WHEN** `rg "tel:|@|https://" src --glob "*.astro"` excludes `site-config`
@@ -19,9 +17,18 @@ The project SHALL provide `src/data/site-config.ts` exporting typed, `as const` 
 - **WHEN** only `SITE_URL` is set
 - **THEN** `BUSINESS_DATA.url` resolves to `SITE_URL` for canonical/SEO output
 
+#### Scenario: Display brand is Spanish, legal name is not
+- **WHEN** `BUSINESS_DATA.name` and `BUSINESS_DATA.legalName` are inspected
+- **THEN** `name` reads `Quimioterapia Atavística` while `legalName` keeps the English trial identifier
+
+#### Scenario: Every display-brand surface resolves the Spanish brand
+- **WHEN** the built homepage is scanned for the header wordmark, `og:site_name`, the JSON-LD `name`, the non-home title tagline, and the 404 page's card label and landmark label
+- **THEN** each reads `Quimioterapia Atavística`, with the English brand retained only as `alternateName`, in `keywords`, in the bilingual homepage `<title>`, and in legal-entity strings
+
 ### Requirement: Consts fallbacks
 The project SHALL export `SITE_TITLE`, `SITE_DESCRIPTION`, and a `LOCALE_MAP` from `src/consts.ts` as typed fallbacks.
 
 #### Scenario: Defaults available
 - **WHEN** a component needs a site title without per-page data
 - **THEN** it reads the fallback from `consts.ts`
+
