@@ -30,6 +30,9 @@ pnm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# FUSE/libfuse hidden files left behind when an open file is replaced
+.fuse_hidden*
+
 # jetbrains setting folder
 .idea/
 

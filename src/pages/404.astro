@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import PageSEO from '@/components/seo/PageSEO.astro'
+import { SITE_TITLE } from '@/consts'
 ---
 
 <Layout lang="es">
@@ -30,10 +31,10 @@ import PageSEO from '@/components/seo/PageSEO.astro'
 				</a>
 			</div>
 
-			<aside class="not-found__card" aria-label="Atavistic Chemotherapy">
+			<aside class="not-found__card" aria-label={SITE_TITLE}>
 				<img class="not-found__mark" src="/apple-touch-icon.png?v=2" alt="" width="88" height="88" />
 				<p class="not-found__number" aria-hidden="true">404</p>
-				<p class="not-found__brand">Atavistic Chemotherapy</p>
+				<p class="not-found__brand">{SITE_TITLE}</p>
 				<div class="not-found__rule" aria-hidden="true"></div>
 				<p class="not-found__card-copy">Una ruta no encontrada no tiene por qué detener tu búsqueda de información.</p>
 			</aside>

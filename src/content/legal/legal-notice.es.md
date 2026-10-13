@@ -7,8 +7,7 @@ updated: "Última actualización: octubre 2026"
 ## Responsable
 
 - Este sitio web es la publicación de The Atavistic Chemotherapy Clinical Trial, dirigido por el Dr. Frank Arguello como profesional independiente.
-- El Dr. Arguello se graduó como Médico Cirujano y Partero en la Facultad de Medicina de la Universidad Autónoma de Nuevo León en Monterrey, y completó su formación en oncología en la Escuela de Medicina y Odontología de la Universidad de Rochester en Rochester, Nueva York, desempeñándose más tarde como investigador en el Instituto Nacional del Cáncer en Frederick, Maryland.
-- El Dr. Arguello está legalmente autorizado a ejercer la profesión médica en México, con cédula profesional <span style="color:#1d4ed8;font-weight:700">1150234</span>.
+- El Dr. Arguello se graduó como Médico Cirujano y Partero en la Facultad de Medicina de la Universidad Autónoma de Nuevo León en Monterrey, y completó su formación en oncología en la Escuela de Medicina y Odontología de la Universidad de Rochester en Rochester, Nueva York, desempeñándose más tarde como investigador en el Instituto Nacional del Cáncer en Frederick, Maryland. El Dr. Arguello está legalmente autorizado a ejercer la profesión médica en México, con cédula profesional <span style="color:#1d4ed8;font-weight:700">1150234</span>.
 
 ## Contacto
 

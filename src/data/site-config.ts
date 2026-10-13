@@ -11,7 +11,7 @@ const origin = (
 
 export const BUSINESS_DATA = {
   url: origin,
-  name: 'Atavistic Chemotherapy',
+  name: 'Quimioterapia Atavística',
   legalName: 'The Atavistic Chemotherapy Clinical Trial',
   logo: '/favicon.svg',
   ogImage: '/og-image.jpg',
