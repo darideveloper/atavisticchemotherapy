@@ -11,11 +11,17 @@ const t = getTranslations(lang)
 ---
 
 <header class="sticky top-0 z-50 border-b border-rose-100 bg-white/90 backdrop-blur">
-	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-		<a href="/" class="flex shrink-0 items-center">
-			<span class="text-base font-bold uppercase text-[#4c1139]">{SITE_TITLE}</span>
+	<div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8">
+		<a href="/" class="flex min-w-0 items-center">
+			<span class="truncate text-sm font-bold uppercase text-[#4c1139] sm:text-base">{SITE_TITLE}</span>
 		</a>
-		<nav class="flex flex-wrap items-center justify-end gap-x-5 gap-y-1 text-sm font-medium text-slate-600">
+
+		<input id="nav-toggle" type="checkbox" class="sr-only pointer-events-none" aria-label="Abrir o cerrar el menú" />
+
+		<label for="nav-toggle" class="nav-open flex shrink-0 cursor-pointer items-center rounded-md p-2 text-lg leading-none text-[#4c1139] transition hover:bg-rose-50 sm:hidden" aria-hidden="true">☰</label>
+		<label for="nav-toggle" class="nav-close hidden shrink-0 cursor-pointer items-center rounded-md p-2 text-lg leading-none text-[#4c1139] transition hover:bg-rose-50 sm:hidden" aria-hidden="true">✕</label>
+
+		<nav class="nav-panel absolute inset-x-0 top-full hidden flex-col gap-y-1 border-b border-rose-100 bg-white/95 px-4 py-3 text-sm font-medium text-slate-600 shadow-lg backdrop-blur sm:static sm:flex sm:flex-row sm:items-center sm:justify-end sm:gap-x-5 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none">
 			<a class="transition hover:text-[#9a3676]" href="/#top">{t('global.nav.home')}</a>
 			<a class="transition hover:text-[#9a3676]" href="/#realidad">{t('global.nav.reality')}</a>
 			<a class="transition hover:text-[#9a3676]" href="/#atavica">{t('global.nav.treatment')}</a>
@@ -23,3 +29,28 @@ const t = getTranslations(lang)
 		</nav>
 	</div>
 </header>
+
+<style>
+	/* Mobile-only disclosure menu (no JS): the hidden checkbox drives open/close.
+	   From `sm` up the `sm:` utilities above show the inline nav instead. */
+	@media (width < 40rem) {
+		#nav-toggle:checked ~ .nav-panel { display: flex; }
+		#nav-toggle:checked ~ .nav-open { display: none; }
+		#nav-toggle:checked ~ .nav-close { display: flex; }
+	}
+	#nav-toggle:focus-visible ~ .nav-open,
+	#nav-toggle:focus-visible ~ .nav-close {
+		outline: 2px solid #c24694;
+		outline-offset: 2px;
+	}
+</style>
+
+<script>
+	// Close the mobile menu after tapping a link (view-transition safe: the
+	// delegated listener is registered once and survives ClientRouter swaps).
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof Element) || !event.target.closest('.nav-panel a')) return
+		const toggle = document.getElementById('nav-toggle')
+		if (toggle instanceof HTMLInputElement) toggle.checked = false
+	})
+</script>

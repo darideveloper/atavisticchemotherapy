@@ -202,25 +202,25 @@ const referencePreview = (index: number, max = 160) => {
 <li><span class="text-rose-500" aria-hidden="true">◆</span> <span>Universidad de Rochester,</span> <strong>New York, USA</strong></li>
 <li><span class="text-rose-500" aria-hidden="true">◆</span> <span>Instituto Nacional del Cáncer, NIH,</span> <strong>Maryland, USA</strong></li>
 </ul>
-<div class="grid grid-cols-2 gap-3 sm:gap-4 pt-5">
+<div class="grid grid-cols-2 gap-3 sm:gap-4 pt-5 items-start">
 <figure class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg flex flex-col">
-<div class="relative overflow-hidden bg-slate-100 group">
-<Image src={prensa1984} alt="Recorte del periódico El Norte del 14 de noviembre de 1984: Esperan desarrollar en UANL un nuevo método anticanceroso" class="h-56 sm:h-72 w-full object-cover object-top cursor-zoom-in transition duration-500 group-hover:scale-105" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
-<span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
+<div class="relative overflow-hidden bg-slate-100">
+<Image src={prensa1984} alt="Recorte del periódico El Norte del 14 de noviembre de 1984: Esperan desarrollar en UANL un nuevo método anticanceroso" class="block w-full h-auto cursor-zoom-in" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
+<span class="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
 </div>
-<figcaption class="bg-[#4c1139] px-1.5 py-1.5 sm:py-2 text-center flex-1 flex flex-col justify-center">
-<span class="block text-sm sm:text-base font-extrabold tracking-[0.2em] text-white leading-tight">1984</span>
-<span class="block text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-rose-200 leading-tight">El Norte · Monterrey, NL</span>
+<figcaption class="bg-[#4c1139] px-1 py-1 sm:px-1.5 sm:py-2 text-center flex-1 flex flex-col justify-center">
+<span class="block text-xs sm:text-base font-extrabold tracking-[0.14em] sm:tracking-[0.2em] text-white leading-tight">1984</span>
+<span class="block text-[8px] sm:text-[10px] font-semibold uppercase tracking-normal sm:tracking-wider text-rose-200 leading-tight">El Norte · Monterrey, NL</span>
 </figcaption>
 </figure>
 <figure class="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-lg flex flex-col">
-<div class="relative overflow-hidden bg-slate-900 group">
-<Image src={libro2011} alt="Portada del libro Atavistic Metamorphosis de Frank Arguello, MD, publicado en 2011" class="h-56 sm:h-72 w-full object-cover object-top cursor-zoom-in transition duration-500 group-hover:scale-105" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
-<span class="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
+<div class="relative overflow-hidden bg-slate-900">
+<Image src={libro2011} alt="Portada del libro Atavistic Metamorphosis de Frank Arguello, MD, publicado en 2011" class="block w-full h-auto cursor-zoom-in" widths={[400, 800]} sizes="(max-width: 639px) 50vw, 300px" lightbox />
+<span class="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-black/55 text-sm font-bold text-white" aria-hidden="true">⤢</span>
 </div>
-<figcaption class="bg-[#4c1139] px-1.5 py-1.5 sm:py-2 text-center flex-1 flex flex-col justify-center">
-<span class="block text-sm sm:text-base font-extrabold tracking-[0.2em] text-white leading-tight">2011</span>
-<span class="block text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-rose-200 leading-tight">Libro · Atavistic Metamorphosis</span>
+<figcaption class="bg-[#4c1139] px-1 py-1 sm:px-1.5 sm:py-2 text-center flex-1 flex flex-col justify-center">
+<span class="block text-xs sm:text-base font-extrabold tracking-[0.14em] sm:tracking-[0.2em] text-white leading-tight">2011</span>
+<span class="block text-[8px] sm:text-[10px] font-semibold uppercase tracking-normal sm:tracking-wider text-rose-200 leading-tight">Libro · Atavistic Metamorphosis</span>
 </figcaption>
 </figure>
 </div>
@@ -390,7 +390,7 @@ const referencePreview = (index: number, max = 160) => {
 <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 <div class="mx-auto mb-8 max-w-5xl text-center">
 <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl" id="comparacion-heading">Quimioterapia tradicional<br/>vs<br/>Quimioterapia atavística</h2>
-<p class="mt-2 text-center text-sm leading-relaxed text-slate-600">Las dos son quimioterapias en que las dos se basan en el uso de químicos o fármacos como tratamiento fundamental.</p>
+<p class="mt-2 text-center text-xs sm:text-sm leading-relaxed text-slate-600">Las dos son quimioterapias en que las dos se basan en el uso de químicos o fármacos como tratamiento fundamental.</p>
 </div>
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 <article class="rounded-2xl border border-rose-100 bg-white p-6 shadow-[0_18px_40px_-28px_rgba(76,17,57,0.45)]">
