@@ -11,7 +11,7 @@ version: 2026-09-27+local
 
 - Main checkout URL: `https://atavisticchemotherapy.localhost`
 - Worktree URL: `https://<branch>.atavisticchemotherapy.localhost` (`portless list` is source of truth; `/` in branch names gets sanitized)
-- Prod fallback: `https://atavisticchemotherapy.com` (dev never reaches it — Portless always injects `PORTLESS_URL`)
-- No backend contract (no `PUBLIC_API_BASE_URL` / `API_TOKEN`). `.env` carries `SITE_URL` only.
+- Prod fallback: `https://quimioterapia-atavistica.org` (dev never reaches it — Portless always injects `PORTLESS_URL`)
+- The contact form has a client-safe `PUBLIC_CONTACT_FORM_*` build-time contract. `.env` carries local `SITE_URL` plus those values.
 - Manual siblings only, same terminal session — plugin banned (see `astro-worktrees.local.md`). Never `--background` the portless-wrapped server; agents never autostart servers.
 

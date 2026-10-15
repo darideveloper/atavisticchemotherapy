@@ -11,7 +11,13 @@ WORKDIR /app
 ARG SITE_URL
 ENV SITE_URL=$SITE_URL
 
-# No backend contract — no PUBLIC_* build args.
+# The contact form config is client-safe and is inlined by Astro at build time.
+ARG PUBLIC_CONTACT_FORM_ENDPOINT
+ARG PUBLIC_CONTACT_FORM_USER
+ARG PUBLIC_CONTACT_FORM_API_KEY
+ENV PUBLIC_CONTACT_FORM_ENDPOINT=$PUBLIC_CONTACT_FORM_ENDPOINT
+ENV PUBLIC_CONTACT_FORM_USER=$PUBLIC_CONTACT_FORM_USER
+ENV PUBLIC_CONTACT_FORM_API_KEY=$PUBLIC_CONTACT_FORM_API_KEY
 
 # Install dependencies (cached layer — only invalidates on lockfile change)
 COPY package.json pnpm-lock.yaml ./

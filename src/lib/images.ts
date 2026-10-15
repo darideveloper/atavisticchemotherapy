@@ -20,6 +20,7 @@ export const IMAGE_SLOTS = {
 	portrait: { widths: [360, 720, 1080], sizes: '(max-width: 1024px) 100vw, 360px' },
 	logo: { widths: [180, 360, 540], sizes: '180px' },
 	testimonial: { widths: [320, 640, 960], sizes: '(max-width: 639px) calc(100vw - 2rem), (max-width: 1023px) calc(50vw - 1.5rem), 384px' },
+	dedication: { widths: [480, 960, 1395], sizes: '(max-width: 639px) calc(100vw - 2rem), 448px' },
 } satisfies Record<string, ImageSlot>
 
 export type ImageSlotName = keyof typeof IMAGE_SLOTS
