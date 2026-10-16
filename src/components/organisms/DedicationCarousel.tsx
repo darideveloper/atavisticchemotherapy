@@ -9,7 +9,7 @@ export default function DedicationCarousel({ slides }: Props) {
     <Carousel
       items={slides}
       ariaLabel="Fotografías de la dedicatoria"
-      autoplay={{ delay: 5000 }}
+      autoplay={{ delay: 8000 }}
       className="max-w-md"
       responsiveFallback={false}
       controlLabels={{ previous: 'Fotografía anterior', next: 'Siguiente fotografía' }}

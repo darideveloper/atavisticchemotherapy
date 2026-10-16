@@ -12,12 +12,14 @@ type CarouselProps<T> = Readonly<{
   renderItem: (item: T, index: number) => ReactNode;
   ariaLabel: string;
   autoplay?: AutoplayOptions;
+  disableAutoplayOnInteraction?: boolean;
   slidesPerView?: number;
   breakpoints?: Record<number, { slidesPerView: number }>;
   spaceBetween?: number;
   className?: string;
   slideClassName?: string;
   responsiveFallback?: boolean;
+  showControlsOnMobile?: boolean;
   controlLabels?: Readonly<{ previous: string; next: string }>;
 }>;
 
@@ -34,12 +36,14 @@ export default function Carousel<T>({
   renderItem,
   ariaLabel,
   autoplay,
+  disableAutoplayOnInteraction = false,
   slidesPerView = 1,
   breakpoints,
   spaceBetween = 16,
   className = '',
   slideClassName = '',
   responsiveFallback = true,
+  showControlsOnMobile = false,
   controlLabels = { previous: 'Anterior', next: 'Siguiente' },
 }: CarouselProps<T>) {
   const swiperRef = useRef<SwiperInstance | null>(null);
@@ -65,7 +69,7 @@ export default function Carousel<T>({
           }}
           loop={items.length > 1}
           slidesPerGroup={1}
-          autoplay={autoplay ? { delay: autoplay.delay, disableOnInteraction: false, pauseOnMouseEnter: true } : false}
+          autoplay={autoplay ? { delay: autoplay.delay, disableOnInteraction: disableAutoplayOnInteraction, pauseOnMouseEnter: true } : false}
           keyboard={{ enabled: true, onlyInViewport: true }}
           a11y={{ prevSlideMessage: controlLabels.previous, nextSlideMessage: controlLabels.next, firstSlideMessage: 'Primer elemento', lastSlideMessage: 'Último elemento' }}
           slidesPerView={slidesPerView}
@@ -79,10 +83,10 @@ export default function Carousel<T>({
       </div>
       {items.length > 1 && (
         <>
-          <button type="button" className="absolute left-0 top-1/2 z-10 hidden h-20 w-10 -translate-y-1/2 items-center justify-center rounded-l-full bg-[#78235a] pl-1 text-white shadow-[4px_8px_20px_rgba(76,17,57,0.25)] transition hover:w-12 hover:bg-[#631849] focus:outline-none focus:ring-2 focus:ring-[#9a3676] focus:ring-offset-2 lg:-left-8 lg:flex lg:h-24 lg:w-12 xl:-left-12" aria-label={controlLabels.previous} onClick={() => swiperRef.current?.slidePrev()}>
+          <button type="button" className={`absolute z-10 -translate-y-1/2 items-center justify-center bg-[#78235a] text-white shadow-[4px_8px_20px_rgba(76,17,57,0.25)] transition hover:bg-[#631849] focus:outline-none focus:ring-2 focus:ring-[#9a3676] focus:ring-offset-2 ${showControlsOnMobile ? 'top-[19rem] -left-3 flex h-12 w-6 rounded-l-full pl-0.5 sm:top-1/2 sm:-left-2 sm:h-20 sm:w-10 sm:rounded-l-full sm:rounded-r-none sm:pl-1 lg:-left-6 lg:h-24 lg:w-12 xl:-left-12' : 'top-1/2 left-0 hidden h-20 w-10 rounded-l-full pl-1 lg:-left-6 lg:flex lg:h-24 lg:w-12 xl:-left-12'}`} aria-label={controlLabels.previous} onClick={() => swiperRef.current?.slidePrev()}>
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-[2.5] sm:h-6 sm:w-6"><path d="m14 5-7 7 7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
-          <button type="button" className="absolute right-0 top-1/2 z-10 hidden h-20 w-10 -translate-y-1/2 items-center justify-center rounded-r-full bg-[#78235a] pr-1 text-white shadow-[-4px_8px_20px_rgba(76,17,57,0.25)] transition hover:w-12 hover:bg-[#631849] focus:outline-none focus:ring-2 focus:ring-[#9a3676] focus:ring-offset-2 lg:-right-8 lg:flex lg:h-24 lg:w-12 xl:-right-12" aria-label={controlLabels.next} onClick={() => swiperRef.current?.slideNext()}>
+          <button type="button" className={`absolute z-10 -translate-y-1/2 items-center justify-center bg-[#78235a] text-white shadow-[-4px_8px_20px_rgba(76,17,57,0.25)] transition hover:bg-[#631849] focus:outline-none focus:ring-2 focus:ring-[#9a3676] focus:ring-offset-2 ${showControlsOnMobile ? 'top-[19rem] -right-3 flex h-12 w-6 rounded-r-full pr-0.5 sm:top-1/2 sm:-right-2 sm:h-20 sm:w-10 sm:rounded-l-none sm:rounded-r-full sm:pr-1 lg:-right-6 lg:h-24 lg:w-12 xl:-right-12' : 'top-1/2 right-0 hidden h-20 w-10 rounded-r-full pr-1 lg:-right-6 lg:flex lg:h-24 lg:w-12 xl:-right-12'}`} aria-label={controlLabels.next} onClick={() => swiperRef.current?.slideNext()}>
             <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-[2.5] sm:h-6 sm:w-6"><path d="m10 5 7 7-7 7" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </button>
         </>

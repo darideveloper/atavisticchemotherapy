@@ -18,8 +18,10 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
     <Carousel
       items={testimonials}
       ariaLabel="Testimonios de pacientes"
-      autoplay={{ delay: 4000, maxWidth: 1024 }}
-      className="max-w-6xl"
+      autoplay={{ delay: 15000, maxWidth: 1024 }}
+      disableAutoplayOnInteraction
+      showControlsOnMobile
+      className="w-[calc(100%-1rem)] max-w-6xl sm:w-full"
       controlLabels={{ previous: 'Testimonio anterior', next: 'Siguiente testimonio' }}
       breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
       renderItem={(testimonial) => (

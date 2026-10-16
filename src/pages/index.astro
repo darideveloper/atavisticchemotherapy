@@ -200,7 +200,7 @@ const referencePreview = (index: number, max = 160) => {
               </p>
 </div>
 <div class="space-y-4 text-[14px] leading-relaxed text-slate-600 font-normal">
-<p>El Dr. Frank Arguello ha dedicado su vida al estudio y tratamiento del cáncer después de ver morir a su madre en 1982 de cáncer cuando él iniciaba la carrera de medicina. Él obtuvo el título de Médico Cirujano y Partero de la Facultad de Medicina de la Universidad Autónoma de Nuevo León, ubicada en Monterrey, Nuevo León. Posteriormente, completó su formación en oncología en el Centro Médico de la Universidad de Connecticut, en Farmington, Connecticut, y en la Escuela de Medicina y Odontología de la Universidad de Rochester, en Rochester, Nueva York. En esta institución, ocupó el cargo de Profesor de Oncología y Pediatría Hematología/Oncología, y más adelante se desempeñó como Investigador Principal en el Instituto Nacional del Cáncer dentro de la División de Tratamiento y Diagnóstico del Cáncer de los Institutos Nacionales de Salud, en Frederick, Maryland.</p>
+<p>El Dr. Frank Arguello ha dedicado su vida al estudio y tratamiento del cáncer después de ver morir a su madre en 1982 de cáncer cuando él iniciaba la carrera de medicina. Él obtuvo el título de Médico Cirujano y Partero de la Facultad de Medicina de la Universidad Autónoma de Nuevo León, ubicada en Monterrey, Nuevo León. Posteriormente, completó su formación en oncología en el Centro Médico de la Universidad de Connecticut, en Farmington, Connecticut, y en la Escuela de Medicina y Odontología de la Universidad de Rochester, en Rochester, Nueva York. En esta institución, ocupó el cargo de Profesor de Oncología y Pediatría, Hematología/Oncología, y más adelante se desempeñó como Investigador Principal en el Instituto Nacional del Cáncer dentro de la División de Tratamiento y Diagnóstico del Cáncer de los Institutos Nacionales de Salud, en Frederick, Maryland.</p>
 <p>En el año 2011, el Dr. Arguello publicó un libro que se considera pionero y precursor de una manera más comprensiva sobre el origen y la biología de las células cancerosas. El título del libro en inglés es "Atavistic Metamorphosis: A New and Logical Explanation on the Origin and Nature of Cancer." (Metamorfosis Atavística: Una Nueva y Lógica Explicación Sobre el Origen y la Biología del Cáncer).</p>
 </div>
 <div class="pt-4 border-t border-slate-100">
@@ -442,7 +442,7 @@ const referencePreview = (index: number, max = 160) => {
 </div>
 <div class="mt-8 space-y-4 text-left text-lg leading-relaxed text-slate-700" style="font-family:'Playfair Display',serif;font-style:italic">
 <p class="font-bold">Dedico este trabajo a la amorosa memoria de mi madre, quien falleció de cáncer de vesícula biliar a la prematura edad de 50 años, cuando yo tenía 21 años e iniciaba mi carrera de medicina.</p>
-<p class="font-normal">Si el amor de tus pequeños hijos hubiera sido suficiente para salvarte, sin duda no habrías muerto. Pero nuestro amor y nuestras lágrimas no fueron suficientes. Nunca entendí por qué Dios te tuvo que arrebatar de nuestras vidas tan pronto; hasta ahora, este descubrimiento jamás se habría hecho. Espero que este trabajo y los esfuerzos derivados de estos conceptos por otros médicos eviten que otras familias sufran el dolor y la tristeza que nosotros vivimos a causa de tu muerte prematura.</p>
+<p class="font-normal">Si el amor de tus pequeños hijos hubiera sido suficiente para salvarte, sin duda no habrías muerto. Pero nuestro amor y nuestras lágrimas no fueron suficientes. Nunca entendí por qué Dios te tuvo que arrebatar de nuestras vidas tan pronto, hasta ahora; sin el dolor por tu partida este descubrimiento jamás se habría hecho. Espero que este trabajo y los esfuerzos derivados de estos conceptos por otros médicos eviten que otras familias sufran el dolor y la tristeza que nosotros vivimos a causa de tu muerte prematura.</p>
 </div>
 <p class="mt-6 text-right text-lg font-semibold text-slate-800" style="font-family:'Playfair Display',serif;font-style:italic">— Frank Arguello Astorga</p>
 </div>
@@ -568,9 +568,8 @@ const referencePreview = (index: number, max = 160) => {
 <p id="contact-error" role="alert" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3 mt-4"></p>
 <div id="contact-success" role="status" tabindex="-1" class="hidden text-sm font-semibold text-[#641b4e] bg-[#641b4e]/10 rounded-xl px-4 py-3">
   <p>¡Gracias! Hemos recibido su solicitud y nos pondremos en contacto con usted muy pronto.</p>
-  <button data-contact-reset type="button" class="mt-3 underline underline-offset-2">Enviar otra solicitud</button>
 </div>
-<p class="text-xs sm:text-sm text-slate-500 leading-relaxed mt-5">Para consultas urgentes, por favor <a class="underline font-semibold text-[#9a3676]" href={`tel:${BUSINESS_DATA.contact.phone}`}>Escríbanos al {BUSINESS_DATA.contact.phoneDisplay}</a> o escríbanos por <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.username.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir WhatsApp con ${BUSINESS_DATA.contact.whatsapp.username.label}`}>WhatsApp ({BUSINESS_DATA.contact.whatsapp.username.label})</a> o <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.mexico.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${BUSINESS_DATA.contact.whatsapp.mexico.label}`}>{BUSINESS_DATA.contact.whatsapp.mexico.label}</a>.</p>
+<p class="text-xs sm:text-sm text-slate-500 leading-relaxed mt-5">Para consultas urgentes, por favor <a class="underline font-semibold text-[#9a3676]" href={`tel:${BUSINESS_DATA.contact.phone}`}>Escríbanos al {BUSINESS_DATA.contact.phoneDisplay}</a>, por <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.username.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir WhatsApp con ${BUSINESS_DATA.contact.whatsapp.username.label}`}>WhatsApp ({BUSINESS_DATA.contact.whatsapp.username.label})</a>, por <a class="underline font-semibold text-[#9a3676]" href={BUSINESS_DATA.contact.whatsapp.mexico.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${BUSINESS_DATA.contact.whatsapp.mexico.label}`}>{BUSINESS_DATA.contact.whatsapp.mexico.label}</a>. O contacte por el correo <a class="underline font-semibold text-[#9a3676]" href={`mailto:${BUSINESS_DATA.contact.email}`}>{BUSINESS_DATA.contact.email}</a>.</p>
 </div>
 </div>
 <script>
@@ -616,13 +615,6 @@ if (modal && form && success && errorMessage && submitButton) {
       window.requestAnimationFrame(() => window.requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' })))
     }
     else if (event.target === modal || event.target.closest('[data-contact-close]')) close()
-    else if (event.target.closest('[data-contact-reset]')) {
-      form.reset()
-      success.classList.add('hidden')
-      errorMessage.classList.add('hidden')
-      form.classList.remove('hidden')
-      form.querySelector<HTMLElement>('input')?.focus()
-    }
   })
 
   document.addEventListener('keydown', (event) => {

@@ -18,7 +18,7 @@ export const BUSINESS_DATA = {
   contact: {
     phone: '+13013059591',
     phoneDisplay: '+1 (301) 305-9591',
-    email: '',
+    email: 'arguellof@atavisticchemotherapy.com',
     whatsapp: {
       username: {
         label: '+1 (301) 305-9591',
